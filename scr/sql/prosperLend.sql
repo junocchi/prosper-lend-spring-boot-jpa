@@ -56,7 +56,6 @@ insert into InterestDeduction values
 
 select * from InterestDeduction;
 
--- DROP TABLE Business;
 CREATE TABLE Business (
 businessId INT PRIMARY KEY,
 userLoginId INT,
