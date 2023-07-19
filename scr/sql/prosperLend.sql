@@ -27,6 +27,34 @@ CREATE TABLE Messages (
   message VARCHAR(255),
   CONSTRAINT PK_messageId PRIMARY KEY (messageId));
 
+create table UserLogin (
+userLoginId int auto_increment primary key,
+userLoginName varchar(30) not null,
+passcode varchar(500) not null,
+salt varchar(6) not null,
+userRole varchar(6) not null
+);  
+
+insert into UserLogin values
+(1, "admin_account", SHA1(concat(salt, "AdminProsperLend2023")), "254896", "admin"),
+(2, "test_user", SHA1(concat(salt, "password123")), "145896", "user");
+
+select * from UserLogin;
+
+create table InterestDeduction (
+interestDeductionId int auto_increment primary key,
+items varchar(50) not null,
+deductionAmount decimal(4,2)
+);
+
+insert into InterestDeduction values 
+(1, "Carbon neutral", 1),
+(2, "Diversity", 1),
+(3, "Equity", 1),
+(4, "Community Outreach", 1),
+(5, "Ethically Sourced", 1);
+
+select * from InterestDeduction;
 
 -- DROP TABLE Business;
 CREATE TABLE Business (
@@ -53,4 +81,3 @@ VALUES
     (10, 110, 'EcoBlend Clothing', 1010, 'admin@ecoblendclothing.com', 963147852);
 
 SELECT * FROM BUSINESS;
-
