@@ -103,3 +103,21 @@ CREATE TABLE Transactions (
 
 SELECT * FROM TRANSACTIONS;
 
+
+
+CREATE TABLE loanDeductions (
+  loanId INT,
+  interestDeductionId INT,
+  FOREIGN KEY (loanId) REFERENCES Loans(loanId),
+  FOREIGN KEY (interestDeductionId) REFERENCES InterestDeductions(interestDeductionId)
+);
+
+
+INSERT INTO loanDeductions (loanId, interestDeductionId)
+VALUES
+  (1001, 1), 
+  (1002, 2), 
+  (1003, 3); 
+  
+  SELECT * FROM LOANDEDUCTIONS;
+
