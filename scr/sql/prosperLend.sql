@@ -1,7 +1,6 @@
-DROP DATABASE IF EXISTS ProjectProsperLend;
-CREATE DATABASE ProjectProsperLend;
-USE ProjectProsperLend;
-
+DROP DATABASE IF EXISTS TestProjectProsperLend;
+CREATE DATABASE TestProjectProsperLend;
+USE TestProjectProsperLend;
 
 -- Create the "loans" table
 CREATE TABLE loans (
@@ -20,3 +19,11 @@ VALUES
   (1, 'approved', 5000.00, 0.05, 1, '2023-07-01'),
   (2, 'approved', 10000.00, 0.06, 2, '2023-07-05'),
   (3, 'declined', 2000.00, 0.04, 3, '2023-07-08');
+
+CREATE TABLE Messages (
+  messageId INT AUTO_INCREMENT,
+  userLoginId INT, CONSTRAINT FOREIGN KEY (userLoginId) REFERENCES Business(userLoginId) ON UPDATE CASCADE ON DELETE CASCADE,
+  message VARCHAR(255),
+  CONSTRAINT PK_messageId PRIMARY KEY (messageId));
+  
+
