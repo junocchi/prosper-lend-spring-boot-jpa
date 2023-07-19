@@ -2,31 +2,6 @@ DROP DATABASE IF EXISTS TestProjectProsperLend;
 CREATE DATABASE TestProjectProsperLend;
 USE TestProjectProsperLend;
 
--- Create the "loans" table
-CREATE TABLE loans (
-  loanID INT PRIMARY KEY,
-  status VARCHAR(10),
-  amount DECIMAL(10, 2),
-  interest DECIMAL(5, 2),
-  businessID INT,
-  loanDate DATE,
-  FOREIGN KEY (businessID) REFERENCES business(businessID)
-);
-
--- Insert sample values into the "loans" table
-INSERT INTO loans (loanID, status, amount, interest, businessID, loanDate)
-VALUES
-  (1, 'approved', 5000.00, 0.05, 1, '2023-07-01'),
-  (2, 'approved', 10000.00, 0.06, 2, '2023-07-05'),
-  (3, 'declined', 2000.00, 0.04, 3, '2023-07-08');
-
--- DROP TABLE Messages;
-CREATE TABLE Messages (
-  messageId INT AUTO_INCREMENT,
-  userLoginId INT, CONSTRAINT FOREIGN KEY (userLoginId) REFERENCES Business(userLoginId) ON UPDATE CASCADE ON DELETE CASCADE,
-  message VARCHAR(255),
-  CONSTRAINT PK_messageId PRIMARY KEY (messageId));
-
 create table UserLogin (
 userLoginId int auto_increment primary key,
 userLoginName varchar(30) not null,
@@ -56,17 +31,51 @@ insert into InterestDeduction values
 
 select * from InterestDeduction;
 
-CREATE TABLE Business (
+-- DROP TABLE Messages;
+CREATE TABLE Messages (
+  messageId INT AUTO_INCREMENT,
+  userLoginId INT, CONSTRAINT FOREIGN KEY (userLoginId) REFERENCES Businesses(userLoginId) ON UPDATE CASCADE ON DELETE CASCADE,
+  message VARCHAR(255),
+  CONSTRAINT PK_messageId PRIMARY KEY (messageId));
+
+-- DROP TABLE Transactions;
+CREATE TABLE Transactions (
+  transactionId INT AUTO_INCREMENT,
+  loanId INT, CONSTRAINT FOREIGN KEY (loanId) REFERENCES Loans(loanId) ON UPDATE CASCADE ON DELETE CASCADE,
+  amount DOUBLE,
+  transactionDate DATE,
+  CONSTRAINT PK_transactionId PRIMARY KEY (transactionId));
+
+-- Create the "loans" table
+CREATE TABLE loans (
+  loanID INT PRIMARY KEY,
+  status VARCHAR(10),
+  amount DECIMAL(10, 2),
+  interest DECIMAL(5, 2),
+  businessID INT,
+  loanDate DATE,
+  FOREIGN KEY (businessID) REFERENCES business(businessID)
+);
+
+-- Insert sample values into the "loans" table
+INSERT INTO loans (loanID, status, amount, interest, businessID, loanDate)
+VALUES
+  (1, 'approved', 5000.00, 0.05, 1, '2023-07-01'),
+  (2, 'approved', 10000.00, 0.06, 2, '2023-07-05'),
+  (3, 'declined', 2000.00, 0.04, 3, '2023-07-08');
+  
+-- DROP TABLE Businesses;
+CREATE TABLE Businesses (
 businessId INT PRIMARY KEY,
 userLoginId INT,
 businessName VARCHAR(100),
 loanId INT,
 businessAdminEmail VARCHAR(100),
 merchantId LONG,
-FOREIGN KEY (userLoginId) REFERENCES UserLogin(userLoginId)
+FOREIGN KEY (userLoginId) REFERENCES UserLogins(userLoginId)
 );
 
-INSERT INTO Business (businessId, userLoginId, businessName, loanId, businessAdminEmail, merchantId)
+INSERT INTO Businesses (businessId, userLoginId, businessName, loanId, businessAdminEmail, merchantId)
 VALUES
     (1, 101, 'GreenTech Solutions', 1001, 'admin@greentechsolutions.com', 123456789),
     (2, 102, 'EcoWise Enterprises', 1002, 'admin@ecowiseenterprises.com', 987654321),
@@ -79,4 +88,4 @@ VALUES
     (9, 109, 'EnviroTech Solutions', 1009, 'admin@envirotechsolutions.com', 852369741),
     (10, 110, 'EcoBlend Clothing', 1010, 'admin@ecoblendclothing.com', 963147852);
 
-SELECT * FROM BUSINESS;
+SELECT * FROM BUSINESSES;
