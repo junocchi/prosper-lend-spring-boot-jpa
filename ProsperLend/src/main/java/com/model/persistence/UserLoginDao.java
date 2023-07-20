@@ -14,9 +14,9 @@ public interface UserLoginDao extends JpaRepository<UserLogin, Integer>{
 
 	@Transactional
 	@Modifying
-	@Query(nativeQuery = true,value = "insert into userlogin values(?, ?, SHA1(concat(?,?), ?, ?)")
-	public int insertUserLoginData(int userLoginId, String userName, String salt1, String passcode, String salt, String role);
-
+	@Query(nativeQuery = true,value = "insert into userlogin (userLoginName, passcode, salt, userRole) values(?, SHA1(concat(?,?), ?, ?)")
+	public int insertUserLoginData(String username, String salt1, String passcode, String salt, String role);
+	
 	@Transactional
 	@Modifying
 	@Query(nativeQuery = true,value = "update userlogin set passcode = SHA1(concat(?,?)) where userLoginId=?")

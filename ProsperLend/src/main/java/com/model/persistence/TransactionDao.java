@@ -1,5 +1,6 @@
 package com.model.persistence;
 
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,6 +10,6 @@ import com.dto.entity.Transaction;
 
 @Transactional
 @Repository
-public interface TransactionDao extends JpaRepository<Transaction, Integer>{
+public interface TransactionDao extends JpaRepository<Transaction, Integer> {
 
 }
