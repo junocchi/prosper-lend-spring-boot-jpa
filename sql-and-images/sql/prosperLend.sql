@@ -43,7 +43,8 @@ select * from InterestDeductions;
 -- DROP TABLE Messages;
 CREATE TABLE Messages (
   messageId INT AUTO_INCREMENT,
-  userLoginId INT, CONSTRAINT FOREIGN KEY (userLoginId) REFERENCES userLogins(userLoginId) ON UPDATE CASCADE ON DELETE CASCADE,
+  userEmail VARCHAR(100),
+  userName VARCHAR(100),
   message VARCHAR(255),
   CONSTRAINT PK_messageId PRIMARY KEY (messageId));
   
