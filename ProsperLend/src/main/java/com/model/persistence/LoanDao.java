@@ -1,5 +1,5 @@
 package com.model.persistence;
 
-public interface LoansDao {
+public interface LoanDao {
 
 }

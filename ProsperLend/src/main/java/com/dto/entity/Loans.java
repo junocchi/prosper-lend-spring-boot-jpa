@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Loans {
 	
