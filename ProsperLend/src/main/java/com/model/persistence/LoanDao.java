@@ -1,6 +1,5 @@
 package com.model.persistence;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
@@ -13,6 +12,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.dto.entity.Loans;
+import com.dto.entity.Transaction;
 
 
 
@@ -23,13 +23,13 @@ public interface LoanDao extends JpaRepository<Loans, Integer>{
 	
 	@Modifying
 	@Query("update Loans set amount=amount+:am, interest=interest+:in where loanID=:id")
-	int updateSalaryAmountById(@Param("id") int loanId,@Param("am") BigDecimal newAmount, @Param("in") BigDecimal newInterest);
+	int updateSalaryAmountById(@Param("id") int loanId,@Param("am") Double newAmount, @Param("in") Double newInterest);
 	
 	
 	@Modifying
-	@Query(value = "insert into Loans values(?,?,?,?,?)",nativeQuery = true)
-	int insertLoan(int loanId,BigDecimal amount, BigDecimal interest, int businessID,
-	Date loanDate);
+	@Query(value = "insert into Loans values(?,?,?,?,?,?)",nativeQuery = true)
+	int addLoan(int loanId,Double amount, Double interest, int businessID,
+	Date loanDate, List<Transaction> transactions);
 
 
 	

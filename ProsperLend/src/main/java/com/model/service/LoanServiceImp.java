@@ -37,9 +37,9 @@ public class LoanServiceImp implements LoanService{
 	@Override
 	public boolean addLoan(Loans loan) {
 		try {
-		if(loanDao.insertLoan(loan.getLoanID(), 
+		if(loanDao.addLoan(loan.getLoanID(), 
 				loan.getAmount(), 
-				loan.getInterest(), loan.getBusinessID(), loan.getLoanDate())>0)
+				loan.getInterest(), loan.getBusinessID(), loan.getLoanDate(), loan.getTransactionList())>0)
 			return true;
 		}
 		catch(Exception ex) {
@@ -49,7 +49,7 @@ public class LoanServiceImp implements LoanService{
 }
 
 	@Override
-	public boolean changeAmountInterest(int loanId, BigDecimal newAmount, BigDecimal newInterest) {
+	public boolean changeAmountInterest(int loanId, Double newAmount, Double newInterest) {
 		
 		if(loanDao.updateSalaryAmountById(loanId, newAmount, newInterest)>0)
 			return true;

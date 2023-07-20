@@ -1,16 +1,20 @@
 package com.dto.entity;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import java.util.List;
 import java.util.ArrayList;
 
 
 @Entity
+@Table(name = "Loans")
+
+
 public class Loans {
 	
 	
@@ -18,10 +22,26 @@ public class Loans {
 	
 	@Id
 	int loanID;
-	BigDecimal amount;
-	BigDecimal interest;
+	Double amount;
+	Double interest;
 	int businessID;
 	Date loanDate;
+	
+	
+	
+	public Loans() {
+		super();
+	}
+	public Loans(int loanID, Double amount, Double interest, int businessID, Date loanDate,
+			List<Transaction> transactionList) {
+		super();
+		this.loanID = loanID;
+		this.amount = amount;
+		this.interest = interest;
+		this.businessID = businessID;
+		this.loanDate = loanDate;
+		this.transactionList = transactionList;
+	}
 	@OneToMany
 	 private List<Transaction> transactionList = new ArrayList<Transaction>();
 	public int getLoanID() {
@@ -30,16 +50,16 @@ public class Loans {
 	public void setLoanID(int loanID) {
 		this.loanID = loanID;
 	}
-	public BigDecimal getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
-	public BigDecimal getInterest() {
+	public Double getInterest() {
 		return interest;
 	}
-	public void setInterest(BigDecimal interest) {
+	public void setInterest(Double interest) {
 		this.interest = interest;
 	}
 	public int getBusinessID() {
