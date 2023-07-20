@@ -1,0 +1,5 @@
+package com.model.persistence;
+
+public class UserLoginDaoImpl {
+
+}
