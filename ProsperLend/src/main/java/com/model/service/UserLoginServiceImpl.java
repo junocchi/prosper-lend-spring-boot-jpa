@@ -14,7 +14,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 	@Autowired
 	private UserLoginDao dao;
 
-	@Override
+	@Override  
 	public UserLogin addUser(UserLogin user) {
 		dao.insertUserLoginData(user.getUserLoginName(), user.getSalt(),
 				user.getPasscode(), user.getSalt(), user.getUserRole());
