@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+INDEX VERSION 1.4+C:\Users\kalma\FinalProject_ProsperLend\di004-finalproject-group4\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1263003189.index
+1889497390.index
+2879371940.index
+850653534.index
+4273361865.index
+1645950233.index
+=======
 INDEX VERSION 1.4+/Users/junocchi/Wiley-Edge-Academy/Tech-assignments/prosper-lend-finalproject-group4/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
 865708100.index
 615422337.index
+>>>>>>> main
