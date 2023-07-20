@@ -50,17 +50,16 @@ CREATE TABLE Businesses (
 businessId INT PRIMARY KEY,
 userLoginId INT,
 businessName VARCHAR(100),
-loanId INT,
 businessAdminEmail VARCHAR(100),
 merchantId LONG,
 FOREIGN KEY (userLoginId) REFERENCES UserLogins(userLoginId)
 );
 
-INSERT INTO Businesses (businessId, userLoginId, businessName, loanId, businessAdminEmail, merchantId)
+INSERT INTO Businesses (businessId, userLoginId, businessName, businessAdminEmail, merchantId)
 VALUES
-    (101, 1, 'GreenTech Solutions', 1001, 'admin@greentechsolutions.com', 123456789),
-    (102, 2, 'EcoWise Enterprises', 1002, 'admin@ecowiseenterprises.com', 987654321),
-    (103, 1, 'Sustainable Harvest Co.', 1003, 'admin@sustainableharvestco.com', 456789123);
+    (101, 1, 'GreenTech Solutions', 'admin@greentechsolutions.com', 123456789),
+    (102, 2, 'EcoWise Enterprises', 'admin@ecowiseenterprises.com', 987654321),
+    (103, 1, 'Sustainable Harvest Co.', 'admin@sustainableharvestco.com', 456789123);
 
 SELECT * FROM BUSINESSES;
 
