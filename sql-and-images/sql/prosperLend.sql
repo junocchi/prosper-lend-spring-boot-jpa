@@ -2,6 +2,10 @@ DROP DATABASE IF EXISTS TestProjectProsperLend;
 CREATE DATABASE TestProjectProsperLend;
 USE TestProjectProsperLend;
 
+DROP DATABASE IF EXISTS ProjectProsperLend;
+CREATE DATABASE ProjectProsperLend;
+USE ProjectProsperLend;
+
 create table UserLogins (
 userLoginId int auto_increment primary key,
 userLoginName varchar(30) not null,
@@ -39,7 +43,8 @@ select * from InterestDeductions;
 -- DROP TABLE Messages;
 CREATE TABLE Messages (
   messageId INT AUTO_INCREMENT,
-  userLoginId INT, CONSTRAINT FOREIGN KEY (userLoginId) REFERENCES userLogins(userLoginId) ON UPDATE CASCADE ON DELETE CASCADE,
+  userEmail VARCHAR(100),
+  userName VARCHAR(100),
   message VARCHAR(255),
   CONSTRAINT PK_messageId PRIMARY KEY (messageId));
   
