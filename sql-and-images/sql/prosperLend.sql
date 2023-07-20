@@ -2,6 +2,10 @@ DROP DATABASE IF EXISTS TestProjectProsperLend;
 CREATE DATABASE TestProjectProsperLend;
 USE TestProjectProsperLend;
 
+DROP DATABASE IF EXISTS ProjectProsperLend;
+CREATE DATABASE ProjectProsperLend;
+USE ProjectProsperLend;
+
 create table UserLogins (
 userLoginId int auto_increment primary key,
 userLoginName varchar(30) not null,
