@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.dto.entity.Transaction;
 
 @Repository
-public interface TransactionDao extends JpaRepository<Transaction, Integer>{
+public interface TransactionDao extends JpaRepository<Transaction, Integer> {
 
 }
