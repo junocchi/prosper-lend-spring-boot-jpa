@@ -2,6 +2,10 @@ DROP DATABASE IF EXISTS TestProjectProsperLend;
 CREATE DATABASE TestProjectProsperLend;
 USE TestProjectProsperLend;
 
+DROP DATABASE IF EXISTS ProjectProsperLend;
+CREATE DATABASE ProjectProsperLend;
+USE ProjectProsperLend;
+
 create table UserLogins (
 userLoginId int auto_increment primary key,
 userLoginName varchar(30) not null,
@@ -39,7 +43,8 @@ select * from InterestDeductions;
 -- DROP TABLE Messages;
 CREATE TABLE Messages (
   messageId INT AUTO_INCREMENT,
-  userLoginId INT, CONSTRAINT FOREIGN KEY (userLoginId) REFERENCES userLogins(userLoginId) ON UPDATE CASCADE ON DELETE CASCADE,
+  userEmail VARCHAR(100),
+  userName VARCHAR(100),
   message VARCHAR(255),
   CONSTRAINT PK_messageId PRIMARY KEY (messageId));
   
@@ -50,17 +55,16 @@ CREATE TABLE Businesses (
 businessId INT PRIMARY KEY,
 userLoginId INT,
 businessName VARCHAR(100),
-loanId INT,
 businessAdminEmail VARCHAR(100),
 merchantId LONG,
 FOREIGN KEY (userLoginId) REFERENCES UserLogins(userLoginId)
 );
 
-INSERT INTO Businesses (businessId, userLoginId, businessName, loanId, businessAdminEmail, merchantId)
+INSERT INTO Businesses (businessId, userLoginId, businessName, businessAdminEmail, merchantId)
 VALUES
-    (101, 1, 'GreenTech Solutions', 1001, 'admin@greentechsolutions.com', 123456789),
-    (102, 2, 'EcoWise Enterprises', 1002, 'admin@ecowiseenterprises.com', 987654321),
-    (103, 1, 'Sustainable Harvest Co.', 1003, 'admin@sustainableharvestco.com', 456789123);
+    (101, 1, 'GreenTech Solutions', 'admin@greentechsolutions.com', 123456789),
+    (102, 2, 'EcoWise Enterprises', 'admin@ecowiseenterprises.com', 987654321),
+    (103, 1, 'Sustainable Harvest Co.', 'admin@sustainableharvestco.com', 456789123);
 
 SELECT * FROM BUSINESSES;
 
