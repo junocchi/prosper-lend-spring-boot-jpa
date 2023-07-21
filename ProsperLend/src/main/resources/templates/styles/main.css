@@ -23,7 +23,8 @@ header {
 }
 
 .logo {
-	height: 90px;
+	padding: 5px;
+  height: 80px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -37,13 +38,50 @@ h1 {
     padding: 5px;
     font-size: 2.3em;
 }
+/* drop-down menu user view */
+.dropbtn-user-view {
+  border: none;
+  cursor: pointer;
+  height: 60px;
+}
+.dropdown-user-view {
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  display: inline-block;
+}
+.dropdown-content-user-view {
+  display: none;
+  position: absolute;
+  background-color: #B9ADE8;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(46, 21, 84, 0.2);
+  z-index: 1;
+  right: 0;
+}
 
+.dropdown-content-user-view a {
+  color: #3C1263;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content-user-view a:hover {
+  background-color: #3C1263;
+  color: white;
+ }
+
+.dropdown-user-view:hover .dropdown-content-user-view {
+  display: block;
+}
+
+/* drop-down menu user view */
 .dropbtn {
   border: none;
   cursor: pointer;
   height: 80px;
 }
-
 .dropdown {
   position: absolute;
   right: 0;
@@ -55,13 +93,13 @@ h1 {
   position: absolute;
   background-color: #B9ADE8;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(46, 21, 84, 0.2);
   z-index: 1;
   right: 0;
 }
 
 .dropdown-content a {
-  color: black;
+  color: #3C1263;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
