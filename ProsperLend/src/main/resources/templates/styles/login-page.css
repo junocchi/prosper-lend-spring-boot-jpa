@@ -10,6 +10,7 @@ body {
     padding: 0;
 }
 
+<<<<<<< HEAD
 
 .pic {
     height: 800px;
@@ -27,6 +28,18 @@ body {
     position: absolute;
     top: 30px; /* Adjust the top position */
     right: 20px; /* Move the logo to the left */
+=======
+header {
+	background-color:#B9ADE8;
+	height: 90px;
+	width: 100%;
+	display:flex;
+    align-items: center;
+    justify-content: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+>>>>>>> refs/remotes/origin/hodanhassan
 }
 
 .container {
@@ -36,9 +49,14 @@ body {
 	border-radius: 20px; /* Rounded edges */
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 	width: 300px;
+<<<<<<< HEAD
 	margin:100px 0 0 650px;
 	margin-top: 200px; /* Add some top margin for spacing */
 	height: 300px;
+=======
+	margin: auto; /* Center the container */
+	margin-top: 200px; /* Add some top margin for spacing */
+>>>>>>> refs/remotes/origin/hodanhassan
 }
 
 .input-container {
@@ -88,3 +106,73 @@ input {
     color: navy;
 }
 
+<<<<<<< HEAD
+=======
+.logo {
+	height: 90px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+h1 {
+	color:#3C1263;
+	margin: auto;
+    width: 50%;
+    text-align: center;
+    padding: 5px;
+    font-size: 2.2em;
+}
+
+.dropbtn {
+  border: none;
+  cursor: pointer;
+  height: 90px;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #B9ADE8;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #94B9FF}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#content {
+	width: 100%;
+	height: 600px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+#column-1 {
+}
+
+#column-2 {
+}
+
+#column-3 {
+}
+>>>>>>> refs/remotes/origin/hodanhassan
