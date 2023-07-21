@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Business {
 
     @Id
-    @Column(name = "businessId")
+    @Column(name = "businessID")
     private int businessId;
 
     @JoinColumn(name = "userLoginId")
@@ -21,20 +21,30 @@ public class Business {
 
     @Column(name = "merchantId")
     private Long merchantId;
+    
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "loanID")
+    private Loans loan;
+
 
 	public Business(int businessId, int userLoginId, String businessName, String businessAdminEmail,
-			Long merchantId) {
+			Long merchantId,Loans loan) {
 		super();
 		this.businessId = businessId;
 		this.userLoginId = userLoginId;
 		this.businessName = businessName;
 		this.businessAdminEmail = businessAdminEmail;
 		this.merchantId = merchantId;
+		this.loan.setBusiness(this);
 	}
 
 	public Business() {
 		super();
 	}
+	
+	
+
+
 
 	public int getBusinessId() {
 		return businessId;
@@ -76,12 +86,24 @@ public class Business {
 	public void setMerchantId(Long merchantId) {
 		this.merchantId = merchantId;
 	}
+	
+	
+	
+
+	public Loans getLoan() {
+		return loan;
+	}
+
+	public void setLoan(Loans loan) {
+		this.loan = loan;
+	}
 
 	@Override
 	public String toString() {
 		return "Business [businessId=" + businessId + ", userLoginId=" + userLoginId + ", businessName=" + businessName
 				+ ", businessAdminEmail=" + businessAdminEmail + ", merchantId=" + merchantId + "]";
 	}
+
 
 
 

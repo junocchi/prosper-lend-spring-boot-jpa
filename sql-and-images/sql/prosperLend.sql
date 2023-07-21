@@ -72,7 +72,7 @@ SELECT * FROM BUSINESSES;
 
 -- Create the "loans" table
 CREATE TABLE loans (
-  loanID INT PRIMARY KEY,
+  loanID INT PRIMARY KEY AUTO_INCREMENT,
   loanStatus VARCHAR(10),
   amount DOUBLE(10, 2),
   interest DOUBLE(5, 2),

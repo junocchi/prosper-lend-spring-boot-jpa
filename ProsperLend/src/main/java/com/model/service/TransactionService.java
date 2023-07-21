@@ -13,4 +13,6 @@ public interface TransactionService {
 
 	// As admin and business user we can
 	public Transaction searchTransactionById(int transactionId);
+
+	Transaction getTransactionById(int transactionId);
 }

@@ -12,11 +12,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.test.context.ActiveProfiles;
 
+import com.dto.entity.Business;
 import com.dto.entity.Loans;
-import com.dto.entity.Transaction;
+
 
 import com.model.persistence.LoanDao;
 import com.model.persistence.TransactionDao;
@@ -40,7 +41,9 @@ class LoanDaoTest {
     @DisplayName("Test for getting all Loans")
     public void ReturnAllLoansTests01() {
         List<Loans> loansList = dao.findAll();
+        System.out.print(loansList.toString());
         assertNotNull(loansList);
+        
         
     }
 	
@@ -65,27 +68,22 @@ class LoanDaoTest {
 	
 	   @Test
 	   @DisplayName("Test if Loan is added sucessfully")
-	   public void AddLocation01() {
-	   List <Transaction> transactions = new ArrayList <Transaction>();
-	   Optional<Transaction> transaction = dao2.findById(1);
-	   if(transaction.isPresent()){
-		   transactions.add(transaction.get());
-		}
+	   public void AddLoan1() {
 	   long millis=System.currentTimeMillis();  
-       int loanID = 1021;
+       int loanID = 3;
        Double amount = 256742.4;
+       String status = "Pending";
        Double interest = 0.6;
-       int businessID = 101;
        Date date=new java.sql.Date(millis);  
 		    
-		    int result = dao.addLoan(loanID, amount, interest, businessID, date, transactions);
+	   int result = dao.addLoan(loanID, status, amount, interest, date);
 
 			  
 		    assertEquals(1, result);
 		  }
 	   
 	
-	
+	 
 	
 
 }

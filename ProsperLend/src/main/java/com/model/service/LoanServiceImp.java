@@ -38,8 +38,8 @@ public class LoanServiceImp implements LoanService{
 	public boolean addLoan(Loans loan) {
 		try {
 		if(loanDao.addLoan(loan.getLoanID(), 
-				loan.getAmount(), 
-				loan.getInterest(), loan.getBusinessID(), loan.getLoanDate(), loan.getTransactionList())>0)
+				 loan.getLoanStatus(), loan.getAmount(),
+				loan.getInterest(), loan.getLoanDate())>0)
 			return true;
 		}
 		catch(Exception ex) {

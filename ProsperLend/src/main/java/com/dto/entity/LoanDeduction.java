@@ -1,12 +1,15 @@
 package com.dto.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "loanDeductions")
-public class LoanDeduction {
+@IdClass(LoanDeduction.class)
+public class LoanDeduction  implements Serializable {
 
-    @Id
+	@Id
     @JoinColumn(name = "loanId")
     private int loanId;
 

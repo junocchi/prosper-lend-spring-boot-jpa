@@ -3,6 +3,8 @@ package com.model.persistence;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,6 +13,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.dto.entity.Business;
 import com.dto.entity.Loans;
 import com.dto.entity.Transaction;
 
@@ -20,6 +23,7 @@ import com.dto.entity.Transaction;
 @Repository
 public interface LoanDao extends JpaRepository<Loans, Integer>{
 	
+
 	
 	@Modifying
 	@Query("update Loans set amount=amount+:am, interest=interest+:in where loanID=:id")
@@ -27,11 +31,11 @@ public interface LoanDao extends JpaRepository<Loans, Integer>{
 	
 	
 	@Modifying
-	@Query(value = "insert into Loans values(?,?,?,?,?,?)",nativeQuery = true)
-	int addLoan(int loanId,Double amount, Double interest, int businessID,
-	Date loanDate, List<Transaction> transactions);
-
-
+	@Query(value = "insert into Loans values(loanID,loanStatus,amount,interest,businessID,loanDate)",nativeQuery = true)
+	int addLoan(int loanID,  String loanStatus, Double amount,  Double interest, Date loanDate);
+	
+	
+	 
 	
 }
 

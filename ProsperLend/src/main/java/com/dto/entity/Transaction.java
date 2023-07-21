@@ -2,28 +2,41 @@ package com.dto.entity;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "Transactions")
 public class Transaction {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "transactionId", nullable = false)
 	private int transactionId;
-	private int loanId;
+	
+	 @ManyToOne (fetch=FetchType.LAZY)
+	    @JoinColumn(name = "loanId")
+	 private Loans loan;
+    @Column(name = "amount")
 	private double amount;
 	private Date transactionDate;
+	
 
 	public Transaction() {
 		super();
 	}
 
-	public Transaction(int transactionId, int loanId, double amount, Date transactionDate) {
+	public Transaction(int transactionId, double amount, Date transactionDate) {
 		super();
 		this.transactionId = transactionId;
-		this.loanId = loanId;
 		this.amount = amount;
 		this.transactionDate = transactionDate;
 	}
@@ -36,13 +49,6 @@ public class Transaction {
 		this.transactionId = transactionId;
 	}
 
-	public int getLoanId() {
-		return loanId;
-	}
-
-	public void setLoanId(int loanId) {
-		this.loanId = loanId;
-	}
 
 	public double getAmount() {
 		return amount;

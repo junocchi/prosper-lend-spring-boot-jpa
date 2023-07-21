@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.dto.entity.Transaction;
 import com.model.persistence.TransactionDao;
 
@@ -13,7 +14,16 @@ public class TransactionServiceImpl implements TransactionService {
 
 	@Autowired
 	private TransactionDao transactionDao;
+	
+	
 
+	@Override
+	public Transaction getTransactionById(int transactionId) {
+		return transactionDao.findById(transactionId).orElse(null);
+	}
+	
+	
+	
 	@Override
 	public List<Transaction> getAllTransactions() {
 		// TODO Auto-generated method stub
