@@ -70,7 +70,7 @@ h1 {
 .dropdown-content-user-view a:hover {
   background-color: #3C1263;
   color: white;
- }
+}
 
 .dropdown-user-view:hover .dropdown-content-user-view {
   display: block;
