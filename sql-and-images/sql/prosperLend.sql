@@ -4,7 +4,7 @@ USE TestProjectProsperLend;
 
 DROP DATABASE IF EXISTS ProjectProsperLend;
 CREATE DATABASE ProjectProsperLend;
-USE ProjectProsperLend;
+-- USE ProjectProsperLend;
 
 create table UserLogins (
 userLoginId int auto_increment primary key,
@@ -74,8 +74,8 @@ SELECT * FROM BUSINESSES;
 CREATE TABLE loans (
   loanID INT PRIMARY KEY,
   loanStatus VARCHAR(10),
-  amount DECIMAL(10, 2),
-  interest DECIMAL(5, 2),
+  amount DOUBLE(10, 2),
+  interest DOUBLE(5, 2),
   businessID INT,
   loanDate DATE,
   FOREIGN KEY (businessID) REFERENCES businesses(businessID)
