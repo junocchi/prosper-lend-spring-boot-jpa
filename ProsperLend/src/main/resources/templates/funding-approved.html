@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Prosper Lend - Home</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <style>
+      #column-1 {
+        color: #370466;
+        text-align: justify;
+        margin-top: 60px;
+        width: 80%;
+        font-size: 1.2em;
+        height: 0;
+      }
+      #funding-approved {
+        font-size: 1.4em;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      #table-row {
+        justify-content: space-between;
+        text-align: center;
+        width: 100%;
+        color: #370466;
+        /* background: #d5d506; */
+      }
+      #table-row tr:nth-child(3),
+      #table-row tr:nth-child(4) {
+        margin-bottom: 5px;
+      }
+      
+      .logo-policies {
+        height: 90px;
+        margin-top: -25px;
+      }
+      .checkbox {
+        transform: scale(4);
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      /* When the checkbox is checked, add a blue background */
+      /* .container input:checked ~ .checkmark {
+        background-color: #2196F3;
+      } */
+
+      .percentege {
+        margin-top: -50px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <img
+        src="../images/prosper-logo.png"
+        alt="Prosper Lend Logo "
+        class="logo"
+      />
+      <h1>Prosper Lend</h1>
+      <div class="dropdown">
+        <img src="../images/prosper-logo.png" class="dropbtn" />
+
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div>
+    </header>
+    
+    <div id="content">
+      <div id="column-1">
+        <p id="funding-approved">
+          Congratulations! Your funding request has been approved!
+        </p>
+        <p>
+          The current national interest rate is 10.16%. The Prosper Lend interest rate for
+          this request is 10%. Please confirm if your company is part of the
+          following initiatives and we will check if you qualify for further
+          interest deductions:
+        </p>
+      </div>
+      <table>
+        <!-- row 1 -->
+        <tr id="table-row">
+          <th>Carbon <br> neutral</th>
+          <th>D&I <br> workplace</th>
+          <th>Equity <br> pay</th>
+          <th>Community <br> Outreach</th>
+          <th>Ethically <br> Sourced</th>
+        </tr>
+        <!-- row 2 -->
+        <tr id="table-row">
+          <td class="percentage">-1%</td>
+          <td class="percentage">-1%</td>
+          <td class="percentage">-1%</td>
+          <td class="percentage">-1%</td>
+          <td class="percentage">-1%</td>
+        </tr>
+        <!-- row 3 -->
+        <tr id="table-row">
+          <td><img
+            src="../images/carbon-neutral.png"
+            alt="Carbon neutral logo with two leaves inside a circle"
+            class="logo-policies"
+          />
+          <td><img
+            src="../images/diversity.png"
+            alt="Carbon neutral logo with two leaves inside a circle"
+            class="logo-policies"
+          />
+          <td><img
+            src="../images/equity.png"
+            alt="Carbon neutral logo with two leaves inside a circle"
+            class="logo-policies"
+          />
+          <td><img
+            src="../images/community.png"
+            alt="Carbon neutral logo with two leaves inside a circle"
+            class="logo-policies"
+          />
+          <td><img
+            src="../images/ethically.png"
+            alt="Carbon neutral logo with two leaves inside a circle"
+            class="logo-policies"
+          />
+        </tr>
+        <!-- row 4 -->
+        <tr id="table-row">
+          <td><div class="checkbox"><input type="checkbox"></div></td>
+          <td><div class="checkbox"><input type="checkbox"></div></td>
+          <td><div class="checkbox"><input type="checkbox"></div></td>
+          <td><div class="checkbox"><input type="checkbox"></div></td>
+          <td><div class="checkbox"><input type="checkbox"></div></td>
+        </tr>
+
+    </div>
+  </table>
+  </body>
+</html>
