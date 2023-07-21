@@ -9,10 +9,10 @@
 		#column-1 {
 			color: #370466;
 			text-align: center;
-			margin-top: 80px;
-			width: 60%;
+			margin-top: 40px;
+			width: 61%;
 			font-size: 1.2em;
-			height: 0;
+			height: auto;
 		}
 		#about-us {
 			font-size: 1.4em;
@@ -21,30 +21,40 @@
 		}
 		
 		#column-2 {
-			width: 45%;
-			background-color: pink;
+			width: 40%;
+			height: auto;
+		}
+		
+		#about-us1 {
+			width: 100%;
+			height: auto;
 		}
 
 		#column-3 {
-			width: 45%;
-			background-color: red;
+			width: 40%;
+			height: auto;
+		}
+		
+		#about-us2 {
+			width: 100%;
+			height: auto;
 		}
 	</style>
-	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
 <header>
-	<img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Square_-_black_simple.svg" alt="Logo" class="logo">
+	<img src="../images/prosper-logo.png" alt="Logo" class="logo">
 	<h1>Prosper Lend</h1>
 	<div class="dropdown">
-	<img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Square_-_black_simple.svg" class="dropbtn">
+		<img src="../images/menu1.svg" class="dropbtn">
 
-	<div class="dropdown-content">
-		<a href="#">Link 1</a>
-		<a href="#">Link 2</a>
-		<a href="#">Link 3</a>
-   </div>
+		<div class="dropdown-content">
+			<a href="#">Link 1</a>
+			<a href="#">Link 2</a>
+			<a href="#">Link 3</a>
+   		</div>
    </div>
 </header>
 
@@ -55,10 +65,11 @@
 	</div>
 	
 	<div id="column-2">
-		<p>text</p>
+		<img src="../images/about-me.png" id="about-us1">
 	</div>
+	
 	<div id="column-3">
-		<p>text</p>
+		<img src="../images/about-us-2.png" id="about-us2">
 	</div>
 	
 </div>

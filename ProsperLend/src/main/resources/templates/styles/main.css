@@ -35,13 +35,13 @@ h1 {
     width: 50%;
     text-align: center;
     padding: 5px;
-    font-size: 2.2em;
+    font-size: 2.3em;
 }
 
 .dropbtn {
   border: none;
   cursor: pointer;
-  height: 90px;
+  height: 80px;
 }
 
 .dropdown {
@@ -67,7 +67,10 @@ h1 {
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #94B9FF}
+.dropdown-content a:hover {
+  background-color: #3C1263;
+  color: white;
+ }
 
 .dropdown:hover .dropdown-content {
   display: block;
