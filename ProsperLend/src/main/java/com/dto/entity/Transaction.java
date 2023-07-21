@@ -2,6 +2,7 @@ package com.dto.entity;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,10 +23,14 @@ public class Transaction {
 	@Column(name = "transactionId", nullable = false)
 	private int transactionId;
 	
-	 @ManyToOne (fetch=FetchType.LAZY)
-	    @JoinColumn(name = "loanId")
+	 @ManyToOne (cascade = CascadeType.ALL)
+	 @JoinColumn(name = "loanId")
 	 private Loans loan;
-    @Column(name = "amount")
+	 
+	 
+    
+
+	@Column(name = "amount")
 	private double amount;
 	private Date transactionDate;
 	
@@ -64,6 +69,14 @@ public class Transaction {
 
 	public void setTransactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
+	}
+	
+	public Loans getLoan() {
+		return loan;
+	}
+
+	public void setLoan(Loans loan) {
+		this.loan = loan;
 	}
 
 }

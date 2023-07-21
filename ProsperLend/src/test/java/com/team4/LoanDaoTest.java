@@ -14,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.test.context.ActiveProfiles;
-
-import com.dto.entity.Business;
 import com.dto.entity.Loans;
 
 
@@ -51,7 +49,7 @@ class LoanDaoTest {
 	@Test
     @DisplayName("Test for getting Loan by ID")
     public void ReturnLoanByIDTest() {
-        Optional<Loans> loan = dao.findById(1);
+		Loans loan = dao.findById(1002).orElse(null);
         assertNotNull(loan);
         
     }
@@ -60,7 +58,7 @@ class LoanDaoTest {
 	@Test
     @DisplayName("Test for getting Loan by ID that doesn't exist")
     public void ReturnLoanByIDTest02() {
-        Optional<Loans> loan = dao.findById(999);
+		Loans loan = dao.findById(1).orElse(null);
         assertNull(loan);
         
     }
@@ -68,9 +66,9 @@ class LoanDaoTest {
 	
 	   @Test
 	   @DisplayName("Test if Loan is added sucessfully")
-	   public void AddLoan1() {
+	   public void AddLoanTest() {
 	   long millis=System.currentTimeMillis();  
-       int loanID = 3;
+       int loanID = 1004;
        Double amount = 256742.4;
        String status = "Pending";
        Double interest = 0.6;
@@ -82,8 +80,36 @@ class LoanDaoTest {
 		    assertEquals(1, result);
 		  }
 	   
-	
-	 
-	
+	   
+	   
 
+	   @Test
+	   @DisplayName("Test if Loan is deleted sucessfully")
+	   public void DeleteLoanTest() {   
+	   dao.deleteById(1004);
+	   Loans loan = dao.findById(1).orElse(null);
+	   assertNull(loan);
+	  
+	   
+	   }
+	   
+	   
+	   @Test
+	   @DisplayName("Test if Loan is updated sucessfully")
+	   public void UpdateLoanTest() { 
+		   
+	   int loanId = 1002;
+	   double amount = 400.25;
+	   double interest = 0.5;
+	   
+	   int result = dao.updateSalaryAmountById(loanId, amount, interest);
+	    
+	    
+		   assertEquals(1, result);
+		   
+		   
+		   
+	   }
+			
+	   
 }

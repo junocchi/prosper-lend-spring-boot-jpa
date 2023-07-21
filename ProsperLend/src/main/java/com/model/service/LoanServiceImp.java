@@ -60,5 +60,16 @@ public class LoanServiceImp implements LoanService{
 	}
 	
 	
+	@Override
+	public boolean deleteLoanById(int loanId) {
+		Loans loan=getLoanById(loanId);
+		if(loan!=null) {
+			loanDao.deleteById(loanId);
+			return true;
+		}
+		return false;
+	}
+	
+	
 	
 }
