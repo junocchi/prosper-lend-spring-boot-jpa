@@ -1,10 +1,14 @@
 package com.dto.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "Businesses")
-public class Business {
+public class Businesses {
 
     @Id
     @Column(name = "businessID")
@@ -22,23 +26,21 @@ public class Business {
     @Column(name = "merchantId")
     private Long merchantId;
     
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "loanID")
-    private Loans loan;
+    @OneToMany
+	private List<Loans> loanList=new ArrayList<Loans>(); 
 
 
-	public Business(int businessId, int userLoginId, String businessName, String businessAdminEmail,
-			Long merchantId,Loans loan) {
+	public Businesses(int businessID, int userLoginId, String businessName, String businessAdminEmail,
+			Long merchantId) {
 		super();
-		this.businessId = businessId;
+		this.businessId = businessID;
 		this.userLoginId = userLoginId;
 		this.businessName = businessName;
 		this.businessAdminEmail = businessAdminEmail;
 		this.merchantId = merchantId;
-		this.loan.setBusiness(this);
 	}
 
-	public Business() {
+	public Businesses() {
 		super();
 	}
 	
@@ -88,14 +90,13 @@ public class Business {
 	}
 	
 	
-	
 
-	public Loans getLoan() {
-		return loan;
+	public List<Loans> getLoanList() {
+		return loanList;
 	}
 
-	public void setLoan(Loans loan) {
-		this.loan = loan;
+	public void setLoanList(List<Loans> loanList) {
+		this.loanList = loanList;
 	}
 
 	@Override

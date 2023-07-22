@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dto.entity.Business;
+import com.dto.entity.Businesses;
 import com.dto.entity.LoanDeduction;
 import com.model.persistence.BusinessDao;
 import com.model.persistence.LoanDeductionDao;

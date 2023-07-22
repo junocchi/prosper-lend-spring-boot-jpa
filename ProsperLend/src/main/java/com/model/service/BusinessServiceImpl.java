@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dto.entity.Business;
+import com.dto.entity.Businesses;
 import com.model.persistence.BusinessDao;
 
 @Service
@@ -14,16 +14,16 @@ public class BusinessServiceImpl implements BusinessService{
     @Autowired
     private BusinessDao dao;
     
-    public List<Business> getAllBusinesses() {
+    public List<Businesses> getAllBusinesses() {
         return dao.findAll();
     }
 
-    public Business getBusinessById(int businessId) {
-		Business business = dao.findById(businessId).orElse(null);
+    public Businesses getBusinessById(int businessId) {
+		Businesses business = dao.findById(businessId).orElse(null);
 		return business;
     }
 
-    public Business insertBusiness(Business business) {
+    public Businesses insertBusiness(Businesses business) {
     	if (getBusinessById(business.getBusinessId())==null)
     		return dao.save(business);
     	else
@@ -31,21 +31,21 @@ public class BusinessServiceImpl implements BusinessService{
     }
     
 
-    public Business deleteBusiness(int businessId) {
-        Business business = getBusinessById(businessId);
+    public Businesses deleteBusiness(int businessId) {
+        Businesses business = getBusinessById(businessId);
         if (business != null)
         	dao.deleteById(businessId);
         return business;
     }
     
     
-    public Business updateBusinessEmail(int businessId, String newEmail) {
-        Business business = getBusinessById(businessId);
-        if (business != null) {
-            business.setBusinessAdminEmail(newEmail);
-            return dao.save(business);
-        }
-        return null;
-    }
+    public boolean updateBusinessEmail(int businessId, String newEmail) {
+       
+        if(dao.updateBusinessEmail(businessId, newEmail)>0)
+			return true;
+		else
+			return false;
 
+}
+    
 }

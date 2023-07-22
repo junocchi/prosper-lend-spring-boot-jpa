@@ -52,12 +52,13 @@ CREATE TABLE Messages (
 
 
 CREATE TABLE Businesses (
-businessId INT PRIMARY KEY,
+businessId INT AUTO_INCREMENT PRIMARY KEY,
 userLoginId INT,
 businessName VARCHAR(100),
 businessAdminEmail VARCHAR(100),
 merchantId LONG,
 FOREIGN KEY (userLoginId) REFERENCES UserLogins(userLoginId)
+PRIMARY KEY 
 );
 
 INSERT INTO Businesses (businessId, userLoginId, businessName, businessAdminEmail, merchantId)
@@ -72,21 +73,22 @@ SELECT * FROM BUSINESSES;
 
 -- Create the "loans" table
 CREATE TABLE loans (
-  loanID INT PRIMARY KEY AUTO_INCREMENT,
+  loanID INT  AUTO_INCREMENT,
   loanStatus VARCHAR(10),
   amount DOUBLE(10, 2),
   interest DOUBLE(5, 2),
   businessID INT,
   loanDate DATE,
-  FOREIGN KEY (businessID) REFERENCES businesses(businessID)
+  FOREIGN KEY (businessID) REFERENCES businesses(businessID),
+  PRIMARY KEY (loanID)
 );
 
 -- Insert sample values into the "loans" table
-INSERT INTO loans (loanID, loanStatus, amount, interest, businessID, loanDate)
+INSERT INTO loans (loanStatus, amount, interest, businessID, loanDate)
 VALUES
-  (1001, 'approved', 5000.00, 0.05, 101, '2023-07-01'),
-  (1002, 'approved', 10000.00, 0.06, 102, '2023-07-05'),
-  (1003, 'declined', 2000.00, 0.04, 103, '2023-07-08');
+  ('approved', 5000.00, 0.05, 101, '2023-07-01'),
+  ('approved', 10000.00, 0.06, 102, '2023-07-05'),
+  ('declined', 2000.00, 0.04, 103, '2023-07-08');
 
 SELECT * FROM LOANS;
 
@@ -101,9 +103,9 @@ CREATE TABLE Transactions (
   CONSTRAINT PK_transactionId PRIMARY KEY (transactionId));
   
   INSERT INTO Transactions (transactionId, loanId, amount, transactionDate) VALUES
-(101, 1001, 10000.00, "2023-06-01"),
-(102, 1002, 5000.00, "2021-07-01"),
-(103, 1003, 13000.00, "2023-07-01");
+(101, 1, 10000.00, "2023-06-01"),
+(102, 2, 5000.00, "2021-07-01"),
+(103, 3, 13000.00, "2023-07-01");
 
 SELECT * FROM TRANSACTIONS;
 
@@ -119,9 +121,9 @@ CREATE TABLE loanDeductions (
 
 INSERT INTO loanDeductions (loanId, interestDeductionId)
 VALUES
-  (1001, 1), 
-  (1002, 2), 
-  (1003, 3); 
+  (1, 1), 
+  (2, 2), 
+  (3, 3); 
   
   SELECT * FROM LOANDEDUCTIONS;
 

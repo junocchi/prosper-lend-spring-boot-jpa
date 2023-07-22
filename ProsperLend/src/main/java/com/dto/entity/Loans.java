@@ -1,6 +1,5 @@
 package com.dto.entity;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
@@ -11,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -25,58 +25,47 @@ import java.util.ArrayList;
 @Table(name = "Loans")
 
 
-public class Loans implements Serializable {
+public class Loans {
 	
-	
-
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 
 	@Id
-	@Column(name="loanID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	
 	int loanID;
 	
 	
-	@Column(name="loanStatus")
+	
 	String loanStatus;
 	
-	@Column(name="amount")
+	
 	Double amount;
 	
 	
-	@Column(name="interest")
+	
 	Double interest;
 	
-    @OneToOne(mappedBy = "loan")
-	private Business business;
+	@ManyToOne
+	private Businesses business;
 	
-	@Column(name="loanDate")
+	
 	Date loanDate;
 	
-    @OneToMany
-	private List<Transaction> transactionList;
-    
+   
 	
 	
 	public Loans() {
 		super();
 	}
-	public Loans(int loanID, String loanStatus, Double amount, Double interest, Business business, Date loanDate,
-			List<Transaction> transactionList) {
+	public Loans(int loanID, String loanStatus, Double amount, Double interest, Businesses business, Date loanDate) {
 		super();
 		this.loanID = loanID;
 		this.loanStatus = loanStatus;
 		this.amount = amount;
 		this.interest = interest;
-		this.business = business;
 		this.loanDate = loanDate;
-		this.transactionList = transactionList;
+		this.business = business;
+		
 	}
 	
 	
@@ -109,24 +98,19 @@ public class Loans implements Serializable {
 	public void setLoanDate(Date loanDate) {
 		this.loanDate = loanDate;
 	}
-	public List<Transaction> getTransactionList() {
-		return transactionList;
-	}
-	public void setTransactionList(List<Transaction> transactionList) {
-		this.transactionList = transactionList;
-	}
+
 	
-	public Business getBusiness() {
-		return business;
-	}
-	public void setBusiness(Business business) {
-		this.business = business;
-	}
 	public String getLoanStatus() {
 		return loanStatus;
 	}
 	public void setLoanStatus(String loanStatus) {
 		this.loanStatus = loanStatus;
+	}
+	public Businesses getBusiness() {
+		return business;
+	}
+	public void setBusiness(Businesses business) {
+		this.business = business;
 	}
 	
 	

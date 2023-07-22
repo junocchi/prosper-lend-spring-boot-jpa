@@ -14,9 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.test.context.ActiveProfiles;
+
+import com.dto.entity.Businesses;
 import com.dto.entity.Loans;
-
-
+import com.dto.entity.Transaction;
+import com.model.persistence.BusinessDao;
 import com.model.persistence.LoanDao;
 import com.model.persistence.TransactionDao;
 
@@ -30,9 +32,13 @@ class LoanDaoTest {
 	
 	@Autowired
 	private LoanDao dao;
+
 	@Autowired
-	private TransactionDao dao2;
+	private BusinessDao dao2;
 	
+	
+	@Autowired
+	private TransactionDao dao3;
 	
 	
 	@Test
@@ -49,7 +55,7 @@ class LoanDaoTest {
 	@Test
     @DisplayName("Test for getting Loan by ID")
     public void ReturnLoanByIDTest() {
-		Loans loan = dao.findById(1002).orElse(null);
+		Loans loan = dao.findById(2).orElse(null);
         assertNotNull(loan);
         
     }
@@ -58,7 +64,7 @@ class LoanDaoTest {
 	@Test
     @DisplayName("Test for getting Loan by ID that doesn't exist")
     public void ReturnLoanByIDTest02() {
-		Loans loan = dao.findById(1).orElse(null);
+		Loans loan = dao.findById(14).orElse(null);
         assertNull(loan);
         
     }
@@ -67,14 +73,21 @@ class LoanDaoTest {
 	   @Test
 	   @DisplayName("Test if Loan is added sucessfully")
 	   public void AddLoanTest() {
+	   Businesses business = dao2.findById(101).orElse(null);
+	   System.out.println(business);
 	   long millis=System.currentTimeMillis();  
-       int loanID = 1004;
+       int loanID = 4;
        Double amount = 256742.4;
-       String status = "Pending";
+       String loanStatus = "Pending";
        Double interest = 0.6;
-       Date date=new java.sql.Date(millis);  
+       int businessID = business.getBusinessId();
+       Date loanDate=new java.sql.Date(millis); 
+       
+        
+       
+       
 		    
-	   int result = dao.addLoan(loanID, status, amount, interest, date);
+	   int result = dao.addLoan(loanStatus, amount, interest, businessID, loanDate);
 
 			  
 		    assertEquals(1, result);
@@ -86,8 +99,8 @@ class LoanDaoTest {
 	   @Test
 	   @DisplayName("Test if Loan is deleted sucessfully")
 	   public void DeleteLoanTest() {   
-	   dao.deleteById(1004);
-	   Loans loan = dao.findById(1).orElse(null);
+	   dao.deleteById(4);
+	   Loans loan = dao.findById(4).orElse(null);
 	   assertNull(loan);
 	  
 	   
