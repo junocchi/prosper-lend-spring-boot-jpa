@@ -23,11 +23,19 @@ public class BusinessServiceImpl implements BusinessService{
 		return business;
     }
 
-    public Businesses insertBusiness(Businesses business) {
-    	if (getBusinessById(business.getBusinessId())==null)
-    		return dao.save(business);
-    	else
-    		return null;
+    public boolean AddBusiness(Businesses business) {
+    	try {
+    		if(dao.addBusisness( 
+    				business.getUserLogin().getUserLoginId(), business.getBusinessName(),
+    				business.getBusinessAdminEmail(), business.getMerchantId())>0)
+    			
+    			
+    			return true;
+    		}
+    		catch(Exception ex) {
+    			return false;
+    		}
+    		return false;
     }
     
 

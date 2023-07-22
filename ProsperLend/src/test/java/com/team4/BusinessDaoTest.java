@@ -17,9 +17,11 @@ import org.springframework.test.context.ActiveProfiles;
 
 import com.dto.entity.Businesses;
 import com.dto.entity.Loans;
+import com.dto.entity.UserLogin;
 import com.model.persistence.BusinessDao;
 import com.model.persistence.LoanDao;
 import com.model.persistence.TransactionDao;
+import com.model.persistence.UserLoginDao;
 
 import java.sql.Date;
 
@@ -33,6 +35,10 @@ class BusinessDaoTest {
 	
 	@Autowired
 	private BusinessDao dao;
+	
+
+	@Autowired
+	private UserLoginDao dao2;
 	
 	
 	
@@ -70,13 +76,14 @@ class BusinessDaoTest {
 	   @DisplayName("Test if Business is added sucessfully")
 	   public void AddLoanTest() {
 	  
-       int buisnessID = 104;
+	   UserLogin userlogin = dao2.findById(1).orElse(null);
+       int userLoginID = userlogin.getUserLoginId();
        String businessName = "My Buisness";
        String businessAdminEmail = "MyBuisness@SQL.com";
        int MerchantId = 4;
         
 		    
-	   int result = dao.addBusisness(buisnessID,businessName, businessAdminEmail, MerchantId);
+	   int result = dao.addBusisness(userLoginID,businessName, businessAdminEmail, MerchantId);
 
 			  
 		    assertEquals(1, result);

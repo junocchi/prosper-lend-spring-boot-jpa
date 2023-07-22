@@ -11,33 +11,30 @@ import javax.persistence.*;
 public class Businesses {
 
     @Id
-    @Column(name = "businessID")
     private int businessId;
-
-    @JoinColumn(name = "userLoginId")
-    private int userLoginId;
-
-    @Column(name = "businessName")
+    
+    @OneToOne
+	private UserLogin userLogin;
+    
+    
     private String businessName;
 
-    @Column(name = "businessAdminEmail")
+   
     private String businessAdminEmail;
 
-    @Column(name = "merchantId")
+    
     private Long merchantId;
     
-    @OneToMany
-	private List<Loans> loanList=new ArrayList<Loans>(); 
 
 
 	public Businesses(int businessID, int userLoginId, String businessName, String businessAdminEmail,
-			Long merchantId) {
+			Long merchantId, UserLogin userLogin) {
 		super();
 		this.businessId = businessID;
-		this.userLoginId = userLoginId;
 		this.businessName = businessName;
 		this.businessAdminEmail = businessAdminEmail;
 		this.merchantId = merchantId;
+		this.userLogin = userLogin;
 	}
 
 	public Businesses() {
@@ -56,12 +53,14 @@ public class Businesses {
 		this.businessId = businessId;
 	}
 
-	public int getUserLoginId() {
-		return userLoginId;
+	
+
+	public UserLogin getUserLogin() {
+		return userLogin;
 	}
 
-	public void setUserLoginId(int userLoginId) {
-		this.userLoginId = userLoginId;
+	public void setUserLogin(UserLogin userLogin) {
+		this.userLogin = userLogin;
 	}
 
 	public String getBusinessName() {
@@ -91,17 +90,9 @@ public class Businesses {
 	
 	
 
-	public List<Loans> getLoanList() {
-		return loanList;
-	}
-
-	public void setLoanList(List<Loans> loanList) {
-		this.loanList = loanList;
-	}
-
 	@Override
 	public String toString() {
-		return "Business [businessId=" + businessId + ", userLoginId=" + userLoginId + ", businessName=" + businessName
+		return "Business [businessId=" + businessId + ", businessName=" + businessName
 				+ ", businessAdminEmail=" + businessAdminEmail + ", merchantId=" + merchantId + "]";
 	}
 
