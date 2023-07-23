@@ -31,17 +31,31 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Override
-	public Transaction insertNewTransaction(Transaction transaction) {
-		if (searchTransactionById(transaction.getTransactionId()) == null)
-			return transactionDao.save(transaction);
-		else
-			return null;
+	public boolean insertNewTransaction(Transaction transaction) {
+		try {
+			if(transactionDao.addTransaction( 
+					transaction.getLoan().getLoanID(), transaction.getAmount(),
+					transaction.getTransactionDate())>0)
+				return true;
+			}
+			catch(Exception ex) {
+				return false;
+			}
+			return false;
 	}
+
 
 	@Override
-	public Transaction searchTransactionById(int transactionId) {
-		Transaction transaction = transactionDao.findById(transactionId).orElse(null);
-		return transaction;
+	public boolean changeAmount(int transactionId, double newAmount) {
+		
+		if(transactionDao.updateAmount(transactionId, transactionId)>0)
+			return true;
+		else
+			return false;
 	}
 
+	
 }
+
+
+

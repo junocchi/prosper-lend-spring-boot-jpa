@@ -1,24 +1,27 @@
 package com.dto.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Messages")
-public class Message {
+public class Messages {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int messageId;
 	private String userEmail;
 	private String userName;
 	private String message;
 
-	public Message() {
+	public Messages() {
 		super();
 	}
 
-	public Message(int messageId, String userEmail, String userName, String message) {
+	public Messages(int messageId, String userEmail, String userName, String message) {
 		super();
 		this.messageId = messageId;
 		this.userEmail = userEmail;

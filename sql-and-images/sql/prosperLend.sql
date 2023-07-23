@@ -50,7 +50,12 @@ CREATE TABLE Messages (
   message VARCHAR(255),
   CONSTRAINT PK_messageId PRIMARY KEY (messageId));
   
+  insert into messages(userEmail, username, message) values 
+  ("Email@email.com", "MyName", "Test"),
+  ("Email2@email.com", "MyName2", "Test2");
+  
   SELECT * FROM MESSAGES;
+
 
 
 CREATE TABLE Businesses (
@@ -99,15 +104,16 @@ SELECT * FROM LOANS;
 -- DROP TABLE Transactions;
 CREATE TABLE Transactions (
   transactionId INT AUTO_INCREMENT,
-  loanId INT, CONSTRAINT FOREIGN KEY (loanId) REFERENCES Loans(loanId) ON UPDATE CASCADE ON DELETE CASCADE,
+  loanId INT,
   amount DOUBLE,
   transactionDate DATE,
-  CONSTRAINT PK_transactionId PRIMARY KEY (transactionId));
+  PRIMARY KEY (transactionId),
+  FOREIGN KEY (loanID) REFERENCES Loans(loanID));
   
-  INSERT INTO Transactions (transactionId, loanId, amount, transactionDate) VALUES
-(101, 1, 10000.00, "2023-06-01"),
-(102, 2, 5000.00, "2021-07-01"),
-(103, 3, 13000.00, "2023-07-01");
+  INSERT INTO Transactions (loanId, amount, transactionDate) VALUES
+(1, 10000, "2023-06-01"),
+(2, 5000, "2021-07-01"),
+(3, 1300, "2023-07-01");
 
 SELECT * FROM TRANSACTIONS;
 

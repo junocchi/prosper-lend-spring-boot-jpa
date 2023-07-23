@@ -20,18 +20,15 @@ public class Transaction {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "transactionId", nullable = false)
 	private int transactionId;
 	
-	 @ManyToOne (cascade = CascadeType.ALL)
-	 @JoinColumn(name = "loanId")
+	 @ManyToOne
 	 private Loans loan;
 	 
 	 
-    
-
-	@Column(name = "amount")
-	private double amount;
+  
+	private Double amount;
+	
 	private Date transactionDate;
 	
 
@@ -39,11 +36,12 @@ public class Transaction {
 		super();
 	}
 
-	public Transaction(int transactionId, double amount, Date transactionDate) {
+	public Transaction(int transactionId, Loans loan, Double amount, Date transactionDate) {
 		super();
 		this.transactionId = transactionId;
 		this.amount = amount;
 		this.transactionDate = transactionDate;
+		this.loan = loan;
 	}
 
 	public int getTransactionId() {
@@ -59,7 +57,7 @@ public class Transaction {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 
