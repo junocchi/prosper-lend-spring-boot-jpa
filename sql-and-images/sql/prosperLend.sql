@@ -16,10 +16,12 @@ PRIMARY KEY (userLoginId)
 
 );  
 
-insert into UserLogin values
-(1, "admin_account", SHA1(concat(salt, "AdminProsperLend2023")), "254896", "admin"),
-(2, "test_user", SHA1(concat(salt, "password123")), "145896", "user"),
-(3, "test_user2", SHA1(concat(salt, "password")), "465987", "user2");
+insert into UserLogin (userLoginName, passcode, salt, userRole) values 
+( "admin_account", SHA1(concat(salt, "AdminProsperLend2023")), "254896", "admin"),
+( "test_user", SHA1(concat(salt, "password123")), "145896", "user"),
+("test_user2", SHA1(concat(salt, "password")), "465987", "user2");
+
+
 
 select * from UserLogin;
 
