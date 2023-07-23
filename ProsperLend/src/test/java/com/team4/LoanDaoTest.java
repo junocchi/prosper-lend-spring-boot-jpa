@@ -73,10 +73,9 @@ class LoanDaoTest {
 	   @Test
 	   @DisplayName("Test if Loan is added sucessfully")
 	   public void AddLoanTest() {
-	   Businesses business = dao2.findById(101).orElse(null);
+	   Businesses business = dao2.findById(1).orElse(null);
 	   System.out.println(business);
 	   long millis=System.currentTimeMillis();  
-       int loanID = 4;
        Double amount = 256742.4;
        String loanStatus = "Pending";
        Double interest = 0.6;
@@ -111,7 +110,7 @@ class LoanDaoTest {
 	   @DisplayName("Test if Loan is updated sucessfully")
 	   public void UpdateLoanTest() { 
 		   
-	   int loanId = 1002;
+	   int loanId = 2;
 	   double amount = 400.25;
 	   double interest = 0.5;
 	   

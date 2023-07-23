@@ -97,7 +97,7 @@ class TransactionDaoTest {
 	   @DisplayName("Test if Transaction is deleted sucessfully")
 	   public void DeleteTransactionTest() {   
 	   dao.deleteById(3);
-	   Transaction business = dao.findById(4).orElse(null);
+	   Transaction business = dao.findById(3).orElse(null);
 	   assertNull(business);
 	  
 	   
