@@ -51,7 +51,7 @@ public class LoanServiceImp implements LoanService{
 	@Override
 	public boolean changeAmountInterest(int loanId, Double newAmount, Double newInterest) {
 		
-		if(loanDao.updateSalaryAmountById(loanId, newAmount, newInterest)>0)
+		if(loanDao.updateLoansAmountById(loanId, newAmount, newInterest)>0)
 			return true;
 		else
 			return false;

@@ -28,17 +28,18 @@ select * from UserLogin;
 
 
 create table InterestDeductions (
-interestDeductionId int auto_increment primary key,
+interestDeductionId int auto_increment,
 items varchar(50) not null,
-deductionAmount decimal(4,2)
-);
+deductionAmount double,
+PRIMARY KEY (interestDeductionId));
 
-insert into InterestDeductions values 
-(1, "Carbon neutral", 1),
-(2, "Diversity", 1),
-(3, "Equity", 1),
-(4, "Community Outreach", 1),
-(5, "Ethically Sourced", 1);
+
+insert into InterestDeductions (items, deductionAmount) values  
+("Carbon neutral", 1),
+("Diversity", 1),
+("Equity", 1),
+("Community Outreach", 1),
+("Ethically Sourced", 1);
 
 select * from InterestDeductions;
 

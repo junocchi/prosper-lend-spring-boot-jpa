@@ -10,7 +10,7 @@ import com.dto.entity.InterestDeduction;
 import com.model.persistence.InterestDeductionDao;
 
 @Service
-public class InterestReductionServiceImpl implements InterestReductionService {
+public class InterestDeductionServiceImpl implements InterestDeductionService {
 	@Autowired
 	private InterestDeductionDao dao;
 	

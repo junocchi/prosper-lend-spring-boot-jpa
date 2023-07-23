@@ -27,7 +27,7 @@ public interface LoanDao extends JpaRepository<Loans, Integer>{
 	
 	@Modifying
 	@Query("update Loans set amount=amount+:am, interest=interest+:in where loanID=:id")
-	int updateSalaryAmountById(@Param("id") int loanId,@Param("am") Double newAmount, @Param("in") Double newInterest);
+	int updateLoansAmountById(@Param("id") int loanId,@Param("am") Double newAmount, @Param("in") Double newInterest);
 	
 	
 	@Modifying

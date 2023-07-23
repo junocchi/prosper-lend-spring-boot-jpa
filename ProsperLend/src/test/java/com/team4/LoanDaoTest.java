@@ -114,7 +114,7 @@ class LoanDaoTest {
 	   double amount = 400.25;
 	   double interest = 0.5;
 	   
-	   int result = dao.updateSalaryAmountById(loanId, amount, interest);
+	   int result = dao.updateLoansAmountById(loanId, amount, interest);
 	    
 	    
 		   assertEquals(1, result);

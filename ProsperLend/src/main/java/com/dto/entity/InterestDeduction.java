@@ -6,6 +6,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="InterestDeduction")
+
+
 public class InterestDeduction {
 	@Id
 	private int interestDeductionId;
