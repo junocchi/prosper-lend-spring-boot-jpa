@@ -123,8 +123,10 @@ SELECT * FROM TRANSACTIONS;
 
 
 CREATE TABLE loanDeductions (
+  loanDeductionId INT auto_increment, 
   loanId INT,
   interestDeductionId INT,
+  PRIMARY KEY (loanDeductionId),
   FOREIGN KEY (loanId) REFERENCES Loans(loanId),
   FOREIGN KEY (interestDeductionId) REFERENCES InterestDeductions(interestDeductionId)
 );
@@ -137,4 +139,6 @@ VALUES
   (3, 3); 
   
   SELECT * FROM LOANDEDUCTIONS;
+  
+  
 

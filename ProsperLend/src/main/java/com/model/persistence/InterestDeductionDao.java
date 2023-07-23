@@ -1,6 +1,5 @@
 package com.model.persistence;
 
-import java.sql.Date;
 
 import javax.transaction.Transactional;
 
@@ -20,13 +19,13 @@ public interface InterestDeductionDao extends JpaRepository<InterestDeduction, I
 	
 	
 	@Modifying
-	@Query("update InterestDeduction set deductionAmount=deductionAmount+:am where interestDeductionId=:id")
-	int updateDeductionAmountById(@Param("id") int loanId,@Param("am") Double newAmount);
+	@Query("update InterestDeduction set deductionAmount=deductionAmount+:am  where interestDeductionId=:id")
+	int updateDeductionAmountById(@Param("id") int loanId, @Param("am") Double newAmount);
 	
 	
 	@Modifying
 	@Query(value = "insert into InterestDeductions (items, deductionAmount) VALUES  (items, deductionAmount)",nativeQuery = true)
-	int addDeduction(String items, Double amount);
+	int addDeduction(String items, Double deductionamount);
 	
 	
 	 

@@ -17,9 +17,13 @@ import org.springframework.test.context.ActiveProfiles;
 
 import com.dto.entity.Businesses;
 import com.dto.entity.InterestDeduction;
+import com.dto.entity.LoanDeduction;
+import com.dto.entity.Loans;
 import com.dto.entity.UserLogin;
 import com.model.persistence.BusinessDao;
 import com.model.persistence.InterestDeductionDao;
+import com.model.persistence.LoanDao;
+import com.model.persistence.LoanDeductionDao;
 import com.model.persistence.UserLoginDao;
 
 
@@ -29,34 +33,35 @@ import com.model.persistence.UserLoginDao;
 @SpringBootTest
 
 
-class InterestReductionDaoTest {
+class LoanDeductionDaoTest {
 	
 	
 	@Autowired
-	private InterestDeductionDao dao;
+	private LoanDeductionDao dao;
 	
-
 	@Autowired
-	private UserLoginDao dao2;
+	private LoanDao dao2;
 	
+	@Autowired
+	private InterestDeductionDao dao3;
 	
 	
 	
 	@Test
-    @DisplayName("Test for getting all Interest Deductions")
+    @DisplayName("Test for getting all Loan Deductions")
     public void ReturnAllDeductionsTests01() {
-        List<InterestDeduction> deductionsList = dao.findAll();
-        System.out.print(deductionsList.toString());
-        assertNotNull(deductionsList);
+        List<LoanDeduction> loanDeductionList = dao.findAll();
+        System.out.print(loanDeductionList.toString());
+        assertNotNull(loanDeductionList);
         
         
     }
 	
 	
 	@Test
-    @DisplayName("Test for getting Interest Deductionby ID")
+    @DisplayName("Test for getting Loan Deductionby ID")
     public void ReturnDeductionsByIDTest() {
-		InterestDeduction deductions = dao.findById(1).orElse(null);
+		LoanDeduction deductions = dao.findById(1).orElse(null);
         assertNotNull(deductions);
         
     }
@@ -65,7 +70,7 @@ class InterestReductionDaoTest {
 	@Test
     @DisplayName("Test for getting Deductions by ID that doesn't exist")
     public void ReturnDeductionsByIDTest02() {
-		InterestDeduction deductions = dao.findById(888).orElse(null);
+		LoanDeduction deductions = dao.findById(888).orElse(null);
         assertNull(deductions);
         
     }
@@ -75,11 +80,14 @@ class InterestReductionDaoTest {
 	   @DisplayName("Test if Deductions is added sucessfully")
 	   public void AddDeductionTest() {
 	  
-	   String item = "Empowering Women Reward";
-	   double amount = 1;
+	   Loans l = dao2.findById(1).orElse(null);
+	   InterestDeduction d = dao3.findById(3).orElse(null);
+	   
+	   int loan = l.getLoanID();
+	   int deduction = d.getInterestDeductionId();
 	   
 		    
-	   int result = dao.addDeduction(item,amount);
+	   int result = dao.addLoanDeduction(loan,deduction);
 
 			  
 		    assertEquals(1, result);
@@ -92,29 +100,13 @@ class InterestReductionDaoTest {
 	   @DisplayName("Test if Deduction is deleted sucessfully")
 	   public void DeleteDeductionTest() {   
 	   dao.deleteById(4);
-	   InterestDeduction deduction = dao.findById(4).orElse(null);
+	   LoanDeduction deduction = dao.findById(4).orElse(null);
 	   assertNull(deduction);
 	  
 	   
 	   }
 	   
 	   
-	   @Test
-	   @DisplayName("Test if Business is updated sucessfully")
-	   public void UpdateBusinessTest() { 
-		   
-	   int deductionId = 2;
-	   double newAmount = 2;
 	   
-	   
-	   int result = dao.updateDeductionAmountById(deductionId, newAmount);
-	    
-	    
-		   assertEquals(1, result);
-		   
-		   
-		   
-	   }
-			
 	   
 }

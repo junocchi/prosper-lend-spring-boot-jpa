@@ -20,23 +20,24 @@ public class LoanDeductionServiceImpl {
         return dao.findAll();
     }
     
-    public LoanDeduction getLoanDeductionById(int loanId, int interestDeductionId) {
-		LoanDeduction deduction = dao.findByLoanIdAndInterestDeductionId(loanId, interestDeductionId);
+    public LoanDeduction getLoanDeductionById(int loanDId) {
+		LoanDeduction deduction = dao.findById(loanDId).orElse(null);
 		return deduction;
     }
 
     
     
-    public LoanDeduction insertLoanDeduction(LoanDeduction deduction) {
-    	if (getLoanDeductionById(deduction.getInterestDeductionId(), deduction.getLoanId())==null)
-    		return dao.save(deduction);
+    public boolean insertLoanDeduction(LoanDeduction deduction) {
+    	if (dao.addLoanDeduction(deduction.getDeduction().getInterestDeductionId(), deduction.getLoan().getLoanID())>0)
+    	
+    		return true;
     	else
-    		return null;
+    		return false;
     }
     
  
-    public LoanDeduction deleteLoanDeduction(int loanId, int interestDeductionId) {
-        LoanDeduction deduction = getLoanDeductionById(loanId, interestDeductionId);
+    public LoanDeduction deleteLoanDeduction(int loanDId) {
+        LoanDeduction deduction = getLoanDeductionById(loanDId);
         if (deduction != null) {
             dao.delete(deduction);
         }

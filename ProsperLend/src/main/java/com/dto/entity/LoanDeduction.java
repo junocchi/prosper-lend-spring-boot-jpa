@@ -1,53 +1,53 @@
 package com.dto.entity;
 
+
+
 import java.io.Serializable;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "loanDeductions")
-@IdClass(LoanDeduction.class)
-public class LoanDeduction  implements Serializable {
 
+public class LoanDeduction {
+	
 	@Id
-    @JoinColumn(name = "loanId")
-    private int loanId;
+	private int loanDeductionID;
+	
+	
+   @ManyToOne
+   private Loans loan;
+	
+   @ManyToOne
+   private InterestDeduction deduction;
 
-    @Id
-    @JoinColumn(name = "interestDeductionId")
-    private int interestDeductionId;
-
-	public LoanDeduction(int loanId, int interestDeductionId) {
+	public LoanDeduction(Loans loan, InterestDeduction deduction) {
 		super();
-		this.loanId = loanId;
-		this.interestDeductionId = interestDeductionId;
+		this.loan = loan;
+		this.deduction = deduction;
 	}
 
 	public LoanDeduction() {
 		super();
 	}
 
-	public int getLoanId() {
-		return loanId;
+	public Loans getLoan() {
+		return loan;
 	}
 
-	public void setLoanId(int loanId) {
-		this.loanId = loanId;
+	public void setLoan(Loans loan) {
+		this.loan = loan;
 	}
 
-	public int getInterestDeductionId() {
-		return interestDeductionId;
+	public InterestDeduction getDeduction() {
+		return deduction;
 	}
 
-	public void setInterestDeductionId(int interestDeductionId) {
-		this.interestDeductionId = interestDeductionId;
+	public void setDeduction(InterestDeduction deduction) {
+		this.deduction = deduction;
 	}
-
-	@Override
-	public String toString() {
-		return "LoanDeduction [loanId=" + loanId + ", interestDeductionId=" + interestDeductionId + "]";
-	}
-    
+	
+	
     
     
     
