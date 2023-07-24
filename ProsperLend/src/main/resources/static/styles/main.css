@@ -176,12 +176,16 @@ h1 {
 
 /* footer */
 #table-footer {
-  align-content: left;
-  justify-content: space-between;
+  /* align-content: left; */
+  /* justify-content: space-between; */
   text-align: center;
   font-size: 1.4em;
   width: 100%;
   color: #370466;
+  text-align: center;
+  /* margin-left: 20px; */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
 }
 
 hr {
@@ -195,6 +199,7 @@ hr {
 .footer-buttons {
   width: 50px;
   height: 50px;
+  
 }
 
 .footer-buttons:hover {
