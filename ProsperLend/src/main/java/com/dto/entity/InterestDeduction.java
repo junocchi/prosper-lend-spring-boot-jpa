@@ -5,8 +5,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="InterestDeduction")
-public class InterestDeduction {
+@Table(name="InterestDeductions")
+public class InterestDeduction { 
 	@Id
 	private int interestDeductionId;
 	private String items;
