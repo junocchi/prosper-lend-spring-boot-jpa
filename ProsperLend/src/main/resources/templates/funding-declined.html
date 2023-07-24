@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="ISO-8859-1" />
+  <title>Prosper Lend - Home</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    #column-1 {
+      color: #370466;
+      text-align: justify;
+      margin-top: 60px;
+      width: 80%;
+      font-size: 1.2em;
+      height: 0;
+    }
+
+    #funding-approved {
+      font-size: 1.4em;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    #table-row {
+      justify-content: space-between;
+      text-align: center;
+      font-size: 1.2em;
+      width: 90%;
+      color: #370466;
+    }
+
+    .logo-policies {
+      height: 90px;
+      margin-top: -25px;
+    }
+
+    .contact-button {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="../images/prosper-logo.png" alt="Logo" class="logo">
+    <h1>Prosper Lend</h1>
+    <div class="dropdown-user-view">
+      <img src="../images/user-photo.png" class="dropbtn-user-view">
+
+      <div class="dropdown-content-user-view">
+        <a href="#">My Profile</a>
+        <a href="#">My Loans</a>
+        <a href="#">Request Funding</a>
+        <a href="#">About Us</a>
+        <a href="#">Log Out</a>
+      </div>
+    </div>
+  </header>
+
+  <div id="content">
+    <div id="column-1">
+      <p id="funding-approved">
+        Funding request declined
+      </p>
+      <p>
+        We regret to inform you that your business loan application has not been approved at this time. However, don't
+        lose hope. You can reapply after a waiting period of three months. Alternatively, for more insights and details
+        on the decision, please feel free to get in touch with our team. We remain committed to assisting you with your
+        financial needs.
+      </p>
+      <button class="contact-button" type="button" onclick="redirectToURL('https://knoops.co.uk');">Contact us</button>
+    </div>
+
+</body>
+
+</html>

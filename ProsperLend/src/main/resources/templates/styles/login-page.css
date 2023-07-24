@@ -1,0 +1,174 @@
+@charset "ISO-8859-1";
+body {
+
+background-color: #CDFFD8; /* For browsers that do not support gradients */
+
+background-image: linear-gradient(to right, #CDFFD8 , #94B9FF);
+
+font-family: arial;
+
+width: 100%;
+
+height: 100%;
+
+margin: 0;
+
+padding: 0;
+
+}
+
+  
+
+  
+
+.pic {
+
+height: 800px;
+
+width: 25%; /* Adjust the width as needed */
+
+object-fit: cover; /* Ensure the image covers the whole area */
+
+position: absolute;
+
+top: 0;
+
+left: 0;
+
+}
+
+  
+
+.logo {
+
+height: 150px;
+
+width: 15%; /* Adjust the width as needed */
+
+object-fit: contain; /* Show the whole image */
+
+position: absolute;
+
+top: 30px; /* Adjust the top position */
+
+right: 20px; /* Move the logo to the left */
+
+}
+
+  
+
+.container {
+
+text-align: center;
+
+background-color: #fff;
+
+padding: 30px;
+
+border-radius: 20px; /* Rounded edges */
+
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+width: 300px;
+
+margin:100px 0 0 650px;
+
+margin-top: 200px; /* Add some top margin for spacing */
+
+height: 300px;
+
+}
+
+  
+
+.input-container {
+
+margin-bottom: 15px;
+
+}
+
+  
+
+input {
+
+padding: 10px;
+
+width: 70%;
+
+border: 1px solid #ccc;
+
+border-radius: 20px;
+
+background-color: #f2f2f2; /* Light grey background */
+
+}
+
+  
+
+.signup-link {
+
+margin-top: 20px;
+
+}
+
+  
+
+.signup-link a {
+
+color: #007bff;
+
+text-decoration: none;
+
+}
+
+  
+
+.signup-link a:hover {
+
+text-decoration: underline;
+
+}
+
+  
+
+.login-button {
+
+background-color: navy;
+
+color: white;
+
+border: none;
+
+padding: 10px 20px;
+
+border-radius: 20px; /* Rounded edges */
+
+cursor: pointer;
+
+width: 40%;
+
+}
+
+  
+
+.login-button:hover {
+
+background-color: #001f3f; /* Darken the color on hover */
+
+}
+
+  
+
+  
+
+.welcome-heading {
+
+font-family: "Gotham", sans-serif;
+
+font-size: 24px;
+
+font-weight: bold;
+
+color: navy;
+
+}

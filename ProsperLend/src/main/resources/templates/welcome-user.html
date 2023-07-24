@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="ISO-8859-1" />
+  <title>Prosper Lend - Home</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    #column-1 {
+      color: #370466;
+      justify-content: space-between;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.2em;
+      height: auto;
+    }
+
+    #table-row {
+      margin-top: 20px;
+      justify-content: space-between;
+      text-align: center;
+      font-size: 1.4em;
+      width: 100%;
+      color: #370466;
+    }
+
+    #title {
+      font-size: 1.4em;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    #column-2 {
+      width: 100%;
+      height: auto;
+      background-color: yellow;
+    }
+
+    .news {
+      width: 100px;
+      margin-top: 20px;
+    }
+
+    #column-3 {
+      width: 50%;
+      height: auto;
+    }
+
+    #loan-image {
+      width: 50%;
+      height: auto;
+    }
+
+    .three-buttons {
+      margin-top: 20px;
+      height: 50px;
+      width: 250px;
+      background-color: white;
+      color: #3C1263;
+      border-radius: 12px;
+      font-size: 1.2em;
+      border-color: white;
+      border-style: none;
+    }
+  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+</head>
+
+<body>
+  <header>
+    <img src="../images/prosper-logo.png" alt="Logo" class="logo" />
+    <h1>Prosper Lend</h1>
+    <div class="dropdown-user-view">
+      <img src="../images/user-photo.png" class="dropbtn-user-view" />
+
+      <div class="dropdown-content-user-view">
+        <a href="#">My Profile</a>
+        <a href="#">My Loans</a>
+        <a href="#">Request Funding</a>
+        <a href="#">About Us</a>
+        <a href="#">Log Out</a>
+      </div>
+    </div>
+  </header>
+
+  <div id="content">
+
+    <div id="column-1">
+      <p id="title">
+        Welcome to Prosper Lend - Empowering Growth, Rewarding Ethics
+      </p>
+      <div>
+        <button class="three-buttons" type="button" onclick="redirectToURL('https://knoops.co.uk');">
+          Request funding
+        </button>
+        <button class="three-buttons" type="button" onclick="redirectToURL('https://knoops.co.uk');">
+          Payment History
+        </button>
+        <button class="three-buttons" type="button" onclick="redirectToURL('https://knoops.co.uk');">
+          Help and FAQs
+        </button>
+        <br/>
+        <br/>
+        <br/>
+        <p>Latest Financial News:</p>
+      </div>
+
+    </div>
+
+    <div id="column-2">
+      <table id="table-row">
+        <!-- row 1 -->
+        <tr>
+          <th>Green Initiatives</th>
+          <th>Customized Solutions</th>
+          <th>Eletric Car Loan Program</th>
+        </tr>
+        <!-- row 2 -->
+        <tr>
+          <td id="news">News</td>
+          <td id="news">News</td>
+          <td id="news">News</td>
+        </tr>
+        <!-- row 3 -->
+        <tr>
+          <td id="news">News</td>
+          <td id="news">News</td>
+          <td id="news">News</td>
+        </tr>
+        <tr>
+          <td><img src="../images/loan.png" id="loan-image" /></td>
+          <td><button class="contact-button" type="button" onclick="redirectToURL('https://knoops.co.uk');">Contact
+              us</button></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+    <!-- <div id="column-3">
+      
+    </div> -->
+</body>
+
+</html>
