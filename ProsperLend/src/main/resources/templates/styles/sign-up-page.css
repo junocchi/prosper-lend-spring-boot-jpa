@@ -73,9 +73,9 @@ width: 300px;
 
 margin:100px 0 0 650px;
 
-margin-top: 200px; /* Add some top margin for spacing */
+margin-top: 120px; /* Add some top margin for spacing */
 
-height: 300px;
+height: 450px;
 
 }
 
@@ -105,7 +105,7 @@ background-color: #f2f2f2; /* Light grey background */
 
   
 
-.signup-link {
+.login-in-link {
 
 margin-top: 20px;
 
@@ -113,7 +113,7 @@ margin-top: 20px;
 
   
 
-.signup-link a {
+.login-in-link a {
 
 color: #007bff;
 
@@ -123,7 +123,7 @@ text-decoration: none;
 
   
 
-.signup-link a:hover {
+.login-in-link a:hover {
 
 text-decoration: underline;
 
@@ -131,7 +131,7 @@ text-decoration: underline;
 
   
 
-.login-button {
+.sign-up-button {
 
 background-color: navy;
 
