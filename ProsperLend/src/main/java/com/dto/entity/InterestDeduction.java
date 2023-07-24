@@ -8,8 +8,9 @@ import javax.persistence.Table;
 @Table(name="InterestDeductions")
 
 
-public class InterestDeduction {
-	@Id 
+public class InterestDeduction { 
+	@Id
+
 	private int interestDeductionId;
 	private String items;
 	private Double deductionAmount;

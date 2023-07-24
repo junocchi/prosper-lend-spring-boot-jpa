@@ -9,8 +9,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "loanDeductions")
 
-public class LoanDeduction {
+public class LoanDeduction implements Serializable{
+
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@Id
 	private int loanDeductionID;
 	
@@ -25,11 +32,18 @@ public class LoanDeduction {
 		super();
 		this.loan = loan;
 		this.deduction = deduction;
-	}
 
+ 
+	}
+    
+	
+
+	
+	
 	public LoanDeduction() {
 		super();
 	}
+
 
 	public Loans getLoan() {
 		return loan;
