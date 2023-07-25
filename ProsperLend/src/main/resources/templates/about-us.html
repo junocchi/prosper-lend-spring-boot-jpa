@@ -53,9 +53,9 @@
 			<img th:src="@{/images/user-photo.png}" class="dropbtn-user-view" />
 
 			<div class="dropdown-content-user-view">
-				<a href="/my-profile">My Profile</a> <a href="/my-loans">My
-					Loans</a> <a href="/user-view">Request Funding</a> <a
-					href="/about-us-user-view">About Us</a> <a href="login=page">Log
+				<a th:href="@{/my-profile}">My Profile</a> <a th:href="@{/my-loans}">My
+					Loans</a> <a th:href="@{/request-funding}">Request Funding</a> <a
+					th:href="@{/about-us}">About Us</a> <a th:href="@{/login-page}">Log
 					Out</a>
 			</div>
 		</div>
