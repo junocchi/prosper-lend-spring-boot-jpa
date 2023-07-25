@@ -13,6 +13,7 @@ import com.dto.entity.Businesses;
 
 
 
+
 @Transactional
 @Repository
 public interface BusinessDao extends JpaRepository<Businesses, Integer> {
@@ -24,8 +25,8 @@ public interface BusinessDao extends JpaRepository<Businesses, Integer> {
 	
 	
 	@Modifying
-	@Query(value = "insert into Businesses (userLoginId, businessName,businessAdminEmail,MerchantId) values(userLoginId, businessName,businessAdminEmail,MerchantId)",nativeQuery = true)
-	int addBusisness(int userLoginID, String businessName, String businessAdminEmail, long MerchantId);
+	@Query(value = "insert into Businesses (userLoginId, businessName,businessAdminEmail,MerchantId) values(?, ?,?,?)",nativeQuery = true)
+	int addBusisness(int userLoginId, String businessName, String businessAdminEmail, long MerchantId);
 	
 
 }

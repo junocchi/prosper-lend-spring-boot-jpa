@@ -72,12 +72,12 @@ class UserLoginDaoTest {
 	   @DisplayName("Test if UserLogin is added sucessfully")
 	   public void AddUserLoginTest() {
 	  
-		   String username = "test";
+		   String userLoginName = "test";
 		   String passcode = "passcode";
-		   String salt = "1234";
-		   String userRole = "User";
+		   
+		   
 		    
-	   int result = dao.insertUserLoginData(username,passcode, salt, userRole, userRole);
+	   int result = dao.insertUserLoginData(userLoginName,passcode);
 
 			  
 		    assertEquals(1, result);

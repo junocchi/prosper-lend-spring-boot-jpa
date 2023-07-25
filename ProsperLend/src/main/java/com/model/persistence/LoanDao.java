@@ -31,8 +31,8 @@ public interface LoanDao extends JpaRepository<Loans, Integer>{
 	
 	
 	@Modifying
-	@Query(value = "insert into LOANS (loanStatus, amount, interest, businessID, loanDate) VALUES (loanStatus, amount, interest, businessID, loanDate)",nativeQuery = true)
-	int addLoan(String loanStatus, Double amount, Double interest, int businessID, Date loanDate);
+	@Query(value = "insert into LOANS (loanStatus, amount, interest, userLoginId, loanDate) VALUES (?, ?, ?, ?, ?)",nativeQuery = true)
+	int addLoan(String loanStatus, Double amount, Double interest, int userID, Date loanDate);
 	
 	
 	 

@@ -18,9 +18,11 @@ import org.springframework.test.context.ActiveProfiles;
 import com.dto.entity.Businesses;
 import com.dto.entity.Loans;
 import com.dto.entity.Transaction;
+import com.dto.entity.UserDetails;
 import com.model.persistence.BusinessDao;
 import com.model.persistence.LoanDao;
 import com.model.persistence.TransactionDao;
+import com.model.persistence.UserDetailsDao;
 
 import java.sql.Date;
 
@@ -34,11 +36,9 @@ class LoanDaoTest {
 	private LoanDao dao;
 
 	@Autowired
-	private BusinessDao dao2;
+	private UserDetailsDao dao2;
 	
 	
-	@Autowired
-	private TransactionDao dao3;
 	
 	
 	@Test
@@ -55,7 +55,7 @@ class LoanDaoTest {
 	@Test
     @DisplayName("Test for getting Loan by ID")
     public void ReturnLoanByIDTest() {
-		Loans loan = dao.findById(2).orElse(null);
+		Loans loan = dao.findById(1).orElse(null);
         assertNotNull(loan);
         
     }
@@ -73,20 +73,20 @@ class LoanDaoTest {
 	   @Test
 	   @DisplayName("Test if Loan is added sucessfully")
 	   public void AddLoanTest() {
-	   Businesses business = dao2.findById(1).orElse(null);
-	   System.out.println(business);
+	   UserDetails user = dao2.findById(1).orElse(null);
+	   System.out.println(user);
 	   long millis=System.currentTimeMillis();  
        Double amount = 256742.4;
        String loanStatus = "Pending";
        Double interest = 0.6;
-       int businessID = business.getBusinessId();
+       int userID = user.getUserLoginId();
        Date loanDate=new java.sql.Date(millis); 
        
         
        
        
 		    
-	   int result = dao.addLoan(loanStatus, amount, interest, businessID, loanDate);
+	   int result = dao.addLoan(loanStatus, amount, interest, userID, loanDate);
 
 			  
 		    assertEquals(1, result);
@@ -99,7 +99,7 @@ class LoanDaoTest {
 	   @DisplayName("Test if Loan is deleted sucessfully")
 	   public void DeleteLoanTest() {   
 	   dao.deleteById(4);
-	   Loans loan = dao.findById(4).orElse(null);
+	   Loans loan = dao.findById(2).orElse(null);
 	   assertNull(loan);
 	  
 	   

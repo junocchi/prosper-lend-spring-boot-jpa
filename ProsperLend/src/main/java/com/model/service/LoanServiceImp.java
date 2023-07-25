@@ -39,7 +39,7 @@ public class LoanServiceImp implements LoanService{
 		try {
 		if(loanDao.addLoan( 
 				 loan.getLoanStatus(), loan.getAmount(),
-				loan.getInterest(), loan.getBusiness().getBusinessId(), loan.getLoanDate())>0)
+				loan.getInterest(), loan.getUser().getUserLoginId(), loan.getLoanDate())>0)
 			return true;
 		}
 		catch(Exception ex) {

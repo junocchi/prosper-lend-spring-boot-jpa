@@ -6,24 +6,27 @@ DROP DATABASE IF EXISTS ProjectProsperLend;
 CREATE DATABASE ProjectProsperLend;
 -- USE ProjectProsperLend;
 
-create table UserLogin (
-userLoginId int auto_increment,
-userLoginName varchar(30) not null,
-passcode varchar(500) not null,
-salt varchar(6) not null,
-userRole varchar(6) not null,
-PRIMARY KEY (userLoginId)
+-- create table UserLogin (
+-- userLoginId int not null auto_increment,
+-- userLoginName varchar(30) not null,
+-- passcode varchar(500) not null,
+-- -- salt varchar(6) not null,
+-- PRIMARY KEY (userLoginId)
 
-);  
+-- );  
+-- insert into UserLogin (userLoginName, passcode) values 
+-- ( "admin_account",  "AdminProsperLend2023"),
+-- ( "test_user",  "password123"),
+-- ("test_user2", "password");
 
-insert into UserLogin (userLoginName, passcode, salt, userRole) values 
-( "admin_account", SHA1(concat(salt, "AdminProsperLend2023")), "254896", "admin"),
-( "test_user", SHA1(concat(salt, "password123")), "145896", "user"),
-("test_user2", SHA1(concat(salt, "password")), "465987", "user2");
+-- insert into UserLogin (userLoginName, passcode, salt) values 
+-- ( "admin_account", SHA1(concat(salt, "AdminProsperLend2023")), "254896"),
+-- ( "test_user", SHA1(concat(salt, "password123")), "145896"),
+-- ("test_user2", SHA1(concat(salt, "password")), "465987");
 
 
 
-select * from UserLogin;
+-- select * from UserLogin;
 
 
 
@@ -61,24 +64,40 @@ CREATE TABLE Messages (
 
 
 
-CREATE TABLE Businesses (
-businessId INT AUTO_INCREMENT,
-userLoginId INT,
-businessName VARCHAR(100),
-businessAdminEmail VARCHAR(100),
-merchantId LONG,
-FOREIGN KEY (userLoginId) REFERENCES UserLogin(userLoginId),
-PRIMARY KEY (businessId)
-);
+-- CREATE TABLE Businesses (
+-- businessId INT AUTO_INCREMENT not null,
+-- userLoginId INT not null,
+-- businessName VARCHAR(100) not null ,
+-- businessAdminEmail VARCHAR(100) not null ,
+-- merchantId LONG,
+-- FOREIGN KEY (userLoginId) REFERENCES UserLogin(userLoginId),
+-- PRIMARY KEY (businessId)
+-- );
 
-INSERT INTO Businesses (userLoginId, businessName, businessAdminEmail, merchantId)
-VALUES
-    (1, 'GreenTech Solutions', 'admin@greentechsolutions.com', 123456789),
-    (2, 'EcoWise Enterprises', 'admin@ecowiseenterprises.com', 987654321),
-    (1, 'Sustainable Harvest Co.', 'admin@sustainableharvestco.com', 456789123);
+-- INSERT INTO Businesses (userLoginId, businessName, businessAdminEmail, merchantId)
+-- VALUES
+--     (1, 'GreenTech Solutions', 'admin@greentechsolutions.com', 123456789),
+--     (2, 'EcoWise Enterprises', 'admin@ecowiseenterprises.com', 987654321),
+--     (1, 'Sustainable Harvest Co.', 'admin@sustainableharvestco.com', 456789123);
 
-SELECT * FROM BUSINESSES;
+-- SELECT * FROM BUSINESSES;
 
+
+CREATE TABLE UserDetails (
+ userLoginId INT  auto_increment not null,
+ userLoginName varchar(30) not null,
+ passcode varchar(500) not null,
+ businessName VARCHAR(100) not null ,
+ businessAdminEmail VARCHAR(100) not null ,
+ merchantId LONG,
+ primary key (userLoginId)
+ );
+ 
+ insert into userDetails (userLoginName, passcode, businessName, businessAdminEmail, merchantId) values 
+ 
+ ('Test',  'password' , 'TestBusiness',  'Test@Business.com',  123456789);
+ 
+ select * from userdetails;
 
 
 -- Create the "loans" table
@@ -87,18 +106,18 @@ CREATE TABLE loans (
   loanStatus VARCHAR(10),
   amount DOUBLE(10, 2),
   interest DOUBLE(5, 2),
-  businessID INT,
+  userLoginId INT,
   loanDate DATE,
-  FOREIGN KEY (businessID) REFERENCES businesses(businessID),
+  FOREIGN KEY (userLoginId) REFERENCES UserDetails(userLoginId),
   PRIMARY KEY (loanID)
 );
 
 -- Insert sample values into the "loans" table
-INSERT INTO loans (loanStatus, amount, interest, businessID, loanDate)
+INSERT INTO loans (loanStatus, amount, interest, userLoginId, loanDate)
 VALUES
-  ('approved', 5000.00, 0.05, 1, '2023-07-01'),
-  ('approved', 10000.00, 0.06, 2, '2023-07-05'),
-  ('declined', 2000.00, 0.04, 3, '2023-07-08');
+  ('approved', 5000.00, 0.05, 1, '2023-07-01');
+ --  ('approved', 10000.00, 0.06, 2, '2023-07-05'),
+--   ('declined', 2000.00, 0.04, 3, '2023-07-08');
 
 SELECT * FROM LOANS;
 
@@ -114,9 +133,9 @@ CREATE TABLE Transactions (
   FOREIGN KEY (loanID) REFERENCES Loans(loanID));
   
   INSERT INTO Transactions (loanId, amount, transactionDate) VALUES
-(1, 10000, "2023-06-01"),
-(2, 5000, "2021-07-01"),
-(3, 1300, "2023-07-01");
+(1, 10000, "2023-06-01");
+-- (2, 5000, "2021-07-01"),
+-- (3, 1300, "2023-07-01");
 
 SELECT * FROM TRANSACTIONS;
 
@@ -134,11 +153,9 @@ CREATE TABLE loanDeductions (
 
 INSERT INTO loanDeductions (loanId, interestDeductionId)
 VALUES
-  (1, 1), 
-  (2, 2), 
-  (3, 3); 
+  (1, 1);
+ --  (2, 2), 
+--   (3, 3); 
+--   
+--   SELECT * FROM LOANDEDUCTIONS;
   
-  SELECT * FROM LOANDEDUCTIONS;
-  
-  
-

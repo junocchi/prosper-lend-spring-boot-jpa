@@ -23,18 +23,21 @@ public class Businesses {
     private String businessAdminEmail;
 
     
-    private Long merchantId;
+    private Long merchantId; 
+    
+    int userLoginId;
     
 
 
-	public Businesses(int businessID, int userLoginId, String businessName, String businessAdminEmail,
-			Long merchantId, UserLogin userLogin) {
+	public Businesses(int userLoginId, String businessName, String businessAdminEmail,
+			Long merchantId) {
 		super();
-		this.businessId = businessID;
+		
+		this.userLoginId = userLoginId;
 		this.businessName = businessName;
 		this.businessAdminEmail = businessAdminEmail;
 		this.merchantId = merchantId;
-		this.userLogin = userLogin;
+		
 	}
 
 	public Businesses() {
@@ -63,6 +66,20 @@ public class Businesses {
 		this.userLogin = userLogin;
 	}
 
+	
+	
+	public int getUserLoginID() {
+		
+		return userLoginId;
+	}
+
+	public void setUserLoginId(int userLoginId) {
+		this.userLoginId = userLoginId;
+	}
+	
+	
+	
+	
 	public String getBusinessName() {
 		return businessName;
 	}
@@ -87,6 +104,7 @@ public class Businesses {
 	public void setMerchantId(Long merchantId) {
 		this.merchantId = merchantId;
 	}
+	
 	
 	
 

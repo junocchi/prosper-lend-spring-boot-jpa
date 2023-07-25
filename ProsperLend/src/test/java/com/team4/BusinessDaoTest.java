@@ -107,7 +107,7 @@ class BusinessDaoTest {
 	   public void UpdateBusinessTest() { 
 		   
 	   int businessId = 2;
-	   String newEmail = "Buisness@Buisness.com";
+	   String newEmail = "123Buisness@Buisness.com";
 	   
 	   
 	   int result = dao.updateBusinessEmail(businessId, newEmail);

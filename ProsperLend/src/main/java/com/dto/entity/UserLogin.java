@@ -3,6 +3,8 @@ package com.dto.entity;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,23 +12,23 @@ import javax.persistence.Table;
 @Table(name="UserLogin")
 public class UserLogin {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userLoginId;
 	private String userLoginName;
 	private String passcode;
 	private String salt;
-	private String userRole;
+	
 	
 	public UserLogin() {
 		super();
 	}
 
-	public UserLogin(int userLoginId, String userLoginName, String passcode, String salt, String userRole) {
+	public UserLogin(String userLoginName, String passcode) {
 		super();
-		this.userLoginId = userLoginId;
 		this.userLoginName = userLoginName;
 		this.passcode = passcode;
-		this.salt = salt;
-		this.userRole = userRole;
+		
+		
 	}
 
 	public int getUserLoginId() {
@@ -61,23 +63,16 @@ public class UserLogin {
 		this.salt = salt;
 	}
 
-	public String getUserRole() {
-		return userRole;
-	}
-
-	public void setUserRole(String userRole) {
-		this.userRole = userRole;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "UserLogin [userLoginId = " + userLoginId + ", userLoginName = " + userLoginName + ", passcode = " + passcode
-				+ ", salt = " + salt + ", userRole = " + userRole + "]";
+				+ ", salt = " + salt + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(passcode, salt, userLoginId, userLoginName, userRole);
+		return Objects.hash(passcode, salt, userLoginId, userLoginName);
 	}
 
 	@Override
@@ -90,8 +85,8 @@ public class UserLogin {
 			return false;
 		UserLogin other = (UserLogin) obj;
 		return Objects.equals(passcode, other.passcode) && Objects.equals(salt, other.salt)
-				&& userLoginId == other.userLoginId && Objects.equals(userLoginName, other.userLoginName)
-				&& Objects.equals(userRole, other.userRole);
+				&& userLoginId == other.userLoginId && Objects.equals(userLoginName, other.userLoginName);
+				
 	}
 	
 }

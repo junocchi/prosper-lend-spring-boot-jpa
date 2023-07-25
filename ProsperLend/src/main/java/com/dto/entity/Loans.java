@@ -45,8 +45,8 @@ public class Loans {
 	
 	Double interest;
 	
-	@ManyToOne
-	private Businesses business;
+	@OneToOne
+	private UserDetails user;
 	
 	
 	Date loanDate;
@@ -57,14 +57,14 @@ public class Loans {
 	public Loans() {
 		super();
 	}
-	public Loans(int loanID, String loanStatus, Double amount, Double interest, Businesses business, Date loanDate) {
+	public Loans(int loanID, String loanStatus, Double amount, Double interest, UserDetails user, Date loanDate) {
 		super();
 		this.loanID = loanID;
 		this.loanStatus = loanStatus;
 		this.amount = amount;
 		this.interest = interest;
 		this.loanDate = loanDate;
-		this.business = business;
+		this.user = user;
 		
 	}
 	
@@ -106,11 +106,11 @@ public class Loans {
 	public void setLoanStatus(String loanStatus) {
 		this.loanStatus = loanStatus;
 	}
-	public Businesses getBusiness() {
-		return business;
+	public UserDetails getUser() {
+		return user;
 	}
-	public void setBusiness(Businesses business) {
-		this.business = business;
+	public void setUser(UserDetails user) {
+		this.user = user;
 	}
 	
 	

@@ -14,6 +14,7 @@ public class BusinessServiceImpl implements BusinessService{
     @Autowired
     private BusinessDao dao;
     
+    @Override
     public List<Businesses> getAllBusinesses() {
         return dao.findAll();
     }
@@ -23,7 +24,8 @@ public class BusinessServiceImpl implements BusinessService{
 		return business;
     }
 
-    public boolean AddBusiness(Businesses business) {
+    @Override
+    public boolean addBusiness(Businesses business) {
     	try {
     		if(dao.addBusisness( 
     				business.getUserLogin().getUserLoginId(), business.getBusinessName(),
@@ -38,7 +40,7 @@ public class BusinessServiceImpl implements BusinessService{
     		return false;
     }
     
-
+    @Override
     public Businesses deleteBusiness(int businessId) {
         Businesses business = getBusinessById(businessId);
         if (business != null)
@@ -46,7 +48,7 @@ public class BusinessServiceImpl implements BusinessService{
         return business;
     }
     
-    
+    @Override
     public boolean updateBusinessEmail(int businessId, String newEmail) {
        
         if(dao.updateBusinessEmail(businessId, newEmail)>0)
