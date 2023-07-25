@@ -11,7 +11,7 @@ import com.model.persistence.BusinessDao;
 import com.model.persistence.LoanDeductionDao;
 
 @Service
-public class LoanDeductionServiceImpl {
+public class LoanDeductionServiceImpl implements LoanDeductionService{
 
     @Autowired
     private LoanDeductionDao dao;
@@ -20,27 +20,36 @@ public class LoanDeductionServiceImpl {
         return dao.findAll();
     }
     
-    public LoanDeduction getLoanDeductionById(int loanId, int interestDeductionId) {
-		LoanDeduction deduction = dao.findByLoanIdAndInterestDeductionId(loanId, interestDeductionId);
-		return deduction;
+    public LoanDeduction getLoanDeductionById(int loanDeductionId ) {
+		return dao.findById(loanDeductionId).orElse(null);
     }
 
     
     
-    public LoanDeduction insertLoanDeduction(LoanDeduction deduction) {
-    	if (getLoanDeductionById(deduction.getInterestDeductionId(), deduction.getLoanId())==null)
-    		return dao.save(deduction);
-    	else
-    		return null;
+    public boolean insertLoanDeduction(LoanDeduction deduction) {
+    	try {
+    	if (dao.insertDeduction(deduction.getLoanDeductionId(), deduction.getLoanId(), deduction.getInterestDeductionId())>0)
+    		return true;
+    	}
+    	catch(Exception ex) {
+    		return false;
+    	}
+    	return false;
     }
-    
+    	
+    			
+    			
  
-    public LoanDeduction deleteLoanDeduction(int loanId, int interestDeductionId) {
-        LoanDeduction deduction = getLoanDeductionById(loanId, interestDeductionId);
+    public boolean deleteLoanDeduction(int loanDeductionId) {
+        LoanDeduction deduction = getLoanDeductionById(loanDeductionId);
         if (deduction != null) {
-            dao.delete(deduction);
-        }
-        return deduction;
-    }
+            dao.deleteById(loanDeductionId);
+			return true;
+		}
+		return false;
+	}
+
+
+    
     
 }

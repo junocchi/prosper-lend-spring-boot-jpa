@@ -11,5 +11,5 @@ public interface MessageService {
 	public List<Message> getAllMessages();
 	
 	// As admin and business user we can
-	public Message insertNewMessage(Message message);
+	public boolean insertNewMessage(Message message);
 }
