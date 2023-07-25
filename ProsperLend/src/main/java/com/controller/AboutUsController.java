@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-public class AboutUsUserViewController {
+public class AboutUsController {
 	
-	@RequestMapping("/about-us-user-view")
+	@RequestMapping("/about-us")
 	public ModelAndView getAboutUsUserViewController() {
-		return new ModelAndView("about-us-user-view.html");
+		return new ModelAndView("about-us.html");
 	}
 }
