@@ -6,6 +6,7 @@
   <title>Prosper Lend - Home</title>
   <link rel="stylesheet" href="../static/styles/main.css" />
   <style>
+
     #column-1 {
       color: #370466;
       justify-content: space-between;
@@ -15,40 +16,10 @@
       height: auto;
     }
 
-    #table-row {
-      margin-top: 20px;
-      justify-content: space-between;
-      text-align: center;
-      font-size: 1.4em;
-      width: 100%;
-      color: #370466;
-    }
-
     #title {
       font-size: 1.4em;
       text-align: center;
       font-weight: bold;
-    }
-
-    #column-2 {
-      width: 100%;
-      height: auto;
-      background-color: yellow;
-    }
-
-    .news {
-      width: 100px;
-      margin-top: 20px;
-    }
-
-    #column-3 {
-      width: 50%;
-      height: auto;
-    }
-
-    #loan-image {
-      width: 50%;
-      height: auto;
     }
 
     .three-buttons {
@@ -62,6 +33,63 @@
       border-color: white;
       border-style: none;
     }
+
+    #column-2 {
+      width: 100%;
+      height: auto;
+      /* background-color: yellow; */
+    }
+
+    #table-row {
+      margin-top: 20px;
+      justify-content: space-between;
+      text-align: center;
+      font-size: 1.4em;
+      width: 100%;
+      color: #370466;
+    }
+
+    .news {
+      width: 100px;
+      margin-top: 20px;
+    }
+
+    /* column 3 */
+    #column-3 {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #loan-image {
+      width: 350px;
+      height: auto;
+    }
+
+    #table-review {
+      margin-top: 20px;
+      justify-content: space-between;
+      text-align: center;
+      font-size: 1.4em;
+      width: 100%;
+      color: #370466;
+    }
+
+    /* column 4 */
+    #column-4 {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .contact-button {
+      margin-right: 20px;
+    }
+    
+
   </style>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 </head>
@@ -99,12 +127,11 @@
         <button class="three-buttons" type="button" onclick="redirectToURL('https://knoops.co.uk');">
           Help and FAQs
         </button>
-        <br/>
-        <br/>
-        <br/>
+        <br />
+        <br />
+        <br />
         <p>Latest Financial News:</p>
       </div>
-
     </div>
 
     <div id="column-2">
@@ -112,7 +139,7 @@
         <!-- row 1 -->
         <tr>
           <th>Green Initiatives</th>
-          <th>Customized Solutions</th>
+          <th>Customised Solutions</th>
           <th>Eletric Car Loan Program</th>
         </tr>
         <!-- row 2 -->
@@ -127,17 +154,66 @@
           <td id="news">News</td>
           <td id="news">News</td>
         </tr>
+        </table>
+    </div>
+
+    <div id="column-3">
+      <table id="table-review">
         <tr>
-          <td><img src="../static/images/loan.png" id="loan-image" /></td>
-          <td><button class="contact-button" type="button" onclick="redirectToURL('https://knoops.co.uk');">Contact
-              us</button></td>
-          <td></td>
+          <td style="width: 50%;"><img src="../static/images/loan.png" id="loan-image" /></td>
+
+          <td style="font-size: 1rem;">
+            <p>"Prosper Lend's funding application process was a game-changer for my coffee shop. The user-friendly
+              platform,
+              and commitment to supporting ethical businesses made the experience seamless and
+              rewarding. With their inclusive approach and passion for positive change, I was able to expand my coffee
+              shop's
+              offerings and celebrate diversity within our community. Prosper Lend truly redefines empowering small
+              businesses, and I wholeheartedly recommend them to any entrepreneur seeking to make a difference."</p>
+            <p style="font-style: italic;">
+              John Snow, CEO of Snow Coffee - London</p>
+          </td>
         </tr>
       </table>
     </div>
-    <!-- <div id="column-3">
-      
-    </div> -->
-</body>
 
+    <div id="column-4">
+      <button class="contact-button" type="button" onclick="redirectToURL('https://knoops.co.uk');">Contact Us</button>
+      <button class="previous-button" type="button" onclick="redirectToURL('https://knoops.co.uk');">&laquo;
+        Previous</button>
+      <br />
+      <br />
+    
+
+    <div id="line">
+      <br />
+      <br />
+			<hr>
+		</div>
+    </div>
+
+    <footer>
+      <table id="table-footer">
+        <tr>
+          <td></td>
+          <td>
+            <p>Follow Us:</p>
+          </td>
+        </tr>
+        <tr>
+          <td><img src="../static/images/threads.png" class="footer-buttons" /></td>
+          <td><img src="../static/images/linkedin.png" class="footer-buttons" /></td>
+          <td><img src="../static/images/insta.png" class="footer-buttons" /></td>
+        </tr>
+        <tr>
+          <td><br /><br /></td>
+          <td><br /><br /></td>
+          <td><br /><br /></td>
+        </tr>
+      </table>
+    </footer>
+
+  </div>
+</body>
+</div>
 </html>

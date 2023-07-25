@@ -34,6 +34,7 @@ public class TestController {
 		modelAndView.setViewName("payment-history.html");
 		return modelAndView;
 	}
+  
 //	Loans for business with ID 101
 	@RequestMapping("test/my-loans")
 	public ModelAndView myLoansPageController() {

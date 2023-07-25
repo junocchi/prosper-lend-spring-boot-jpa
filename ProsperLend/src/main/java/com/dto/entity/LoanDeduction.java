@@ -5,46 +5,45 @@ import javax.persistence.*;
 @Entity
 @Table(name = "loanDeductions")
 public class LoanDeduction {
-
+ 
     @Id
     private int loanDeductionId;
     private int loanId;
     private int interestDeductionId;
-
-	public LoanDeduction(int loanId, int interestDeductionId) {
+    
+	public LoanDeduction(int loanDeductionId, int loanId, int interestDeductionId) {
 		super();
+		this.loanDeductionId = loanDeductionId;
 		this.loanId = loanId;
 		this.interestDeductionId = interestDeductionId;
 	}
-
+	
 	public LoanDeduction() {
 		super();
 	}
 
+	public int getLoanDeductionId() {
+		return loanDeductionId;
+	}
+	public void setLoanDeductionId(int loanDeductionId) {
+		this.loanDeductionId = loanDeductionId;
+	}
 	public int getLoanId() {
 		return loanId;
 	}
-
 	public void setLoanId(int loanId) {
 		this.loanId = loanId;
 	}
-
 	public int getInterestDeductionId() {
 		return interestDeductionId;
 	}
-
 	public void setInterestDeductionId(int interestDeductionId) {
 		this.interestDeductionId = interestDeductionId;
 	}
 
 	@Override
 	public String toString() {
-		return "LoanDeduction [loanId=" + loanId + ", interestDeductionId=" + interestDeductionId + "]";
+		return "LoanDeduction [loanDeductionId = " + loanDeductionId + ", loanId = " + loanId + ", interestDeductionId = "
+				+ interestDeductionId + "]";
 	}
-    
-    
-    
-    
-    
-    
 }
