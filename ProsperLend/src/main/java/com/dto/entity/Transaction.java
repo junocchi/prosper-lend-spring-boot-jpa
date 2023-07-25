@@ -77,4 +77,5 @@ public class Transaction {
 		this.loan = loan;
 	}
 
+	
 }

@@ -30,26 +30,22 @@ public class Loans {
 
 
 	@Id
+
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
-	int loanID;
 	
-	
-	
-	String loanStatus;
-	
-	
-	Double amount;
-	
-	
-	
-	Double interest;
 	
 	@OneToOne
 	private UserDetails user;
 	
-	
-	Date loanDate;
+
+	private int loanID;
+	private String loanStatus;
+	private Double amount;
+	private Double interest;
+	private int businessID;
+	private Date loanDate;
+
 	
    
 	
@@ -92,6 +88,21 @@ public class Loans {
 		this.interest = interest;
 	}
 	
+
+	public String getLoanStatus() {
+		return loanStatus;
+	}
+	public void setLoanStatus(String loanStatus) {
+		this.loanStatus = loanStatus;
+	}
+	
+	public int getBusinessID() {
+		return businessID;
+	}
+	public void setBusinessID(int businessID) {
+		this.businessID = businessID;
+	}
+
 	public Date getLoanDate() {
 		return loanDate;
 	}
@@ -99,13 +110,7 @@ public class Loans {
 		this.loanDate = loanDate;
 	}
 
-	
-	public String getLoanStatus() {
-		return loanStatus;
-	}
-	public void setLoanStatus(String loanStatus) {
-		this.loanStatus = loanStatus;
-	}
+
 	public UserDetails getUser() {
 		return user;
 	}

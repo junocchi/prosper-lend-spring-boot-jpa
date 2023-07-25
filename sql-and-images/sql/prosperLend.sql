@@ -141,8 +141,13 @@ SELECT * FROM TRANSACTIONS;
 
 
 
+drop table loanDeductions;
 CREATE TABLE loanDeductions (
+
   loanDeductionId INT auto_increment, 
+
+  loanDeductionId int,
+
   loanId INT,
   interestDeductionId INT,
   PRIMARY KEY (loanDeductionId),
@@ -151,11 +156,19 @@ CREATE TABLE loanDeductions (
 );
 
 
-INSERT INTO loanDeductions (loanId, interestDeductionId)
+INSERT INTO loanDeductions
 VALUES
+
   (1, 1);
  --  (2, 2), 
 --   (3, 3); 
 --   
 --   SELECT * FROM LOANDEDUCTIONS;
+
+  (1, 1001, 1), 
+  (2, 1002, 2), 
+  (3, 1003, 3); 
   
+SELECT * FROM LOANDEDUCTIONS;
+
+

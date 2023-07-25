@@ -16,6 +16,7 @@ import com.dto.entity.LoanDeduction;
 
 public interface LoanDeductionDao extends JpaRepository <LoanDeduction, Integer>{
 
+
 	
 
 	
@@ -26,5 +27,10 @@ public interface LoanDeductionDao extends JpaRepository <LoanDeduction, Integer>
 	
 	
 	
+
+	@Modifying
+	@Query(value = "insert into LOANDEDUCTIONS values(?,?,?)",nativeQuery = true)
+	int insertDeduction(int loanDeductionId,int loanId,int interestDeductionId);
+
 	
 }

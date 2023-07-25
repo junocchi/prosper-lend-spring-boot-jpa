@@ -27,6 +27,7 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
+
 	public boolean insertNewMessage(Messages message) {
 		try {
 			if(messageDao.addMessage( 
@@ -49,7 +50,9 @@ public class MessageServiceImpl implements MessageService {
 			return true;
 		else
 			return false;
+
 	}
+
 
 	
 }

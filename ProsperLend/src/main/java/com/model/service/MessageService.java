@@ -11,7 +11,11 @@ public interface MessageService {
 	public List<Messages> getAllMessages();
 	
 	// As admin and business user we can
+
 	public boolean insertNewMessage(Messages message);
 	
 	boolean changeMessage(int messageId, String newMessage);
+
+
+
 }

@@ -61,4 +61,12 @@ public class Messages {
 		this.message = message;
 	}
 
+	@Override
+	public String toString() {
+		return "Message [messageId=" + messageId + ", userEmail=" + userEmail + ", userName=" + userName + ", message="
+				+ message + "]";
+	}
+	
+	
+
 }

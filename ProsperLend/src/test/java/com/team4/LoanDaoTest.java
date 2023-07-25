@@ -15,13 +15,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.test.context.ActiveProfiles;
 
-import com.dto.entity.Businesses;
+
 import com.dto.entity.Loans;
-import com.dto.entity.Transaction;
+
 import com.dto.entity.UserDetails;
-import com.model.persistence.BusinessDao;
+
 import com.model.persistence.LoanDao;
-import com.model.persistence.TransactionDao;
+
 import com.model.persistence.UserDetailsDao;
 
 import java.sql.Date;

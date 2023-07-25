@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.test.context.ActiveProfiles;
 
-import com.dto.entity.Businesses;
+
 import com.dto.entity.InterestDeduction;
 import com.dto.entity.UserLogin;
 import com.model.persistence.BusinessDao;

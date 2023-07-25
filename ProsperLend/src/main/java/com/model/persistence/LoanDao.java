@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.dto.entity.Businesses;
+
 import com.dto.entity.Loans;
 import com.dto.entity.Transaction;
 
