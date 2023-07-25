@@ -24,6 +24,6 @@ public interface UserLoginDao extends JpaRepository<UserLogin, Integer>{
 	@Query(nativeQuery = true,value = "update userlogin set passcode = SHA1(concat(?,?)) where userLoginId=?")
 	public int updatePassword(String salt1, String passcode,int userLoginId);
 	
-	@Query("FROM UserLogins WHERE userLoginName=:u")
-	public UserLogin findUserByUsername(@Param("u") String username);
+//	@Query("FROM UserLogins WHERE userLoginName=:u")
+//	public UserLogin findUserByUsername(@Param("u") String username);
 }

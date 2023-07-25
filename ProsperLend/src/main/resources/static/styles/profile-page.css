@@ -163,6 +163,7 @@ h1 {
     height: 35px;
     border-radius: 20px;
     margin-right: 10px;
+    
 }
 
 .update-button {
@@ -235,3 +236,17 @@ h1 {
     font-family: arial;
     font-weight: bold;
 }
+
+        .email-label {
+            position: absolute;
+           
+            right: 10px;
+        }
+
+        .email-content {
+            margin-left: 10px; /* Adjust the value as needed */
+            margin-top: 10px;
+        }
+
+}
+
