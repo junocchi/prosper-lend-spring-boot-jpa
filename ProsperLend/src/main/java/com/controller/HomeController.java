@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-public class AboutUsVisitorViewController {
+public class HomeController {
 
-	@RequestMapping("/about-us-visitor-view")
-	public ModelAndView getAboutUsVisitorViewController() {
-		return new ModelAndView("about-us-visitor-view.html");
+	@RequestMapping("/")
+	public ModelAndView getHomeController() {
+		return new ModelAndView("home.html");
 	}
 }

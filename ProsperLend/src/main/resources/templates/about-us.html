@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Prosper Lend - Home</title>
+<link th:href="@{/styles/main.css}" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+#column-1 {
+	color: #370466;
+	text-align: justify;
+	margin-top: 40px;
+	font-size: 1.2em;
+	height: auto;
+}
+
+#about-us {
+	font-size: 1.4em;
+	text-align: left;
+	font-weight: bold;
+}
+
+#column-2 {
+	width: 40%;
+	height: auto;
+}
+
+#about-us1 {
+	width: 100%;
+	height: auto;
+}
+
+#column-3 {
+	width: 40%;
+	height: auto;
+}
+
+#about-us2 {
+	width: 100%;
+	height: auto;
+}
+</style>
+</head>
+
+<body>
+	<header>
+		<img th:href="@{/styles/main.css}"
+			th:src="@{/images/prosper-logo.png}" alt="Logo" class="logo" />
+		<h1>Prosper Lend</h1>
+		<div class="dropdown-user-view">
+			<img th:src="@{/images/user-photo.png}" class="dropbtn-user-view" />
+
+			<div class="dropdown-content-user-view">
+				<a href="/my-profile">My Profile</a> <a href="/my-loans">My
+					Loans</a> <a href="/user-view">Request Funding</a> <a
+					href="/about-us-user-view">About Us</a> <a href="login=page">Log
+					Out</a>
+			</div>
+		</div>
+	</header>
+
+	<div id="content">
+		<div id="column-1">
+			<p id="about-us">About us</p>
+			<p>Ethics and success go hand in hand. With Prosper Lend, not
+				only do you gain access to affordable loans, but we also offer
+				exclusive discounts for businesses committed to making a positive
+				impact.</p>
+			<p>Welcome to Prosper Lend - a revolutionary platform that was
+				founded in 2023 by four dedicated developers: Catalina, Dominique,
+				Hodan, and Juliana. Our journey began at Wiley Edge, where we
+				discovered a shared passion for supporting small businesses that
+				embody strong ethical values, environmental consciousness, and a
+				commitment to diversity, equity, and inclusion in their workplace.</p>
+			<p>At Prosper Lend, we recognized the need for an alternative way
+				to empower and uplift businesses that go beyond traditional
+				profit-focused models. Our vision is to create a thriving ecosystem
+				where ethics and success are inseparable. When you choose Prosper
+				Lend, you not only gain access to affordable loans but also unlock
+				exclusive discounts specially tailored for businesses that are
+				making a positive impact on society.</p>
+			<p>We firmly believe that businesses can be a powerful force for
+				good, shaping a brighter and more sustainable future for everyone.
+				By partnering with ethical enterprises, we are not only fueling
+				their growth but also contributing to the collective betterment of
+				our communities and the planet.</p>
+			<p>As a team of innovators, we are dedicated to transforming the
+				landscape of lending by promoting conscious capitalism and
+				supporting those who strive to make a difference. Together, we are
+				building a financial world that aligns with our values, fostering
+				prosperity for all.</p>
+			<p>Join us on this empowering journey towards a more ethical and
+				equitable business landscape. Prosper Lend is not just a lending
+				platform; it's a movement to drive positive change. Together, we can
+				build a brighter tomorrow.</p>
+		</div>
+
+		<div id="column-2">
+			<img th:src="@{/images/about-us-2.png}" id="about-us1">
+		</div>
+
+		<div id="column-3">
+			<img th:src="@{/images/diverse-businesses.png}" id="about-us2">
+		</div>
+
+		<div id="line">
+			<hr>
+		</div>
+
+		<footer>
+			<table id="table-footer">
+				<tr>
+					<td></td>
+					<td>
+						<p>Follow Us:</p>
+					</td>
+				</tr>
+				<tr>
+					<td><a th:href="@{https://www.threads.net/}"
+						target="_blank"><img th:src="@{/images/threads.png}"
+						class="footer-buttons" alt="Threads Icon" ></a></td>
+					<td><a th:href="@{https://www.linkedin.com/}"
+						target="_blank"><img th:src="@{/images/linkedin.png}"
+						class="footer-buttons" alt="LinkedIn Icon" ></a></td>
+					<td><a th:href="@{https://www.instagram.com/}"
+						target="_blank"><img th:src="@{/images/insta.png}" class="footer-buttons"
+						alt="Instagram Icon" ></a></td>
+				</tr>
+				<tr>
+					<td><br />
+					<br /></td>
+					<td><br />
+					<br /></td>
+					<td><br />
+					<br /></td>
+				</tr>
+			</table>
+		</footer>
+	</div>
+</body>
+
+</html>
