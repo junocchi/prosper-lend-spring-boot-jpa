@@ -5,6 +5,13 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+.DS_Store
+/.metadata/
+.metadata
+.metadata/
+.metadata/.*
+.metadata/.plugins/
+.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
 
 ### STS ###
 .apt_generated
@@ -33,3 +40,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+## 1
