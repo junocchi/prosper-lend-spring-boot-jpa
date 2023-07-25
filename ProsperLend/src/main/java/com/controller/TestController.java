@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -89,24 +91,41 @@ public class TestController {
 		return modelAndView;
 	}
 	
-	@RequestMapping("test/login")
-	public ModelAndView loginCheckController(@ModelAttribute("username") String username, @ModelAttribute("password") String password, HttpSession session) {
+	@RequestMapping("test/login-page")
+	public ModelAndView loginPageController() {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		if (username == null) {
-			modelAndView.addObject("message","Login Failed - username or password are incorect");
+		modelAndView.addObject("message", "");
+		modelAndView.addObject("username", new String());
+		modelAndView.addObject("password", new String());
+		modelAndView.setViewName("login-page.html");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "test/login", method = RequestMethod.POST)
+	public ModelAndView loginCheckController(@RequestParam(value = "username", required=false) String username, @RequestParam(value = "password", required=false) String password) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		System.out.println("Username: " + username);	
+		System.out.println("Password: " + password);
+		
+		if (username.equals("") || password.equals("")) {
+			modelAndView.addObject("message","Username and password cannot be empty.");
 			modelAndView.addObject("username", new String());
 			modelAndView.addObject("password", new String());
 			modelAndView.setViewName("login-page.html");
+			
+			return modelAndView;
 		}
 			
 		UserLogin loginUser = usersService.getUserByUsername(username);
 		
 		if(loginUser!=null) {
-			modelAndView.setViewName("welcome-user.html");
-			//adding objects at request scope
-			modelAndView.addObject("user", loginUser);
-			session.setAttribute("user", loginUser);
+//			modelAndView.setViewName("welcome-user.html");
+//			//adding objects at request scope
+//			modelAndView.addObject("user", loginUser);
+//			session.setAttribute("user", loginUser);
 		}
 		else {
 			modelAndView.addObject("message","Login Failed - username or password are incorect");
