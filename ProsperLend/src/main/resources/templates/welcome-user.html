@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://thymeleaf.org">
 
 <head>
   <meta charset="ISO-8859-1" />
   <title>Prosper Lend - Home</title>
-  <link rel="stylesheet" href="../static/styles/main.css" />
+  <link th:href="@{/styles/main.css}" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <style>
     #column-1 {
       color: #370466;
@@ -96,21 +97,20 @@
       margin-right: 20px;
     }
   </style>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 </head>
 
 <body>
   <header>
-    <img src="../static/images/prosper-logo.png" alt="Logo" class="logo" />
+    <img th:href="@{/styles/main.css}" th:src="@{/images/prosper-logo.png}" alt="Logo" class="logo" />
     <h1>Prosper Lend</h1>
     <div class="dropdown-user-view">
-      <img src="../static/images/user-photo.png" class="dropbtn-user-view" />
+      <img th:src="@{/images/user-photo.png}" class="dropbtn-user-view" />
 
       <div class="dropdown-content-user-view">
-        <a href="#">My Profile</a>
-        <a href="#">My Loans</a>
+        <a href="/my-profile">My Profile</a>
+        <a href="/my-loans">My Loans</a>
         <a href="#">Request Funding</a>
-        <a href="#">About Us</a>
+        <a href="/about-us-user-view">About Us</a>
         <a href="#">Log Out</a>
       </div>
     </div>
@@ -149,15 +149,13 @@
         </tr>
         <!-- row 2 -->
         <tr>
-          <td><a
-              href="https://onthewight.com/going-electric-green-tech-and-electric-vehicle-show-returns-entry-and-parking-free/"
-              target="_blank"><img src="../static/images/welcome-one.png" id="news-images"></a></td>
-          <td><a
-              href="https://www.forbes.com/sites/digital-assets/2023/07/23/the-skys-the-limit-crypto-now-braced-for-a-multi-trillion-wall-street-earthquake-after-bitcoin-ethereum-bnb-xrp-cardano-dogecoin-litecoin-solana-tron-and-polygon-price-boom/?sh=7e96ceef5b1b"
-              target="_blank"><img src="../static/images/welcome-two.png" id="news-images"></a></td>
-          <td><a href="https://www.bbc.co.uk/news/technology-64744926" target="_blank"><img
-                src="../static/images/welcome-three.png" id="news-images"></a></td>
-        </tr>
+          <td><a th:href="@{https://onthewight.com/going-electric-green-tech-and-electric-vehicle-show-returns-entry-and-parking-free/}" target="_blank">
+          <img th:src="@{/images/welcome-one.png}" id="news-images" alt="News Image 1" /></a></td>
+        <td><a th:href="@{https://www.forbes.com/sites/digital-assets/2023/07/23/the-skys-the-limit-crypto-now-braced-for-a-multi-trillion-wall-street-earthquake-after-bitcoin-ethereum-bnb-xrp-cardano-dogecoin-litecoin-solana-tron-and-polygon-price-boom/?sh=7e96ceef5b1b}" target="_blank">
+          <img th:src="@{/images/welcome-two.png}" id="news-images" alt="News Image 2" /></a></td>
+        <td><a th:href="@{https://www.bbc.co.uk/news/technology-64744926}" target="_blank">
+          <img th:src="@{/images/welcome-three.png}" id="news-images" alt="News Image 3" /></a></td>
+      </tr>
         <!-- row 3 -->
         <tr>
           <th>Stocks Surge Up</th>
@@ -167,13 +165,17 @@
         <!-- row 4 -->
         <tr>
           <td><a
-              href="https://www.reuters.com/markets/europe/europes-stoxx-600-boosted-by-kering-uk-stocks-shine-2023-07-19/"
-              target="_blank"><img src="../static/images/welcome-four.png" id="news-images"></a></td>
-          <td><a href="https://markets.ft.com/data/bonds" target="_blank"><img src="../static/images/welcome-five.png"
+              th:href="@{https://www.reuters.com/markets/europe/europes-stoxx-600-boosted-by-kering-uk-stocks-shine-2023-07-19/}"
+              target="_blank">
+              <img th:src="@{/images/welcome-four.png}" id="news-images"></a></td>
+          <td><a th:href="@{https://markets.ft.com/data/bonds}" target="_blank">
+          <img th:src="@{/images/welcome-five.png}"
                 id="news-images"></a></td>
           <td><a
-              href="https://www.gov.uk/government/news/tech-ipos-raised-a-record-66-billion-in-2021-double-2020-figures"
-              target="_blank"><img src="../static/images/welcome-six.png" id="news-images"></a></td>
+              th:href="@{https://www.gov.uk/government/news/tech-ipos-raised-a-record-66-billion-in-2021-double-2020-figures}"
+              target="_blank">
+              
+              <img th:src="@{/images/welcome-six.png}" id="news-images"></a></td>
         </tr>
       </table>
     </div>
@@ -181,7 +183,7 @@
     <div id="column-3">
       <table id="table-review">
         <tr>
-          <td style="width: 50%;"><img src="../static/images/loan.png" id="loan-image" /></td>
+          <td style="width: 50%;"><img th:src="@{/images/loan.png}" id="loan-image" /></td>
 
           <td style="font-size: 1rem;">
             <p>"Prosper Lend's funding application process was a game-changer for my coffee shop. The user-friendly
@@ -222,10 +224,10 @@
           </td>
         </tr>
         <tr>
-          <td><img src="../static/images/threads.png" class="footer-buttons" /></td>
-          <td><img src="../static/images/linkedin.png" class="footer-buttons" /></td>
-          <td><img src="../static/images/insta.png" class="footer-buttons" /></td>
-        </tr>
+          <td><img th:src="@{/images/threads.png}" class="footer-buttons" alt="Threads Icon" /></td>
+        <td><img th:src="@{/images/linkedin.png}" class="footer-buttons" alt="LinkedIn Icon" /></td>
+        <td><img th:src="@{/images/insta.png}" class="footer-buttons" alt="Instagram Icon" /></td>
+      </tr>
         <tr>
           <td><br /><br /></td>
           <td><br /><br /></td>
