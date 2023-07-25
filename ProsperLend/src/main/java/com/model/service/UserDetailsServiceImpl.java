@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dto.entity.Businesses;
+
 import com.dto.entity.UserDetails;
 import com.model.persistence.UserDetailsDao;
 

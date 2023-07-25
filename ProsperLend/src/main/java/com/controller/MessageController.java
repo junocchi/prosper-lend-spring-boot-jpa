@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dto.entity.Message;
+import com.dto.entity.Messages;
 import com.model.service.MessageService;
 
 @Controller
@@ -20,14 +20,14 @@ public class MessageController {
 	public ModelAndView InputMessagePageController() {
 		ModelAndView modelAndView=new ModelAndView();
 		
-		modelAndView.addObject("mess", new Message());
+		modelAndView.addObject("mess", new Messages());
 		modelAndView.setViewName("contact-us.html");
 		return modelAndView;
 	}
 	
 	
 	@RequestMapping("/save-message")
-	public ModelAndView saveMessageController(@ModelAttribute("mess") Message message) {
+	public ModelAndView saveMessageController(@ModelAttribute("mess") Messages message) {
 		ModelAndView modelAndView = new ModelAndView();
 	
 		String message1 = null;

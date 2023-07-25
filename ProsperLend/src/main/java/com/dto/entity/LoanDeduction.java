@@ -53,11 +53,7 @@ public class LoanDeduction implements Serializable{
 	}
 	
 	
-    
-    
-    
-    
-    
+
 
 
 	public int getLoanDeductionId() {
