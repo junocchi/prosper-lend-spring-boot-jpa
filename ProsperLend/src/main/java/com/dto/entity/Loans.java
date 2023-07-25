@@ -1,5 +1,6 @@
 package com.dto.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
@@ -25,20 +26,17 @@ import java.util.ArrayList;
 @Table(name = "Loans")
 
 
-public class Loans {
+public class Loans implements Serializable{
 	
 
+
+	
+	
+
+	
 
 	@Id
-
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	
-	
-	
-	@OneToOne
-	private UserDetails user;
-	
-
 	private int loanID;
 	private String loanStatus;
 	private Double amount;
@@ -49,6 +47,8 @@ public class Loans {
 	
    
 	
+	@OneToOne
+	private UserDetails user;
 	
 	public Loans() {
 		super();
