@@ -32,7 +32,8 @@ public class UserLoginServiceImpl implements UserLoginService {
 
 	@Override
 	public UserLogin getUserByUsername(String username) {
-		return dao.findUserByUsername(username);
+		return null;
+//		return dao.findUserByUsername(username);
 	}
 
 	@Override

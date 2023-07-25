@@ -2,7 +2,6 @@ INDEX VERSION 1.132+/Users/junocchi/Wiley-Edge-Academy/Tech-assignments/prosper-
 3327017124.index
 45915626.index
 2577996750.index
-592126506.index
 504874537.index
 507913725.index
 2506245825.index
