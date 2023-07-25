@@ -21,11 +21,12 @@ public class Loans {
 
 	
 	@Id
-	int loanID;
-	Double amount;
-	Double interest;
-	int businessID;
-	Date loanDate;
+	private int loanID;
+	private String loanStatus;
+	private Double amount;
+	private Double interest;
+	private int businessID;
+	private Date loanDate;
 	
 	
 	
@@ -62,6 +63,14 @@ public class Loans {
 	public void setInterest(Double interest) {
 		this.interest = interest;
 	}
+	
+	public String getLoanStatus() {
+		return loanStatus;
+	}
+	public void setLoanStatus(String loanStatus) {
+		this.loanStatus = loanStatus;
+	}
+	
 	public int getBusinessID() {
 		return businessID;
 	}

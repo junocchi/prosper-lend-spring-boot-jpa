@@ -2,12 +2,12 @@ INDEX VERSION 1.132+/Users/junocchi/Wiley-Edge-Academy/Tech-assignments/prosper-
 3327017124.index
 45915626.index
 2577996750.index
+592126506.index
 504874537.index
 507913725.index
 2506245825.index
 3411991065.index
 1816069051.index
-865708100.index
 791276739.index
 3003398800.index
 1813792830.index
@@ -16,7 +16,6 @@ INDEX VERSION 1.132+/Users/junocchi/Wiley-Edge-Academy/Tech-assignments/prosper-
 2920383200.index
 4148083261.index
 1961465737.index
-2988868430.index
 2607599997.index
 4273008112.index
 3267451973.index
@@ -29,6 +28,7 @@ INDEX VERSION 1.132+/Users/junocchi/Wiley-Edge-Academy/Tech-assignments/prosper-
 2040167903.index
 237961933.index
 1890981610.index
+159840052.index
 3682073428.index
 3008162035.index
 4130852014.index
@@ -56,7 +56,6 @@ INDEX VERSION 1.132+/Users/junocchi/Wiley-Edge-Academy/Tech-assignments/prosper-
 627282190.index
 147637881.index
 1001269702.index
-719444475.index
 1734135003.index
 4173414856.index
 1865797976.index

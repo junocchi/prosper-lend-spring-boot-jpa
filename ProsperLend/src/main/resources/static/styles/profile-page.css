@@ -1,8 +1,9 @@
 @charset "ISO-8859-1";
 
 body {
-    background-color: #CDFFD8; /* For browsers that do not support gradients */
-    background-image: linear-gradient(to right, #CDFFD8 , #94B9FF);
+    background-color: #CDFFD8;
+    /* For browsers that do not support gradients */
+    background-image: linear-gradient(to right, #CDFFD8, #94B9FF);
     font-family: arial;
     width: 100%;
     height: 100%;
@@ -11,10 +12,10 @@ body {
 }
 
 header {
-    background-color:#B9ADE8;
+    background-color: #B9ADE8;
     height: 90px;
     width: 100%;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     position: -webkit-sticky;
@@ -30,7 +31,7 @@ header {
 }
 
 h1 {
-    color:#3C1263;
+    color: #3C1263;
     margin: auto;
     width: 50%;
     text-align: center;
@@ -55,7 +56,7 @@ h1 {
     position: absolute;
     background-color: #B9ADE8;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     right: 0;
 }
@@ -102,7 +103,8 @@ h1 {
     text-align: left;
     margin-right: 10px;
     flex-basis: 130px;
-    white-space: nowrap; /* Keep the text on one line */
+    white-space: nowrap;
+    /* Keep the text on one line */
 }
 
 .business-container {
@@ -113,37 +115,40 @@ h1 {
     border-radius: 20px;
     flex: 1;
     margin-right: 110px;
-    white-space: nowrap; /* Keep the text on one line */
+    white-space: nowrap;
+    /* Keep the text on one line */
 }
 
-.ID-container{
-	background-color: white;
+.ID-container {
+    background-color: white;
     border: 2px solid #370466;
     width: 320px;
     height: 35px;
     border-radius: 20px;
     flex: 1;
     margin-right: 90px;
-    white-space: nowrap; /* Keep the text on one line */
+    white-space: nowrap;
+    /* Keep the text on one line */
 }
 
-#ID-label{
-	font-size: 1.2em;
+#ID-label {
+    font-size: 1.2em;
     text-align: left;
     margin-right: 10px;
     flex-basis: 130px;
-    white-space: nowrap; /* Keep the text on one line */
+    white-space: nowrap;
+    /* Keep the text on one line */
 }
 
 #email-label,
-#name-label{
+#name-label {
     font-size: 1.2em;
     text-align: left;
     margin-right: 10px;
 }
 
-#password-label{
-	font-size: 1.2em;
+#password-label {
+    font-size: 1.2em;
     text-align: left;
     margin-right: 30px;
 }
@@ -151,7 +156,7 @@ h1 {
 
 .email-container,
 .name-container,
-.password-container{
+.password-container {
     background-color: white;
     border: 2px solid #370466;
     width: 300px;
@@ -171,36 +176,39 @@ h1 {
 }
 
 .pic {
-    height: 250px; /* Increase the height to make the image bigger */
-    width: 25%; /* Adjust the width as needed */
-    object-fit: contain; /* Show the whole image */
+    height: 250px;
+    /* Increase the height to make the image bigger */
+    width: 25%;
+    /* Adjust the width as needed */
+    object-fit: contain;
+    /* Show the whole image */
     position: absolute;
-    top: 250px; /* Adjust the top position */
-    left: 20px; /* Move the logo to the left */
+    top: 250px;
+    /* Adjust the top position */
+    left: 20px;
+    /* Move the logo to the left */
 }
 
 
-      #contact-us {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
+#contact-us {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 
-      .contact-button {
-        height: 35px;
-        background-color: #449850;
-        color: white;
-        border-radius: 12px;
-        font-size: 1em;
-        border-color: #449850;
-        border-style: none;
-        margin-right: 90px;
-        margin-left: auto;
-        margin-bottom: 50px;
-        margin-top: 90px;
-      }
-      
-
+.contact-button {
+    height: 35px;
+    background-color: #449850;
+    color: white;
+    border-radius: 12px;
+    font-size: 1em;
+    border-color: #449850;
+    border-style: none;
+    margin-right: 90px;
+    margin-left: auto;
+    margin-bottom: 50px;
+    margin-top: 90px;
+}
 
 .update-button:hover {
     background-color: #45a049;
@@ -208,16 +216,21 @@ h1 {
 
 #column-3 {
     color: #370466;
-    text-align: left; /* Change 'right' to 'left' */
+    text-align: left;
+    /* Change 'right' to 'left' */
     width: 61%;
     font-size: 1.2em;
     height: auto;
     font-family: arial;
     font-weight: bold;
-    margin-top:-150px;
+    margin-top: -150px;
 }
 
-#business-label, #email-label, #name-label, #password-label, #ID-label {
+#business-label,
+#email-label,
+#name-label,
+#password-label,
+#ID-label {
     color: #370466;
     font-size: 1.2em;
     font-family: arial;
@@ -234,3 +247,6 @@ h1 {
             margin-left: 10px; /* Adjust the value as needed */
             margin-top: 10px;
         }
+
+}
+

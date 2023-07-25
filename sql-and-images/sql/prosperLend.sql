@@ -109,7 +109,9 @@ SELECT * FROM TRANSACTIONS;
 
 
 
+drop table loanDeductions;
 CREATE TABLE loanDeductions (
+  loanDeductionId int,
   loanId INT,
   interestDeductionId INT,
   FOREIGN KEY (loanId) REFERENCES Loans(loanId),
@@ -117,11 +119,11 @@ CREATE TABLE loanDeductions (
 );
 
 
-INSERT INTO loanDeductions (loanId, interestDeductionId)
+INSERT INTO loanDeductions
 VALUES
-  (1001, 1), 
-  (1002, 2), 
-  (1003, 3); 
+  (1, 1001, 1), 
+  (2, 1002, 2), 
+  (3, 1003, 3); 
   
-  SELECT * FROM LOANDEDUCTIONS;
+SELECT * FROM LOANDEDUCTIONS;
 

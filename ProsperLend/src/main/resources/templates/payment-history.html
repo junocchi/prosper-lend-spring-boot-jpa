@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Prosper Lend - Payment History</title>
+	<link th:href="@{/styles/main.css}" rel="stylesheet">
+</head> 
+<style>
+	#above-text {
+		text-align: center;
+		color: #3C1263;
+	}
+	
+	table {
+		border-collapse: separate;  
+		border-spacing: 0 10px; 
+	}
+	
+	th {
+		color: white;
+		opacity: 0;
+	}
+	
+	td {
+  		border-radius: 10px 10px 10px 10px;
+  		background-color: white;
+  		width: 500px;
+  		padding: 20px;
+	}
+	
+	#payment {
+		color: #6FC378;
+	}
+	
+	p {
+    	display: inline;
+	}
+
+</style>
+<body>
+<header>
+	<img src="../images/prosper-logo.png" alt="Logo" class="logo">
+	<h1>Prosper Lend</h1>
+	<div class="dropdown">
+		<img th:src="@{../images/menu1.svg}" class="dropbtn">
+
+		<div class="dropdown-content">
+			<a href="#">Link 1</a>
+			<a href="#">Link 2</a>
+			<a href="#">Link 3</a>
+   		</div>
+   </div>
+</header>
+
+<div id="above-text">
+	<h2>Payment History</h2>
+</div>
+
+<div id="content">
+	<div id="column">
+	<table>
+		<tr>
+			<th> Payment </th>
+		</tr>
+		
+		<tr th:each="payment : ${paymentList}">
+			<td> <p id="payment">Payment </p><br><br>
+				 Amount Paid: <p th:text="${payment.amount}"></p><br>
+				 Payment date: <p th:text="${payment.transactionDate}"></p>
+			</td>
+		</tr>
+	</table>
+	</div>
+</div>
+	
+</body>
+</html>

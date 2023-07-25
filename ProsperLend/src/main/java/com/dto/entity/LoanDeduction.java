@@ -5,9 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "loanDeductions")
 public class LoanDeduction {
-
-    
-    
 	@Id
 	private int loanDeductionId;
 	
@@ -18,7 +15,6 @@ public class LoanDeduction {
     @JoinColumn(name = "interestDeductionId")
     private int interestDeductionId;
 
-
 	public LoanDeduction(int loanDeductionId, int loanId, int interestDeductionId) {
 		super();
 		this.loanDeductionId = loanDeductionId;
@@ -26,11 +22,9 @@ public class LoanDeduction {
 		this.interestDeductionId = interestDeductionId;
 	}
 
-
 	public LoanDeduction() {
 		super();
 	}
-
 
 	public int getLoanDeductionId() {
 		return loanDeductionId;
@@ -55,8 +49,7 @@ public class LoanDeduction {
 	public int getInterestDeductionId() {
 		return interestDeductionId;
 	}
-
-
+  
 	public void setInterestDeductionId(int interestDeductionId) {
 		this.interestDeductionId = interestDeductionId;
 	}
@@ -68,4 +61,3 @@ public class LoanDeduction {
 				+ interestDeductionId + "]";
 	}
 }
-
