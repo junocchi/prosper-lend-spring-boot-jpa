@@ -8,9 +8,7 @@ public class LoanDeduction {
  
     @Id
     private int loanDeductionId;
-    @JoinColumn(name = "loanId")
     private int loanId;
-    @JoinColumn(name = "interestDeductionId")
     private int interestDeductionId;
     
 	public LoanDeduction(int loanDeductionId, int loanId, int interestDeductionId) {
