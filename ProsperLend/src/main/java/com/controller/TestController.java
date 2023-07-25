@@ -6,7 +6,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,8 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.dto.entity.Transaction;
 import com.dto.entity.MyLoansObj;
 import com.dto.entity.Loans;
+import com.dto.entity.UserLogin;
 import com.model.service.TransactionServiceImpl;
 import com.model.service.LoanServiceImp;
+import com.model.service.UserLoginServiceImpl;
 
 @RestController
 public class TestController {
@@ -23,6 +28,8 @@ public class TestController {
 	private TransactionServiceImpl transactionService;
 	@Autowired 
 	private LoanServiceImp loansService;
+	@Autowired 
+	private UserLoginServiceImpl usersService;
 
 	@RequestMapping("test/payment-history")
 	public ModelAndView getAllTransactions() {
@@ -79,6 +86,35 @@ public class TestController {
 		
 		modelAndView.addObject("loanList", loanList);
 		modelAndView.setViewName("my-loans.html");
+		return modelAndView;
+	}
+	
+	@RequestMapping("test/login")
+	public ModelAndView loginCheckController(@ModelAttribute("username") String username, @ModelAttribute("password") String password, HttpSession session) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		if (username == null) {
+			modelAndView.addObject("message","Login Failed - username or password are incorect");
+			modelAndView.addObject("username", new String());
+			modelAndView.addObject("password", new String());
+			modelAndView.setViewName("login-page.html");
+		}
+			
+		UserLogin loginUser = usersService.getUserByUsername(username);
+		
+		if(loginUser!=null) {
+			modelAndView.setViewName("welcome-user.html");
+			//adding objects at request scope
+			modelAndView.addObject("user", loginUser);
+			session.setAttribute("user", loginUser);
+		}
+		else {
+			modelAndView.addObject("message","Login Failed - username or password are incorect");
+			modelAndView.addObject("username", new String());
+			modelAndView.addObject("password", new String());
+			modelAndView.setViewName("login-page.html");
+			
+		}
 		return modelAndView;
 	}
 }
