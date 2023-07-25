@@ -1,10 +1,147 @@
-DROP DATABASE IF EXISTS TestProjectProsperLend;
-CREATE DATABASE TestProjectProsperLend;
-USE TestProjectProsperLend;
+-- DROP DATABASE IF EXISTS TestProjectProsperLend;
+-- CREATE DATABASE TestProjectProsperLend;
+-- USE TestProjectProsperLend;
 
 DROP DATABASE IF EXISTS ProjectProsperLend;
 CREATE DATABASE ProjectProsperLend;
--- USE ProjectProsperLend;
+USE ProjectProsperLend;
+
+
+
+
+
+
+create table InterestDeductions (
+interestDeductionId int auto_increment,
+items varchar(50) not null,
+deductionAmount double,
+PRIMARY KEY (interestDeductionId));
+
+insert into InterestDeductions (items, deductionAmount) values  
+("Carbon neutral", 1),
+("Diversity", 1),
+("Equity", 1),
+("Community Outreach", 1),
+("Ethically Sourced", 1);
+
+select * from InterestDeductions;
+
+
+
+
+
+
+-- DROP TABLE Messages;
+CREATE TABLE Messages (
+messageId INT AUTO_INCREMENT,
+userEmail VARCHAR(100),
+userName VARCHAR(100),
+message VARCHAR(255),
+CONSTRAINT PK_messageId PRIMARY KEY (messageId));
+  
+insert into messages(userEmail, username, message) values 
+("Email@email.com", "MyName", "Test"),
+("Email2@email.com", "MyName2", "Test2");
+  
+SELECT * FROM MESSAGES;
+
+
+
+
+
+
+CREATE TABLE UserDetails (
+userLoginId INT auto_increment not null,
+userLoginName varchar(30) not null,
+passcode varchar(500) not null,
+salt varchar(6) not null,
+businessName VARCHAR(100) not null ,
+businessAdminEmail VARCHAR(100) not null ,
+merchantId LONG,
+primary key (userLoginId));
+ 
+insert into userDetails (userLoginName, passcode, salt, businessName, businessAdminEmail, merchantId) values  
+('test_user',  SHA1(concat("123456", "password")) , "123456" , 'TestBusiness',  'Test@Business.com',  123456789);
+
+select * from userdetails;
+
+
+
+
+
+
+-- Create the "loans" table
+CREATE TABLE loans (
+loanID INT  AUTO_INCREMENT,
+loanStatus VARCHAR(10),
+amount DOUBLE(10, 2),
+interest DOUBLE(5, 2),
+userLoginId INT,
+loanDate DATE,
+FOREIGN KEY (userLoginId) REFERENCES UserDetails(userLoginId),
+PRIMARY KEY (loanID));
+
+-- Insert sample values into the "loans" table
+INSERT INTO loans (loanStatus, amount, interest, userLoginId, loanDate)
+VALUES
+('approved', 5000.00, 0.05, 1, '2023-07-01');
+
+SELECT * FROM LOANS;
+
+
+
+
+
+
+-- DROP TABLE Transactions;
+CREATE TABLE Transactions (
+transactionId INT AUTO_INCREMENT,
+loanId INT,
+amount DOUBLE,
+transactionDate DATE,
+PRIMARY KEY (transactionId),
+FOREIGN KEY (loanID) REFERENCES Loans(loanID));
+  
+INSERT INTO Transactions (loanId, amount, transactionDate) VALUES
+(1, 10000, "2023-06-01");
+
+SELECT * FROM TRANSACTIONS;
+
+
+
+
+
+
+CREATE TABLE loanDeductions (
+loanDeductionId INT auto_increment, 
+loanId INT,
+interestDeductionId INT,
+PRIMARY KEY (loanDeductionId),
+FOREIGN KEY (loanId) REFERENCES Loans(loanId),
+FOREIGN KEY (interestDeductionId) REFERENCES InterestDeductions(interestDeductionId)
+);
+
+INSERT INTO loanDeductions VALUES
+(1, 1, 1), 
+(2, 1, 2), 
+(3, 1, 3); 
+  
+SELECT * FROM LOANDEDUCTIONS;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -- create table UserLogin (
 -- userLoginId int not null auto_increment,
@@ -27,43 +164,6 @@ CREATE DATABASE ProjectProsperLend;
 
 
 -- select * from UserLogin;
-
-
-
-create table InterestDeductions (
-interestDeductionId int auto_increment,
-items varchar(50) not null,
-deductionAmount double,
-PRIMARY KEY (interestDeductionId));
-
-
-insert into InterestDeductions (items, deductionAmount) values  
-("Carbon neutral", 1),
-("Diversity", 1),
-("Equity", 1),
-("Community Outreach", 1),
-("Ethically Sourced", 1);
-
-select * from InterestDeductions;
-
-
-
--- DROP TABLE Messages;
-CREATE TABLE Messages (
-  messageId INT AUTO_INCREMENT,
-  userEmail VARCHAR(100),
-  userName VARCHAR(100),
-  message VARCHAR(255),
-  CONSTRAINT PK_messageId PRIMARY KEY (messageId));
-  
-  insert into messages(userEmail, username, message) values 
-  ("Email@email.com", "MyName", "Test"),
-  ("Email2@email.com", "MyName2", "Test2");
-  
-  SELECT * FROM MESSAGES;
-
-
-
 -- CREATE TABLE Businesses (
 -- businessId INT AUTO_INCREMENT not null,
 -- userLoginId INT not null,
@@ -81,94 +181,7 @@ CREATE TABLE Messages (
 --     (1, 'Sustainable Harvest Co.', 'admin@sustainableharvestco.com', 456789123);
 
 -- SELECT * FROM BUSINESSES;
-
-
-CREATE TABLE UserDetails (
- userLoginId INT  auto_increment not null,
- userLoginName varchar(30) not null,
- passcode varchar(500) not null,
- businessName VARCHAR(100) not null ,
- businessAdminEmail VARCHAR(100) not null ,
- merchantId LONG,
- primary key (userLoginId)
- );
- 
- insert into userDetails (userLoginName, passcode, businessName, businessAdminEmail, merchantId) values 
- 
- ('Test',  'password' , 'TestBusiness',  'Test@Business.com',  123456789);
- 
- select * from userdetails;
-
-
--- Create the "loans" table
-CREATE TABLE loans (
-  loanID INT  AUTO_INCREMENT,
-  loanStatus VARCHAR(10),
-  amount DOUBLE(10, 2),
-  interest DOUBLE(5, 2),
-  userLoginId INT,
-  loanDate DATE,
-  FOREIGN KEY (userLoginId) REFERENCES UserDetails(userLoginId),
-  PRIMARY KEY (loanID)
-);
-
--- Insert sample values into the "loans" table
-INSERT INTO loans (loanStatus, amount, interest, userLoginId, loanDate)
-VALUES
-  ('approved', 5000.00, 0.05, 1, '2023-07-01');
  --  ('approved', 10000.00, 0.06, 2, '2023-07-05'),
 --   ('declined', 2000.00, 0.04, 3, '2023-07-08');
-
-SELECT * FROM LOANS;
-
-
-
--- DROP TABLE Transactions;
-CREATE TABLE Transactions (
-  transactionId INT AUTO_INCREMENT,
-  loanId INT,
-  amount DOUBLE,
-  transactionDate DATE,
-  PRIMARY KEY (transactionId),
-  FOREIGN KEY (loanID) REFERENCES Loans(loanID));
-  
-  INSERT INTO Transactions (loanId, amount, transactionDate) VALUES
-(1, 10000, "2023-06-01");
 -- (2, 5000, "2021-07-01"),
 -- (3, 1300, "2023-07-01");
-
-SELECT * FROM TRANSACTIONS;
-
-
-
-drop table loanDeductions;
-CREATE TABLE loanDeductions (
-
-  loanDeductionId INT auto_increment, 
-
-  loanDeductionId int,
-
-  loanId INT,
-  interestDeductionId INT,
-  PRIMARY KEY (loanDeductionId),
-  FOREIGN KEY (loanId) REFERENCES Loans(loanId),
-  FOREIGN KEY (interestDeductionId) REFERENCES InterestDeductions(interestDeductionId)
-);
-
-
-INSERT INTO loanDeductions
-VALUES
-
-  (1, 1);
- --  (2, 2), 
---   (3, 3); 
---   
---   SELECT * FROM LOANDEDUCTIONS;
-
-  (1, 1001, 1), 
-  (2, 1002, 2), 
-  (3, 1003, 3); 
-  
-SELECT * FROM LOANDEDUCTIONS;
-
-
