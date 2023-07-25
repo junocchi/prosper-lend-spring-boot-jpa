@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Prosper Lend - My Loans</title>
+	<link th:href="@{/styles/main.css}" rel="stylesheet">
+</head> 
+<style>
+	#above-text {
+		text-align: center;
+		color: #3C1263;
+	}
+	
+	table {
+		border-collapse: separate;  
+		border-spacing: 0 10px; 
+	}
+	
+	th {
+		color: white;
+		opacity: 0;
+	}
+	
+	td {
+  		border-radius: 10px 10px 10px 10px;
+  		background-color: white;
+  		width: 600px;
+  		padding: 20px;
+	}
+	
+	#payment {
+		color: #6FC378;
+		font-size: 1.2em;
+	}
+	
+	p {
+    	display: inline;
+	}
+	
+	.clock {
+		height: 12px;
+	}
+	
+	#small-text {
+		font-size: 0.8em;
+	}
+	
+	a {
+		text-decoration: none;
+		color: #449850;
+		font-weight: bold;
+	}
+	
+	a:hover {
+  		color: #804BA4;
+  		background-color: #F5F5F5;
+  		text-decoration: none;
+  		font-weight: bold;
+	}
+
+</style>
+<body>
+<header>
+	<img src="../images/prosper-logo.png" alt="Logo" class="logo">
+	<h1>Prosper Lend</h1>
+	<div class="dropdown">
+		<img th:src="@{../images/menu1.svg}" class="dropbtn">
+
+		<div class="dropdown-content">
+			<a href="#">Link 1</a>
+			<a href="#">Link 2</a>
+			<a href="#">Link 3</a>
+   		</div>
+   </div>
+</header>
+
+<div id="above-text">
+	<h2>My Loans</h2>
+</div>
+
+<div id="content">
+	<div id="column">
+	<table>
+		<tr>
+			<th> Payment </th>
+		</tr>
+		
+		<tr th:each="loan : ${loanList}">
+			<td> <p id="payment">Loan </p><p th:text="${loan.loanCount}" id="payment"></p><br>
+			
+				<img th:src="@{../images/clock-icon.svg}" alt="clock" class="clock"><p th:text="${loan.time}" class="small-text"></p>
+				 <p class="small-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+				 <p th:style="${loan.status == 'Completed' ? 'color: #63B83F;' : 'color: #FBAE17;'}" th:text="${loan.status}" class="small-text"></p><br><br>
+				 
+				 Amount borrowed: <p th:text="${loan.borrowAmount}"></p><br>
+				 Amount to repay: <p th:text="${loan.repayAmount}"></p><br>
+				 Start date: <p th:text="${loan.loanDate}"></p><br>
+				 Interest deduction: <p th:text="${loan.deduction}"></p><br>
+				 Final interest rate: <p th:text="${loan.interest}"></p><br>
+				 Balance: <p th:text="${loan.balance}"></p><br><br>
+				 
+				 <a href="/">Payment History</a>
+			</td>
+		</tr>
+	</table>
+	</div>
+</div>
+	
+</body>
+
+</html>

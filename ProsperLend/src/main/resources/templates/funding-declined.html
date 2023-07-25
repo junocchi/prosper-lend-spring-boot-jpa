@@ -21,22 +21,12 @@
       font-weight: bold;
     }
 
-    #table-row {
-      justify-content: space-between;
+    #table-footer {
       text-align: center;
-      font-size: 1.2em;
-      width: 90%;
-      color: #370466;
+      align-items: center; /* Center items horizontally */
+      justify-content: center; /* Center items vertically */
     }
 
-    .logo-policies {
-      height: 90px;
-      margin-top: -25px;
-    }
-
-    .contact-button {
-      margin-top: 20px;
-    }
   </style>
 </head>
 
@@ -58,6 +48,7 @@
   </header>
 
   <div id="content">
+
     <div id="column-1">
       <p id="funding-approved">
         Funding request declined
@@ -69,8 +60,31 @@
         financial needs.
       </p>
       <button class="contact-button" type="button" onclick="redirectToURL('https://knoops.co.uk');">Contact us</button>
+      <br />
+      <br />
+      <hr>
+      <footer>
+        <table id="table-footer">
+          <tr>
+            <td></td>
+            <td>
+              <p>Follow Us:</p>
+            </td>
+          </tr>
+          <tr>
+            <td><img src="../static/images/threads.png" class="footer-buttons" /></td>
+            <td><img src="../static/images/linkedin.png" class="footer-buttons" /></td>
+            <td><img src="../static/images/insta.png" class="footer-buttons" /></td>
+          </tr>
+          <tr>
+            <td><br /><br /></td>
+            <td><br /><br /></td>
+            <td><br /><br /></td>
+          </tr>
+        </table>
+      </footer>
     </div>
-
+  </div>
 </body>
 
 </html>
