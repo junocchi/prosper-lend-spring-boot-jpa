@@ -36,7 +36,6 @@ public class BusinessController {
 	        modelAndView.addObject("message", "business with ID " + businessId + " does not exist");
 	        modelAndView.setViewName("Output.html");
 	    }
-
 	    return modelAndView;
 	}
 
