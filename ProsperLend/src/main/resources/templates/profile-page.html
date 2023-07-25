@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://thymeleaf.org">
 
 <head>
     <meta charset="ISO-8859-1">
     <title>login-page</title>
 
-    <link rel="stylesheet" href="../static/styles/profile-page.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link th:href="@{/styles/profile-page.css}" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
-    <img src="../static/images/givers-logo.png" alt="pic" class="pic">
+    <img src="../images/givers-logo.png" alt="pic" class="pic">
     <header>
-        <img src="../static/images/prosper-logo.png" alt="Logo" class="logo">
+        <img src="../images/prosper-logo.png" alt="Logo" class="logo">
         <h1>Prosper Lend</h1>
 
         <div class="dropdown">
-            <img src="../static/images/user-photo.png" class="dropbtn">
+            <img src="../images/user-photo.png" class="dropbtn">
 
             <div class="dropdown-content">
                 <a href="#">Link 1</a>
@@ -32,14 +32,14 @@
             <p id="business-label">Business Name:</p>
             <div class="business-container">
                 <!-- The container is empty -->
-               <p>${business.businessName}</p>
+               <p th:text="${business.businessName}" class="email-content"></p>
             </div>
         </div>
         <div class="wrapper">
             <p id="email-label">Admin Email:</p>
             <div class="email-container">
                 <!-- The container is empty -->
-                <p>${business.businessAdminEmail}</p>
+                <p th:text="${business.businessAdminEmail}" class="email-content"></p>
             </div>
             <a href="#" class="update-button">Update</a>
         </div>
@@ -47,7 +47,7 @@
             <p id="name-label">Login Name:</p>
             <div class="name-container">
                 <!-- The container is empty -->
-             <p>${business.userLogin.userLoginName}</p>  
+            
             </div>
             <a href="#" class="update-button">Update</a>
         </div>
@@ -62,14 +62,13 @@
             <p id="ID-label">Merchant ID:</p>
             <div class="ID-container">
                 <!-- The container is empty -->
-                <p> ${business.merchantId}</p>
+                <p th:text="${business.merchantId}" class="email-content"></p>
             </div>
         </div>
     </div>
     <div id="column-2">
-        <img src="../static/images/givers-logo.png" alt="pic" class="pic">
         <div id="contact-us">
-            <button class="contact-button" type="button" onclick="redirectToURL('https://knoops.co.uk');">Contact us
+            <button class="contact-button" type="button" href="./contact-us">Contact us
             </button>
         </div>
     </div>
