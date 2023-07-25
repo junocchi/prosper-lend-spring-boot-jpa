@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>sign-up-page</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{../static/styles/login-page.css}">
+
+
+</head>
+<body>
+<img src="../static/images/all-policies.png" alt="pic" class="pic">
+
+<div class="container">
+
+    <h2 class="welcome-heading">Register your business</h2>
+    
+    <form action="#" th:action="@{./saveBusiness}" th:object="${business}" method="post">
+    
+    <div class="input-container">
+        <input type="text" placeholder="Buisness Name" th:field="*{businessName}">
+    </div>
+    <div class="input-container">
+        <input type="text" placeholder="Buisness Email" th:field="*{businessAdminEmail}">
+    </div>
+     <div class="input-container">
+        <input type="text" placeholder="Merchant Id" th:field="*{merchantId}">
+    </div>
+    <button class="sign-up-button">Next</button>
+    <div class="login-in-link">
+        Already have an account? <a href="#"> Login </a>
+    </div>
+    </form>
+</div>
+
+<img src="../static/images/prosper-logo.png" alt="logo" class="logo">
+
+</body>
+</html>

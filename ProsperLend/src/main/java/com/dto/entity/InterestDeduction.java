@@ -6,13 +6,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="InterestDeductions")
+
+
 public class InterestDeduction { 
 	@Id
+
 	private int interestDeductionId;
 	private String items;
-	private double deductionAmount;
+	private Double deductionAmount;
 	
-	public InterestDeduction(int interestDeductionId, String items, double deductionAmount) {
+	public InterestDeduction(int interestDeductionId, String items, Double deductionAmount) {
 		super();
 		this.interestDeductionId = interestDeductionId;
 		this.items = items;
@@ -39,11 +42,11 @@ public class InterestDeduction {
 		this.items = items;
 	}
 
-	public double getDeductionAmount() {
+	public Double getDeductionAmount() {
 		return deductionAmount;
 	}
 
-	public void setDeductionAmount(double deductionAmount) {
+	public void setDeductionAmount(Double deductionAmount) {
 		this.deductionAmount = deductionAmount;
 	}
 

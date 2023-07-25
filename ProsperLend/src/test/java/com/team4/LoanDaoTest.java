@@ -12,14 +12,17 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.test.context.ActiveProfiles;
 
+
 import com.dto.entity.Loans;
-import com.dto.entity.Transaction;
+
+import com.dto.entity.UserDetails;
 
 import com.model.persistence.LoanDao;
-import com.model.persistence.TransactionDao;
+
+import com.model.persistence.UserDetailsDao;
 
 import java.sql.Date;
 
@@ -31,8 +34,10 @@ class LoanDaoTest {
 	
 	@Autowired
 	private LoanDao dao;
+
 	@Autowired
-	private TransactionDao dao2;
+	private UserDetailsDao dao2;
+	
 	
 	
 	
@@ -40,7 +45,9 @@ class LoanDaoTest {
     @DisplayName("Test for getting all Loans")
     public void ReturnAllLoansTests01() {
         List<Loans> loansList = dao.findAll();
+        System.out.print(loansList.toString());
         assertNotNull(loansList);
+        
         
     }
 	
@@ -48,7 +55,7 @@ class LoanDaoTest {
 	@Test
     @DisplayName("Test for getting Loan by ID")
     public void ReturnLoanByIDTest() {
-        Optional<Loans> loan = dao.findById(1);
+		Loans loan = dao.findById(1).orElse(null);
         assertNotNull(loan);
         
     }
@@ -57,7 +64,7 @@ class LoanDaoTest {
 	@Test
     @DisplayName("Test for getting Loan by ID that doesn't exist")
     public void ReturnLoanByIDTest02() {
-        Optional<Loans> loan = dao.findById(999);
+		Loans loan = dao.findById(14).orElse(null);
         assertNull(loan);
         
     }
@@ -65,27 +72,56 @@ class LoanDaoTest {
 	
 	   @Test
 	   @DisplayName("Test if Loan is added sucessfully")
-	   public void AddLocation01() {
-	   List <Transaction> transactions = new ArrayList <Transaction>();
-	   Optional<Transaction> transaction = dao2.findById(1);
-	   if(transaction.isPresent()){
-		   transactions.add(transaction.get());
-		}
+	   public void AddLoanTest() {
+	   UserDetails user = dao2.findById(1).orElse(null);
+	   System.out.println(user);
 	   long millis=System.currentTimeMillis();  
-       int loanID = 1021;
        Double amount = 256742.4;
+       String loanStatus = "Pending";
        Double interest = 0.6;
-       int businessID = 101;
-       Date date=new java.sql.Date(millis);  
+       int userID = user.getUserLoginId();
+       Date loanDate=new java.sql.Date(millis); 
+       
+        
+       
+       
 		    
-		    int result = dao.addLoan(loanID, amount, interest, businessID, date, transactions);
+	   int result = dao.addLoan(loanStatus, amount, interest, userID, loanDate);
 
 			  
 		    assertEquals(1, result);
 		  }
 	   
-	
-	
-	
+	   
+	   
 
+	   @Test
+	   @DisplayName("Test if Loan is deleted sucessfully")
+	   public void DeleteLoanTest() {   
+	   dao.deleteById(4);
+	   Loans loan = dao.findById(2).orElse(null);
+	   assertNull(loan);
+	  
+	   
+	   }
+	   
+	   
+	   @Test
+	   @DisplayName("Test if Loan is updated sucessfully")
+	   public void UpdateLoanTest() { 
+		   
+	   int loanId = 2;
+	   double amount = 400.25;
+	   double interest = 0.5;
+	   
+	   int result = dao.updateLoansAmountById(loanId, amount, interest);
+	    
+	    
+		   assertEquals(1, result);
+		   
+		   
+		   
+	   }
+			
+	   
 }

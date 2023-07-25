@@ -9,8 +9,11 @@ public interface TransactionService {
 	// As admin we can
 	public List<Transaction> getAllTransactions();
 
-	public Transaction insertNewTransaction(Transaction transaction);
+	public boolean insertNewTransaction(Transaction transaction);
 
 	// As admin and business user we can
-	public Transaction searchTransactionById(int transactionId);
+
+	Transaction getTransactionById(int transactionId);
+
+	boolean changeAmount(int transactionId, double newAmount);
 }

@@ -1,39 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="ISO-8859-1">
 	<title>sign-up-page</title>
 
-	<link rel="stylesheet" href="../static/styles/sign-up-page.css">
+<link rel="stylesheet" th:href="@{/styles/sign-up-page.css}" />
+
+<link rel="stylesheet" href="/styles/sign-up-page.css">
 </head>
 <body>
-<img src="../static/images/all-policies.png" alt="pic" class="pic">
+<img th:src="@{/images/all-policies.png}" alt="pic" class="pic">
+
+<img src="/static/images/all-policies.png" alt="pic" class="pic">
 
 <div class="container">
     <h2 class="welcome-heading">Sign Up</h2>
+    
+    <form action="./saveUser" method="post">
     <div class="input-container">
-        <input type="text" placeholder="Login Name">
+        <input type="text" placeholder="Login Name"  name="userLoginName" required>
     </div>
     <div class="input-container">
-        <input type="business name" placeholder="Business Name">
+        <input type="text" placeholder="password" name="passcode" required>
     </div>
     <div class="input-container">
-        <input type="email" placeholder=" Admin Email">
+        <input type="text" placeholder="businessName"  name = "businessName" required>
     </div>
     <div class="input-container">
-        <input type="ID" placeholder="Merchant ID">
+        <input type="text" placeholder=" Admin Email" name="businessAdminEmail" required>
     </div>
     <div class="input-container">
-        <input type="password" placeholder="Password">
+        <input type="text" placeholder="Merchant ID" name="merchantId" required>
     </div>
-    <div class="input-container">
-        <input type="password" placeholder="Confirm Password">
-    </div>
-    <button class="sign-up-button">Sign Up</button>
+     <button class="sign-up-button">Sign Up</button>
+     
+    
+    </form>
+    
     <div class="login-in-link">
         Already have an account? <a href="#"> Login </a>
+        <h2 th:text="${message}"></h2>
     </div>
 </div>
+
+
+<img th:src="@{/images/prosper-logo.png}" alt="logo" class="logo">
 
 <img src="../static/images/prosper-logo.png" alt="logo" class="logo">
 

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.dto.entity.Transaction;
 import com.model.persistence.TransactionDao;
 
@@ -13,7 +14,16 @@ public class TransactionServiceImpl implements TransactionService {
 
 	@Autowired
 	private TransactionDao transactionDao;
+	
+	
 
+	@Override
+	public Transaction getTransactionById(int transactionId) {
+		return transactionDao.findById(transactionId).orElse(null);
+	}
+	
+	
+	
 	@Override
 	public List<Transaction> getAllTransactions() {
 		// TODO Auto-generated method stub
@@ -21,17 +31,31 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Override
-	public Transaction insertNewTransaction(Transaction transaction) {
-		if (searchTransactionById(transaction.getTransactionId()) == null)
-			return transactionDao.save(transaction);
-		else
-			return null;
+	public boolean insertNewTransaction(Transaction transaction) {
+		try {
+			if(transactionDao.addTransaction( 
+					transaction.getLoan().getLoanID(), transaction.getAmount(),
+					transaction.getTransactionDate())>0)
+				return true;
+			}
+			catch(Exception ex) {
+				return false;
+			}
+			return false;
 	}
+
 
 	@Override
-	public Transaction searchTransactionById(int transactionId) {
-		Transaction transaction = transactionDao.findById(transactionId).orElse(null);
-		return transaction;
+	public boolean changeAmount(int transactionId, double newAmount) {
+		
+		if(transactionDao.updateAmount(transactionId, transactionId)>0)
+			return true;
+		else
+			return false;
 	}
 
+	
 }
+
+
+

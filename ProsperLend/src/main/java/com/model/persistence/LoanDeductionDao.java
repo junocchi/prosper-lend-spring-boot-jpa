@@ -1,5 +1,7 @@
 package com.model.persistence;
 
+import java.sql.Date;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,8 +16,21 @@ import com.dto.entity.LoanDeduction;
 
 public interface LoanDeductionDao extends JpaRepository <LoanDeduction, Integer>{
 
+
+	
+
+	
+	
+	@Modifying
+	@Query(value = "insert into LOANDEDUCTIONS (loanId, interestDeductionId) VALUES (loanId, interestDeductionId)",nativeQuery = true)
+	int addLoanDeduction(int loanId, int interestDeductionId);
+	
+	
+	
+
 	@Modifying
 	@Query(value = "insert into LOANDEDUCTIONS values(?,?,?)",nativeQuery = true)
 	int insertDeduction(int loanDeductionId,int loanId,int interestDeductionId);
+
 	
 }

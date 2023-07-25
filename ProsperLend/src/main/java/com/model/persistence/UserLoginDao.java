@@ -10,15 +10,16 @@ import org.springframework.stereotype.Repository;
 
 import com.dto.entity.UserLogin;
 
+@Transactional
 @Repository
 public interface UserLoginDao extends JpaRepository<UserLogin, Integer>{
 
-	@Transactional
-	@Modifying
-	@Query(nativeQuery = true,value = "insert into userlogin (userLoginName, passcode, salt, userRole) values(?, SHA1(concat(?,?), ?, ?)")
-	public int insertUserLoginData(String username, String salt1, String passcode, String salt, String role);
 	
-	@Transactional
+	@Modifying
+	@Query(value = "insert into userlogin (userLoginName, passcode) values (?, ?)", nativeQuery = true)
+	public int insertUserLoginData(String userLoginName, String passcode);
+	
+	
 	@Modifying
 	@Query(nativeQuery = true,value = "update userlogin set passcode = SHA1(concat(?,?)) where userLoginId=?")
 	public int updatePassword(String salt1, String passcode,int userLoginId);

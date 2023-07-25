@@ -2,30 +2,46 @@ package com.dto.entity;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "Transactions")
 public class Transaction {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int transactionId;
-	private int loanId;
-	private double amount;
+	
+	 @ManyToOne
+	 private Loans loan;
+	 
+	 
+  
+	private Double amount;
+	
 	private Date transactionDate;
+	
 
 	public Transaction() {
 		super();
 	}
 
-	public Transaction(int transactionId, int loanId, double amount, Date transactionDate) {
+	public Transaction(int transactionId, Loans loan, Double amount, Date transactionDate) {
 		super();
 		this.transactionId = transactionId;
-		this.loanId = loanId;
 		this.amount = amount;
 		this.transactionDate = transactionDate;
+		this.loan = loan;
 	}
 
 	public int getTransactionId() {
@@ -36,19 +52,12 @@ public class Transaction {
 		this.transactionId = transactionId;
 	}
 
-	public int getLoanId() {
-		return loanId;
-	}
-
-	public void setLoanId(int loanId) {
-		this.loanId = loanId;
-	}
 
 	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 
@@ -59,11 +68,13 @@ public class Transaction {
 	public void setTransactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
 	}
+	
+	public Loans getLoan() {
+		return loan;
+	}
 
-	@Override
-	public String toString() {
-		return "Transaction [transactionId = " + transactionId + ", loanId = " + loanId + ", amount = " + amount
-				+ ", transactionDate = " + transactionDate + "]";
+	public void setLoan(Loans loan) {
+		this.loan = loan;
 	}
 
 	

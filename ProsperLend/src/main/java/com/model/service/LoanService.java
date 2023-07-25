@@ -14,6 +14,8 @@ public interface LoanService {
 
 	boolean changeAmountInterest(int loanId, Double newAmount, Double newInterest);
 
+	boolean deleteLoanById(int loanId);
+
 	
 	
 	

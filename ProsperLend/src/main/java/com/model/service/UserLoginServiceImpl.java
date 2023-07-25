@@ -15,11 +15,18 @@ public class UserLoginServiceImpl implements UserLoginService {
 	private UserLoginDao dao;
 
 	@Override  
-	public UserLogin addUser(UserLogin user) {
-		dao.insertUserLoginData(user.getUserLoginName(), user.getSalt(),
-				user.getPasscode(), user.getSalt(), user.getUserRole());
-		return getUserByUsername(user.getUserLoginName());
-	}
+	public boolean addUser(UserLogin user) {
+		try {
+    		if (dao.insertUserLoginData(user.getUserLoginName(),
+				user.getPasscode()) > 0)
+    			
+    			return true;
+		}
+		catch(Exception ex) {
+			return false;
+		}
+		return false;
+}
 
 	@Override
 	public UserLogin getUserById(int id) {
