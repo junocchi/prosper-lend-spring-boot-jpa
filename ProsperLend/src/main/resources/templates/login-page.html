@@ -7,26 +7,26 @@
 	<link rel="stylesheet" th:href="@{/styles/login-page.css}">
 </head>
 <body>
-<img src="../static/images/all-policies.png" alt="pic" class="pic">
+<img src="../images/all-policies.png" alt="pic" class="pic">
 
-<div class="container">
+<form class="container" id="login-details" action="#" th:action="@{/test/login}" type="text" method="post">
     <h2 class="welcome-heading">Welcome to Prosper Lend!</h2>
     <div class="input-container">
-        <input type="text" placeholder="Username">
+        <input type="text" th:placeholder="Username" th:name="username">
     </div>
     <div class="input-container">
-        <input type="password" placeholder="Password">
+        <input type="password" th:placeholder="Password" th:name="password">
     </div>
-    <button class="login-button">Login</button>
+    <button class="login-button" type="submit" form="login-details">Login</button>
     <div class="signup-link">
         Don't have an account? <a href="/sign-up">Sign up</a>
     </div>
-    <div class="error-message">
+    <div class="error-message" style="margin-top: -9px;">
         <p th:text="${message}"></p>
     </div>
-</div>
+</form>
 
-<img src="../static/images/prosper-logo.png" alt="logo" class="logo">
+<img src="../images/prosper-logo.png" alt="logo" class="logo">
 
 </body>
 </html>

@@ -20,7 +20,8 @@ public class BusinessController {
 	@RequestMapping("/profile-page")
 	public ModelAndView searchBusinessByIdController(@ModelAttribute("business") Business business) {
 	    ModelAndView modelAndView = new ModelAndView();
-	    
+	    return null;
+	}
 	    
 
 
