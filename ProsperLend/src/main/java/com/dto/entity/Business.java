@@ -11,7 +11,8 @@ public class Business {
     private int businessId;
 
     @JoinColumn(name = "userLoginId")
-    private int userLoginId;
+    @OneToOne
+    private UserLogin userLoginId;
 
     @Column(name = "businessName")
     private String businessName;
@@ -22,7 +23,7 @@ public class Business {
     @Column(name = "merchantId")
     private Long merchantId;
 
-	public Business(int businessId, int userLoginId, String businessName, String businessAdminEmail,
+	public Business(int businessId, UserLogin userLoginId, String businessName, String businessAdminEmail,
 			Long merchantId) {
 		super();
 		this.businessId = businessId;
@@ -44,11 +45,11 @@ public class Business {
 		this.businessId = businessId;
 	}
 
-	public int getUserLoginId() {
+	public UserLogin getUserLoginId() {
 		return userLoginId;
 	}
 
-	public void setUserLoginId(int userLoginId) {
+	public void setUserLoginId(UserLogin userLoginId) {
 		this.userLoginId = userLoginId;
 	}
 
@@ -59,7 +60,6 @@ public class Business {
 	public void setBusinessName(String businessName) {
 		this.businessName = businessName;
 	}
-
 
 	public String getBusinessAdminEmail() {
 		return businessAdminEmail;
@@ -84,6 +84,4 @@ public class Business {
 	}
 
 
-
- 
 }

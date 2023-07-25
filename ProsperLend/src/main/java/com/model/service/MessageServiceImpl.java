@@ -27,11 +27,19 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public Message insertNewMessage(Message message) {
-		if (searchMessageById(message.getMessageId()) == null)
-			return messageDao.save(message);
-		else
-			return null;
+	public boolean insertNewMessage(Message message) {
+		try {
+		if (messageDao.insertMessage(message.getMessageId(), message.getUserEmail(), message.getUserName(), message.getMessage())>0)
+			
+			return true;
+		}
+		catch(Exception ex) {
+			System.out.println(ex);
+			return false;
+		}
+		return false;
 	}
+	
+
 
 }
