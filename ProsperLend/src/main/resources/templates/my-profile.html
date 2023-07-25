@@ -5,26 +5,29 @@
     <meta charset="ISO-8859-1">
     <title>login-page</title>
 
-    <link th:href="@{/styles/profile-page.css}" rel="stylesheet">
+    <link th:href="@{/styles/my-profile.css}" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
     <img src="../images/givers-logo.png" alt="pic" class="pic">
-    <header>
-        <img src="../images/prosper-logo.png" alt="Logo" class="logo">
-        <h1>Prosper Lend</h1>
+   <header>
+		<a th:href="@{/}"><img th:src="@{/images/prosper-logo.png}"
+			alt="Logo" class="logo" /></a>
 
-        <div class="dropdown">
-            <img src="../images/user-photo.png" class="dropbtn">
+		<h1>Prosper Lend</h1>
+		<div class="dropdown-user-view">
+			<img th:src="@{/images/user-photo.png}" class="dropbtn-user-view" />
 
-            <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
-        </div>
-    </header>
+			<div class="dropdown-content-user-view">
+				<a th:href="@{/my-profile}">My Profile</a> <a th:href="@{/my-loans}">My
+					Loans</a> <a th:href="@{/request-funding}">Request Funding</a> <a
+					th:href="@{/about-us}">About Us</a> <a th:href="@{/login-page}">Log
+					Out</a>
+			</div>
+		</div>
+	</header>
+
     <div id="content">
         <p id="my-profile">My Profile</p>
 
