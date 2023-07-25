@@ -4,14 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.RestController;
+
 import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dto.entity.Business;
 import com.dto.entity.Message;
 import com.model.service.BusinessService;
 
-@Controller
+@RestController
 public class BusinessController {
 	
 	@Autowired
@@ -36,5 +40,3 @@ public class BusinessController {
 	    return modelAndView;
 	}
 
-
-}
