@@ -60,4 +60,11 @@ public class Transaction {
 		this.transactionDate = transactionDate;
 	}
 
+	@Override
+	public String toString() {
+		return "Transaction [transactionId = " + transactionId + ", loanId = " + loanId + ", amount = " + amount
+				+ ", transactionDate = " + transactionDate + "]";
+	}
+
+	
 }

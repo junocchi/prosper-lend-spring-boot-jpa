@@ -7,11 +7,8 @@ import javax.persistence.*;
 public class LoanDeduction {
 
     @Id
-    @JoinColumn(name = "loanId")
+    private int loanDeductionId;
     private int loanId;
-
-    @Id
-    @JoinColumn(name = "interestDeductionId")
     private int interestDeductionId;
 
 	public LoanDeduction(int loanId, int interestDeductionId) {
