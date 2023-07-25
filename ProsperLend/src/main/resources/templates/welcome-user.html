@@ -6,7 +6,6 @@
   <title>Prosper Lend - Home</title>
   <link rel="stylesheet" href="../static/styles/main.css" />
   <style>
-
     #column-1 {
       color: #370466;
       justify-content: space-between;
@@ -26,18 +25,21 @@
       margin-top: 20px;
       height: 50px;
       width: 250px;
-      background-color: white;
-      color: #3C1263;
+      background-color: #6FC378;
+      color: white;
       border-radius: 12px;
       font-size: 1.2em;
-      border-color: white;
       border-style: none;
+    }
+
+    .three-buttons:hover {
+      background-color: #ddd;
+      color: black;
     }
 
     #column-2 {
       width: 100%;
       height: auto;
-      /* background-color: yellow; */
     }
 
     #table-row {
@@ -49,9 +51,14 @@
       color: #370466;
     }
 
-    .news {
-      width: 100px;
+    #news-images {
       margin-top: 20px;
+      width: 200px;
+      height: auto;
+    }
+
+    #news-images:hover {
+      opacity: 0.7;
     }
 
     /* column 3 */
@@ -88,8 +95,6 @@
     .contact-button {
       margin-right: 20px;
     }
-    
-
   </style>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 </head>
@@ -115,7 +120,7 @@
 
     <div id="column-1">
       <p id="title">
-        Welcome to Prosper Lend - Empowering Growth, Rewarding Ethics
+        Welcome to Prosper Lend
       </p>
       <div>
         <button class="three-buttons" type="button" onclick="redirectToURL('https://knoops.co.uk');">
@@ -130,7 +135,7 @@
         <br />
         <br />
         <br />
-        <p>Latest Financial News:</p>
+        <p style="background-color: #b7b3f0; padding: 10px; color: #370466">Latest News:</p>
       </div>
     </div>
 
@@ -138,23 +143,39 @@
       <table id="table-row">
         <!-- row 1 -->
         <tr>
-          <th>Green Initiatives</th>
-          <th>Customised Solutions</th>
-          <th>Eletric Car Loan Program</th>
+          <th>Green Tech</th>
+          <th>Crypto Boom!</th>
+          <th>Ocean Cleanup</th>
         </tr>
         <!-- row 2 -->
         <tr>
-          <td id="news">News</td>
-          <td id="news">News</td>
-          <td id="news">News</td>
+          <td><a
+              href="https://onthewight.com/going-electric-green-tech-and-electric-vehicle-show-returns-entry-and-parking-free/"
+              target="_blank"><img src="../static/images/welcome-one.png" id="news-images"></a></td>
+          <td><a
+              href="https://www.forbes.com/sites/digital-assets/2023/07/23/the-skys-the-limit-crypto-now-braced-for-a-multi-trillion-wall-street-earthquake-after-bitcoin-ethereum-bnb-xrp-cardano-dogecoin-litecoin-solana-tron-and-polygon-price-boom/?sh=7e96ceef5b1b"
+              target="_blank"><img src="../static/images/welcome-two.png" id="news-images"></a></td>
+          <td><a href="https://www.bbc.co.uk/news/technology-64744926" target="_blank"><img
+                src="../static/images/welcome-three.png" id="news-images"></a></td>
         </tr>
         <!-- row 3 -->
         <tr>
-          <td id="news">News</td>
-          <td id="news">News</td>
-          <td id="news">News</td>
+          <th>Stocks Surge Up</th>
+          <th>Interest Rates</th>
+          <th>Tech IPO Soars</th>
         </tr>
-        </table>
+        <!-- row 4 -->
+        <tr>
+          <td><a
+              href="https://www.reuters.com/markets/europe/europes-stoxx-600-boosted-by-kering-uk-stocks-shine-2023-07-19/"
+              target="_blank"><img src="../static/images/welcome-four.png" id="news-images"></a></td>
+          <td><a href="https://markets.ft.com/data/bonds" target="_blank"><img src="../static/images/welcome-five.png"
+                id="news-images"></a></td>
+          <td><a
+              href="https://www.gov.uk/government/news/tech-ipos-raised-a-record-66-billion-in-2021-double-2020-figures"
+              target="_blank"><img src="../static/images/welcome-six.png" id="news-images"></a></td>
+        </tr>
+      </table>
     </div>
 
     <div id="column-3">
@@ -183,13 +204,13 @@
         Previous</button>
       <br />
       <br />
-    
 
-    <div id="line">
-      <br />
-      <br />
-			<hr>
-		</div>
+
+      <div id="line">
+        <br />
+        <br />
+        <hr>
+      </div>
     </div>
 
     <footer>
@@ -216,4 +237,5 @@
   </div>
 </body>
 </div>
+
 </html>
