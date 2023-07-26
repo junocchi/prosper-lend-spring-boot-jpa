@@ -1,83 +1,89 @@
 <!DOCTYPE html>
-<html  xmlns:th="https://thymeleaf.org">
+<html xmlns:th="https://thymeleaf.org">
+
 <head>
-	<meta charset="ISO-8859-1">
-	<title>Prosper Lend - Payment History</title>
-	<link th:href="@{/styles/main.css}" rel="stylesheet">
-</head> 
+<meta charset="ISO-8859-1" />
+<title>Prosper Lend - Home</title>
+<link th:href="@{/styles/main.css}" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 <style>
-    #above-text {
-        text-align: center;
-        color: #3C1263;
-        font-size: 100%;
-    }
+#above-text {
+	text-align: center;
+	color: #3C1263;
+	font-size: 100%;
+}
 
-    form {
-        text-align: center;
-        margin-top: 20px;
-    }
+form {
+	text-align: center;
+	margin-top: 20px;
+}
 
-    label {
-        font-size: 1.2em;
-        color: #3C1263;
-        display: block;
-        margin-bottom: 5px;
-        margin-top:100px;
-    }
+label {
+	font-size: 1.2em;
+	color: #3C1263;
+	display: block;
+	margin-bottom: 5px;
+	margin-top: 100px;
+}
 
-    input[type="email"] {
-        width: 300px; /* Adjust the width as needed */
-        height: 20px; /* Adjust the height as needed */
-        border: 2px solid #3C1263;
-        border-radius: 20px; /* Adjust the radius to make edges round */
-        padding: 10px; /* Increase padding to provide more space */
-        font-size: 1em;
-        margin-top:10px;
-        margin-left:50px;
-    }
+input[type="email"] {
+	width: 300px; /* Adjust the width as needed */
+	height: 20px; /* Adjust the height as needed */
+	border: none;
+	border-radius: 20px; /* Adjust the radius to make edges round */
+	padding: 10px; /* Increase padding to provide more space */
+	font-size: 1em;
+	margin-top: 10px;
+	margin-left: 50px;
+}
 
 .update-button:hover {
-    background-color: #45a049;
+	background-color: #ddd;
+	color: black;
 }
 
 .update-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 1em;
-    width:100px;
-    height:35px;
-    cursor:pointer;
+	background-color: #4CAF50;
+	color: white;
+	padding: 5px 10px;
+	border: none;
+	border-radius: 20px;
+	text-decoration: none;
+	font-size: 1em;
+	width: 100px;
+	height: 35px;
+	cursor: pointer;
 }
-
 </style>
+</head>
 <body>
-<header>
-	<img src="../images/prosper-logo.png" alt="Logo" class="logo">
-	<h1>Prosper Lend</h1>
-	<div class="dropdown">
-		<img th:src="@{../images/user-photo.png}" class="dropbtn">
+	<header>
+		<a th:href="@{/}"><img th:src="@{/images/prosper-logo.png}"
+			alt="Logo" class="logo" /></a>
 
-		<div class="dropdown-content">
-				<a th:href="@{/my-profile}">My Profile</a>
-				<a th:href="@{/my-loans}">My Loans</a>
-				<a th:href="@{/request-funding}">Request Funding</a>
-				<a th:href="@{/about-us}">About Us</a>
-				<a th:href="@{/log-out}">Log Out</a>
-   		</div>
-   </div>
-</header>
+		<h1>Prosper Lend</h1>
+		<div class="dropdown-user-view">
+			<img th:src="@{/images/user-photo.png}" class="dropbtn-user-view" />
+			<div class="dropdown-content-user-view">
+				<a th:href="@{/my-profile}">My Profile</a> <a th:href="@{/my-loans}">My
+					Loans</a> <a th:href="@{/request-funding}">Request Funding</a> <a
+					th:href="@{/about-us}">About Us</a> <a th:href="@{/logout}">Log
+					Out</a>
+			</div>
+		</div>
+	</header>
 
-<div id="above-text">
-	<h2>Update Email</h2>
-</div>
 
-    <form th:action="@{/update-email-message}" method="post">
-        <label for="newEmail">New Email:</label>
-        <input type="email" id="newEmail" name="newEmail" required>
-        <button type="submit" class="update-button">Update</button>
-    </form>
+	<div id="above-text">
+		<h2>Update Email</h2>
+	</div>
+
+	<form th:action="@{/update-email-message}" method="post">
+		<label for="newEmail">New Email:</label> <input type="email"
+			id="newEmail" name="newEmail" required>
+		<button type="submit" class="update-button">Update</button>
+	</form>
 </body>
 </html>

@@ -273,7 +273,6 @@ h1 {
     /* Move the logo to the left */
 }
 
-
 #contact-us {
     width: 100%;
     display: flex;
@@ -303,7 +302,7 @@ h1 {
     color: #370466;
     text-align: left;
     /* Change 'right' to 'left' */
-    width: 61%;
+    width: 100%;
     font-size: 1.2em;
     height: auto;
     font-family: arial;

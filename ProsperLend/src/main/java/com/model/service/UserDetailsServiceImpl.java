@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 			if (dao.insertUserLoginData(user.getUserLoginName(), String.valueOf(salt), user.getPasscode(),
 					String.valueOf(salt), user.getBusinessName(), user.getBusinessAdminEmail(),
-					user.getMerchantId()) > 0)
+					user.getMerchantId(), user.getImage()) > 0)
 				return true;
 		} catch (Exception ex) {
 			System.out.println("Service addUser failed.");
@@ -107,6 +107,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	        return false;
 	    }
 	}
+	
+	@Override
+	public boolean updateImage(UserDetails user) {
+	    UserDetails existingUser = dao.getUserByUsername(user.getUserLoginName());
+	    if (existingUser != null) {
+	        existingUser.setImage(user.getImage());
+	        return dao.save(existingUser) != null;
+	    } else {
+	        return false;
+	    }
+	}
+
 	
 	@Override
 	public boolean updateMerchantId(UserDetails user) {

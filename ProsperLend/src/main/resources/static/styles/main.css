@@ -159,6 +159,11 @@ h1 {
   color: black;
 }
 
+.update-button:hover {
+	background-color: #ddd;
+	color: black;
+}
+
 #column-1 {
 }
 

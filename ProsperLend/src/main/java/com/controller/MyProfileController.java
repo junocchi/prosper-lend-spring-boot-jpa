@@ -14,7 +14,6 @@ import com.dto.entity.UserDetails;
 import com.model.service.UserDetailsService;
 
 @Controller
-
 public class MyProfileController {
 
 	@Autowired
@@ -43,7 +42,7 @@ public class MyProfileController {
 	@RequestMapping("/my-profile")
 	public ModelAndView displayUserDetailsController(HttpSession session) {
 	    ModelAndView modelAndView = new ModelAndView();
-	    session.setAttribute("username", "user2");
+	    //session.setAttribute("username", "user");
 	    String username = (String) session.getAttribute("username");
 	    UserDetails userDetails = service.getUserByUsername(username);
 
@@ -72,7 +71,7 @@ public class MyProfileController {
 	
 	@PostMapping("/update-email-message")
 	public ModelAndView updateEmailController(HttpSession session, @RequestParam("newEmail") String businessAdminEmail) {
-		session.setAttribute("username", "test_user2");
+		//session.setAttribute("username", "test_user");
 		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
 		
 		userDetails.setBusinessAdminEmail(businessAdminEmail);
@@ -97,7 +96,7 @@ public class MyProfileController {
 	
 	@PostMapping("/update-name-message")
 	public ModelAndView updateNameController(HttpSession session, @RequestParam("newName") String userLoginName) {
-		session.setAttribute("username", "test_user2");
+		//session.setAttribute("username", "test_user");
 		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
 		
 		userDetails.setUserLoginName(userLoginName);
@@ -112,25 +111,47 @@ public class MyProfileController {
 		return new ModelAndView("Output", "message", message);
 	}
 	
-	@RequestMapping("/update-merchant-id")
-	public ModelAndView merchantIdUpdateController(){
-		return new ModelAndView("update-merchant-id.html");
+//	@RequestMapping("/update-merchant-id")
+//	public ModelAndView merchantIdUpdateController(){
+//		return new ModelAndView("update-merchant-id.html");
+//	}
+//	
+//	
+//	@PostMapping("/update-merchant-id-message")
+//	public ModelAndView updateMerchantIdController(HttpSession session, @RequestParam("newId") long merchantId) {
+//		//session.setAttribute("username", "test_user2");
+//		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
+//		
+//		userDetails.setMerchantId(merchantId);
+//		
+//		String message=null;
+//		
+//		if(service.updateMerchantId(userDetails))
+//			message="Merchant ID Updated";
+//		else
+//			message="Merchant ID Not Updated";
+//		
+//		return new ModelAndView("Output", "message", message);
+//	}
+	
+	@RequestMapping("/update-image")
+	public ModelAndView imageUpdateController(){
+		return new ModelAndView("update-image.html");
 	}
 	
-	
-	@PostMapping("/update-merchant-id-message")
-	public ModelAndView updateMerchantIdController(HttpSession session, @RequestParam("newId") long merchantId) {
-		session.setAttribute("username", "test_user2");
-		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
+	@PostMapping("/update-image-message")
+	public ModelAndView updateImageController(HttpSession session, @RequestParam("newImage") String userLoginName) {
+		//session.setAttribute("username", "test_user");
+		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("image") );
 		
-		userDetails.setMerchantId(merchantId);
+		userDetails.setUserLoginName(userLoginName);
 		
 		String message=null;
 		
-		if(service.updateMerchantId(userDetails))
-			message="Merchant ID Updated";
+		if(service.updateLoginName(userDetails))
+			message="Login Name Updated";
 		else
-			message="Merchant ID Not Updated";
+			message="Login Name Not Updated";
 		
 		return new ModelAndView("Output", "message", message);
 	}

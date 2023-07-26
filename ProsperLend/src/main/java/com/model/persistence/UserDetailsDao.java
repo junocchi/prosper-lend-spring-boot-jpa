@@ -14,8 +14,8 @@ import com.dto.entity.UserDetails;
 public interface UserDetailsDao extends JpaRepository<UserDetails, Integer>{
 
 	@Modifying
-	@Query(value = "insert into userDetails (userLoginName, passcode, salt, businessName, businessAdminEmail, merchantId) values (?, SHA1(concat(?,?)), ? , ? , ? , ?)", nativeQuery = true)
-	public int insertUserLoginData(String userLoginName, String salt1, String passcode, String salt, String businessName, String businessAdminEmail, Long merchantId);
+	@Query(value = "insert into userDetails (userLoginName, passcode, salt, businessName, businessAdminEmail, merchantId) values (?, SHA1(concat(?,?)), ? , ? , ? , ? , ?)", nativeQuery = true)
+	public int insertUserLoginData(String userLoginName, String salt1, String passcode, String salt, String businessName, String businessAdminEmail, Long merchantId, String image);
 	
 	@Modifying
 	@Query(nativeQuery = true,value = "update userDetails set passcode = (?) where userLoginId=?")
