@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.sql.Date;
 
 public class MyLoansObj {
-	
+	private int loanId;
 	private int loanCount;
 	private Date loanDate;
 	private String time;
@@ -15,7 +15,12 @@ public class MyLoansObj {
 	private double deduction;
 	private double interest;
 	
-	
+	public int getLoanId() {
+		return loanId;
+	}
+	public void setLoanId(int loanId) {
+		this.loanId = loanId;
+	}
 	public int getLoanCount() {
 		return loanCount;
 	}
