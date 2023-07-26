@@ -21,22 +21,47 @@ public class MyProfileController {
 	UserDetailsService service;
 
 	
+//	@RequestMapping("/my-profile")
+//	public ModelAndView DisplaUserDetailsController()
+//	// @RequestParam(value = "userLoginId", defaultValue = "1") int userLoginId)
+//	{
+//		ModelAndView modelAndView = new ModelAndView();
+//		UserDetails userDetails = service.getUserById(1);
+//		System.out.println(userDetails);
+//		if (userDetails != null) {
+//			modelAndView.addObject("userDetails", userDetails);
+//			modelAndView.setViewName("my-profile.html");
+//		}
+//		else {
+//			modelAndView.addObject("message", "user with ID " + 1 + " does not exist");
+//			modelAndView.setViewName("Output.html");
+//		}
+//		return modelAndView;
+//	}
+	
+	
 	@RequestMapping("/my-profile")
-	public ModelAndView DisplaUserDetailsController()
-	// @RequestParam(value = "userLoginId", defaultValue = "1") int userLoginId)
-	{
-		ModelAndView modelAndView = new ModelAndView();
-		UserDetails userDetails = service.getUserById(1);
-		System.out.println(userDetails);
-		if (userDetails != null) {
-			modelAndView.addObject("userDetails", userDetails);
-			modelAndView.setViewName("my-profile.html");
-		}
-		else {
-			modelAndView.addObject("message", "user with ID " + 1 + " does not exist");
-			modelAndView.setViewName("Output.html");
-		}
-		return modelAndView;
+	public ModelAndView displayUserDetailsController(HttpSession session) {
+	    ModelAndView modelAndView = new ModelAndView();
+	    session.setAttribute("username", "user2");
+	    String username = (String) session.getAttribute("username");
+	    UserDetails userDetails = service.getUserByUsername(username);
+
+	    if (userDetails != null) {
+	        UserDetails userDetailsToDisplay = new UserDetails();
+	        userDetailsToDisplay.setUserLoginName(userDetails.getUserLoginName());
+	        userDetailsToDisplay.setBusinessName(userDetails.getBusinessName());
+	        userDetailsToDisplay.setBusinessAdminEmail(userDetails.getBusinessAdminEmail());
+	        userDetailsToDisplay.setMerchantId(userDetails.getMerchantId());
+
+	        modelAndView.addObject("userDetails", userDetailsToDisplay);
+	        modelAndView.setViewName("my-profile.html");
+	    } else {
+	        modelAndView.addObject("message", "User with username " + username + " does not exist");
+	        modelAndView.setViewName("Output.html");
+	    }
+
+	    return modelAndView;
 	}
 	
 	@RequestMapping("/update-email")
