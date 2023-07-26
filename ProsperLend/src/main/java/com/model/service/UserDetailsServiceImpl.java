@@ -96,5 +96,27 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	        return false;
 	    }
 	}
+	
+	@Override
+	public boolean updateLoginName(UserDetails user) {
+	    UserDetails existingUser = dao.getUserByUsername(user.getUserLoginName());
+	    if (existingUser != null) {
+	        existingUser.setUserLoginName(user.getUserLoginName());
+	        return dao.save(existingUser) != null;
+	    } else {
+	        return false;
+	    }
+	}
+	
+	@Override
+	public boolean updateMerchantId(UserDetails user) {
+	    UserDetails existingUser = dao.getUserByUsername(user.getUserLoginName());
+	    if (existingUser != null) {
+	        existingUser.setMerchantId(user.getMerchantId());
+	        return dao.save(existingUser) != null;
+	    } else {
+	        return false;
+	    }
+	}
 }
 

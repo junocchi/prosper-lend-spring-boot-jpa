@@ -6,47 +6,51 @@
 	<link th:href="@{/styles/main.css}" rel="stylesheet">
 </head> 
 <style>
-	#above-text {
-		text-align: center;
-		color: #3C1263;
-		font-size:100%;
-	}
+    #above-text {
+        text-align: center;
+        color: #3C1263;
+        font-size: 100%;
+    }
 
-        form {
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        label {
-            font-size: 1.2em;
-            color: #3C1263;
-            display: block;
-            margin-bottom: 5px;
-        }
-        
-        input[type="email"] {
-            width: 300px;
-            height: 30px;
-            border: 2px solid #3C1263;
-            border-radius: 8px;
-            padding: 5px;
-            font-size: 1em;
-        }
-        
-        button[type="submit"] {
-            background-color: #3C1263;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 1.2em;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-        
-        button[type="submit"]:hover {
-            background-color: #370466;
-        }
+    form {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    label {
+        font-size: 1.2em;
+        color: #3C1263;
+        display: block;
+        margin-bottom: 5px;
+        margin-top:100px;
+    }
+
+    input[type="email"] {
+        width: 300px; /* Adjust the width as needed */
+        height: 20px; /* Adjust the height as needed */
+        border: 2px solid #3C1263;
+        border-radius: 20px; /* Adjust the radius to make edges round */
+        padding: 10px; /* Increase padding to provide more space */
+        font-size: 1em;
+        margin-top:10px;
+        margin-left:50px;
+    }
+
+.update-button:hover {
+    background-color: #45a049;
+}
+
+.update-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 1em;
+    width:100px;
+    height:35px;
+    cursor:pointer;
+}
 
 </style>
 <body>
@@ -54,7 +58,7 @@
 	<img src="../images/prosper-logo.png" alt="Logo" class="logo">
 	<h1>Prosper Lend</h1>
 	<div class="dropdown">
-		<img th:src="@{../images/menu1.svg}" class="dropbtn">
+		<img th:src="@{../images/user-photo.png}" class="dropbtn">
 
 		<div class="dropdown-content">
 				<a th:href="@{/my-profile}">My Profile</a>
@@ -73,7 +77,7 @@
     <form th:action="@{/update-email-message}" method="post">
         <label for="newEmail">New Email:</label>
         <input type="email" id="newEmail" name="newEmail" required>
-        <button type="submit" value="Update"></button>
+        <button type="submit" class="update-button">Update</button>
     </form>
 </body>
 </html>

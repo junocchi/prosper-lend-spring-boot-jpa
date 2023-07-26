@@ -15,4 +15,6 @@ public interface UserDetailsService {
 	public boolean updatePassword(UserDetails user);
 	public boolean matchUsernamePassword(String username, String password);
 	boolean updateEmail(UserDetails user);
+	boolean updateLoginName(UserDetails user);
+	boolean updateMerchantId(UserDetails user);
 }
