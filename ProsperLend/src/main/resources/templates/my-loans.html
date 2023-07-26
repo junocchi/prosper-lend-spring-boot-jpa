@@ -114,17 +114,17 @@ a:hover {
 							th:text="${loan.status}" class="small-text"></p>
 						<br>
 					<br> Amount borrowed:
-						<p th:text="${loan.borrowAmount}"></p>
+						<p th:text="'£' + ${loan.borrowAmount}"></p>
 						<br> Amount to repay:
-						<p th:text="${loan.repayAmount}"></p>
+						<p th:text="'£' + ${loan.repayAmount}"></p>
 						<br> Start date:
 						<p th:text="${loan.loanDate}"></p>
 						<br> Interest deduction:
-						<p th:text="${loan.deduction}"></p>
+						<p th:text="${loan.deduction} + '%'"></p>
 						<br> Final interest rate:
-						<p th:text="${loan.interest}"></p>
-						<br> Balance:
-						<p th:text="${loan.balance}"></p>
+						<p th:text="${loan.interest} + '%'"></p>
+						<br> Current balance:
+						<p th:text="'£' + ${loan.balance}"></p>
 						<br>
 					<br> <a th:href="@{/payment-history/{path}(path=${loan.loanId}) }">Payment History</a>
 					</td>
