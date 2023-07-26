@@ -23,19 +23,13 @@ import com.dto.entity.Transaction;
 @Repository
 public interface LoanDao extends JpaRepository<Loans, Integer>{
 	
-	
-	
 	@Modifying
 	@Query("update Loans set amount=amount+:am, interest=interest+:in where loanID=:id")
 	int updateLoansAmountById(@Param("id") int loanId,@Param("am") Double newAmount, @Param("in") Double newInterest);
 	
-	
 	@Modifying
 	@Query(value = "insert into LOANS (loanStatus, amount, interest, userLoginId, loanDate) VALUES (?, ?, ?, ?, ?)",nativeQuery = true)
-	int addLoan(String loanStatus, Double amount, Double interest, int userID, Date loanDate);
-	
-	
-	 
+	int addLoan(String loanStatus, Double amount, Double interest, int userID, Date loanDate); 
 	
 }
 

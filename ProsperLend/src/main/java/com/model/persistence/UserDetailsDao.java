@@ -13,13 +13,17 @@ import com.dto.entity.UserDetails;
 @Repository
 public interface UserDetailsDao extends JpaRepository<UserDetails, Integer>{
 
-	
 	@Modifying
-	@Query(value = "insert into userDetails (userLoginName, passcode, businessName, businessAdminEmail, merchantId) values (?, ? , ? , ? , ?)", nativeQuery = true)
-	public int insertUserLoginData(String userLoginName, String passcode, String businessName, String businessAdminEmail, Long merchantId);
-	
+	@Query(value = "insert into userDetails (userLoginName, passcode, salt, businessName, businessAdminEmail, merchantId) values (?, SHA1(concat(?,?)), ? , ? , ? , ?)", nativeQuery = true)
+	public int insertUserLoginData(String userLoginName, String salt1, String passcode, String salt, String businessName, String businessAdminEmail, Long merchantId);
 	
 	@Modifying
 	@Query(nativeQuery = true,value = "update userDetails set passcode = (?) where userLoginId=?")
 	public int updatePassword(String passcode,int userLoginId);
+	
+	@Query(nativeQuery = true,value = "SELECT * FROM userDetails WHERE userLoginName = ?")
+	public UserDetails getUserByUsername(String username);
+	
+	@Query(nativeQuery = true,value = "SELECT * FROM UserDetails WHERE userLoginName = ? AND passcode = SHA1(concat(salt, ?)) ")
+	public UserDetails matchUsernamePassword(String username, String password);
 }

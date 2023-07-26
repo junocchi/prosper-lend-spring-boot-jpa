@@ -9,6 +9,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 .pic {
@@ -31,14 +32,17 @@ body {
 
 .container {
   text-align: center;
-  background-color: #fff;
+  background-color: white;
   padding: 30px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  width: 300px;
-  margin: 100px 0 0 650px;
-  margin-top: 120px;
   height: 450px;
+  width: 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -225px;
+  margin-left: -150px;
 }
 
 .input-container {
