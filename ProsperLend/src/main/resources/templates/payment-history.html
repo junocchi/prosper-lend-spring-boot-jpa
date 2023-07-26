@@ -67,7 +67,7 @@
 		
 		<tr th:each="payment : ${paymentList}">
 			<td> <p id="payment">Payment </p><br><br>
-				 Amount Paid: <p th:text="${payment.amount}"></p><br>
+				 Amount Paid: <p th:text="'£' + ${payment.amount}"></p><br>
 				 Payment date: <p th:text="${payment.transactionDate}"></p>
 			</td>
 		</tr>
