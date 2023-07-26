@@ -43,17 +43,6 @@ SELECT * FROM MESSAGES;
 
 
 
--- CREATE TABLE UserDetails (
--- userLoginId INT auto_increment not null,
--- userLoginName varchar(30) not null,
--- passcode varchar(500) not null,
--- salt varchar(6) not null,
--- businessName VARCHAR(100) not null ,
--- businessAdminEmail VARCHAR(100) not null ,
--- merchantId LONG,
--- primary key (userLoginId));
-
-
 CREATE TABLE UserDetails (
 userLoginId INT auto_increment not null,
 userLoginName varchar(30) not null,
@@ -62,11 +51,11 @@ salt varchar(6) not null,
 businessName VARCHAR(100) not null ,
 businessAdminEmail VARCHAR(100) not null ,
 merchantId LONG,
-image LONGBLOB,
+image VARCHAR(100),
 primary key (userLoginId));
  
 insert into userDetails (userLoginName, passcode, salt, businessName, businessAdminEmail, merchantId, image) values  
-('test_user',  SHA1(concat("123456", "password")) , "123456" , 'TestBusiness',  'Test@Business.com',  123456789, LOAD_FILE('../images/avatar-logo.jpg'));
+('test_user',  SHA1(concat("123456", "password")) , "123456" , 'TestBusiness',  'Test@Business.com',  123456789, 'static/images/user-pictures/avatar-logo.jpg');
 
 select * from userdetails;
 
