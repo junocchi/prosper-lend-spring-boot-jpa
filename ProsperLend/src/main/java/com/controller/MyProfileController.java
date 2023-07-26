@@ -1,8 +1,12 @@
 
 package com.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,5 +38,30 @@ public class MyProfileController {
 		}
 		return modelAndView;
 	}
+	
+	@RequestMapping("/update-email")
+	public ModelAndView InputEmpDetailsPageForUpdateController(){
+		return new ModelAndView("update-email.html");
+	}
+	
+	
+	@PostMapping("/update-email-message")
+	public ModelAndView updateEmployeeSalaryController(HttpSession session, @RequestParam("newEmail") String businessAdminEmail) {
+		session.setAttribute("username", "test_user");
+		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
+		
+		userDetails.setBusinessAdminEmail(businessAdminEmail);
+		
+		String message=null;
+		
+		if(service.updateEmail(userDetails))
+			message="Email updated";
+		else
+			message="Email not updated";
+		
+		return new ModelAndView("Output", "message", message);
+	}
+
+	
 
 }

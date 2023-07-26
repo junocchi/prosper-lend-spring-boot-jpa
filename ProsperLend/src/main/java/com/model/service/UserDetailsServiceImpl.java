@@ -74,5 +74,27 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		System.out.println("Match: " + dao.matchUsernamePassword(username, password));
 		return dao.matchUsernamePassword(username, password) != null;
 	}
+	
+	
+//	@Override
+//	public boolean updateEmail(UserDetails user) {
+//		
+//		if(dao.save(user) != null)
+//			return true;
+//		else
+//			return false;
+//	}
 
+	
+	@Override
+	public boolean updateEmail(UserDetails user) {
+	    UserDetails existingUser = dao.getUserByUsername(user.getUserLoginName());
+	    if (existingUser != null) {
+	        existingUser.setBusinessAdminEmail(user.getBusinessAdminEmail());
+	        return dao.save(existingUser) != null;
+	    } else {
+	        return false;
+	    }
+	}
 }
+
