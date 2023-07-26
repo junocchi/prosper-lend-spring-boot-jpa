@@ -35,9 +35,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails getUserById(int id) {
 		UserDetails user = dao.findById(id).orElse(null);
+		System.out.println(user);
 		return user;
 	}
 
+	
+	
 	@Override
 	public UserDetails getUserByUsername(String username) {
 		return dao.getUserByUsername(username);

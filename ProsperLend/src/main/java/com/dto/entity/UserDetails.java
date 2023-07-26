@@ -65,6 +65,7 @@ public class UserDetails {
 	public void setBusinessName(String businessName) {
 		this.businessName = businessName;
 	}
+	
 	public String getBusinessAdminEmail() {
 		return businessAdminEmail;
 	}
