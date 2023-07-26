@@ -32,6 +32,7 @@
 	border-radius: 12px;
 	font-size: 1.2em;
 	border-style: none;
+	display: inline;
 }
 
 .three-buttons:hover {
@@ -102,8 +103,9 @@
 
 <body>
 	<header>
-		<img th:href="@{/styles/main.css}"
-			th:src="@{/images/prosper-logo.png}" alt="Logo" class="logo" />
+		<a th:href="@{/}"><img th:src="@{/images/prosper-logo.png}"
+			alt="Logo" class="logo" /></a>
+
 		<h1>Prosper Lend</h1>
 		<div class="dropdown-user-view">
 			<img th:src="@{/images/user-photo.png}" class="dropbtn-user-view" />
@@ -122,22 +124,26 @@
 		<div id="column-1">
 			<p id="title">Welcome to Prosper Lend</p>
 			<div>
-				<button class="three-buttons" type="button"
-					onclick="redirectToURL('https://knoops.co.uk');">Request
-					funding</button>
-				<button class="three-buttons" type="button"
-					onclick="redirectToURL('https://knoops.co.uk');">Payment
-					History</button>
-				<button class="three-buttons" type="button"
-					onclick="redirectToURL('https://knoops.co.uk');">Help and
-					FAQs</button>
+
+				<form>
+					<input class="three-buttons" type="submit" value="Request Funding"
+						formaction="/request-funding"></input> <input
+						class="three-buttons" type="submit" value="Payment History"
+						formaction="/payment-history"></input> <input
+						class="three-buttons" type="submit" value="My Loans"
+						formaction="/my-loans"></input>
+				</form>
+
 				<br /> <br /> <br />
-				<p style="background-color: #b7b3f0; padding: 10px; color: #370466">Latest
-					News:</p>
+
 			</div>
+
 		</div>
 
 		<div id="column-2">
+			<p
+				style="background-color: #b7b3f0; padding: 10px; color: #370466; text-align: center;">Latest
+				News</p>
 			<table id="table-row">
 				<!-- row 1 -->
 				<tr>
@@ -207,11 +213,12 @@
 		</div>
 
 		<div id="column-4">
-			<button class="contact-button" type="button"
-				onclick="redirectToURL('https://knoops.co.uk');">Contact Us</button>
-			<button class="previous-button" type="button"
-				onclick="redirectToURL('https://knoops.co.uk');">&laquo;
-				Previous</button>
+			<form>
+				<input class="contact-button" type="submit" value="Contact Us"
+					formaction="/contact-us"></input> <input class="previous-button"
+					type="submit" value="&laquo;Previous" formaction="/my-loans"></input>
+			</form>
+
 			<br /> <br />
 
 
@@ -230,23 +237,20 @@
 					</td>
 				</tr>
 				<tr>
-					<td><a th:href="@{https://www.threads.net/}"
-						target="_blank"><img th:src="@{/images/threads.png}"
-						class="footer-buttons" alt="Threads Icon" ></a></td>
-					<td><a th:href="@{https://www.linkedin.com/}"
-						target="_blank"><img th:src="@{/images/linkedin.png}"
-						class="footer-buttons" alt="LinkedIn Icon" ></a></td>
-					<td><a th:href="@{https://www.instagram.com/}"
-						target="_blank"><img th:src="@{/images/insta.png}" class="footer-buttons"
-						alt="Instagram Icon" ></a></td>
+					<td><a th:href="@{https://www.threads.net/}" target="_blank"><img
+							th:src="@{/images/threads.png}" class="footer-buttons"
+							alt="Threads Icon"></a></td>
+					<td><a th:href="@{https://www.linkedin.com/}" target="_blank"><img
+							th:src="@{/images/linkedin.png}" class="footer-buttons"
+							alt="LinkedIn Icon"></a></td>
+					<td><a th:href="@{https://www.instagram.com/}" target="_blank"><img
+							th:src="@{/images/insta.png}" class="footer-buttons"
+							alt="Instagram Icon"></a></td>
 				</tr>
 				<tr>
-					<td><br />
-					<br /></td>
-					<td><br />
-					<br /></td>
-					<td><br />
-					<br /></td>
+					<td><br /> <br /></td>
+					<td><br /> <br /></td>
+					<td><br /> <br /></td>
 				</tr>
 			</table>
 		</footer>

@@ -1,5 +1,0 @@
-package com.model.persistence;
-
-public interface InterestDeductionDao implements JpaRepository<InterestDeduction, Integer>{
-
-}

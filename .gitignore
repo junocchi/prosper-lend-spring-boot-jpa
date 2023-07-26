@@ -7,9 +7,7 @@ target/
 !**/src/test/**/target/
 .DS_Store
 /.metadata/
-.metadata
 .metadata/
-.metadata/.*
 .metadata/.plugins/
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
 
@@ -40,5 +38,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-## 1
