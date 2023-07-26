@@ -125,7 +125,7 @@ a:hover {
 						<br> Balance:
 						<p th:text="${loan.balance}"></p>
 						<br>
-					<br> <a href="/">Payment History</a>
+					<br> <a th:href="@{/payment-history/{path}(path=${loan.loanId}) }">Payment History</a>
 					</td>
 				</tr>
 			</table>
