@@ -1,12 +1,15 @@
 package com.model.service;
 
+import java.math.BigDecimal;
+
 public interface FundingRequestCalc {
 
 	
-	public double fundingRequest();
-	public double maxAmountCalc(double averageMonthlyIncome);
-	double NewmaxAmountCalc(double maxAmount ,double currentDebt);
-	double options(double newmaxAmount, double currentDebt);
+	
+	public BigDecimal maxAmountCalc(BigDecimal averageMonthlyIncome);
+	BigDecimal NewmaxAmountCalc(BigDecimal maxAmount ,BigDecimal currentDebt);
+	BigDecimal options(BigDecimal newmaxAmount, BigDecimal currentDebt);
+	BigDecimal fundingRequest(BigDecimal averageMonthlyIncome, BigDecimal currentDebt);
 	
 	
 }

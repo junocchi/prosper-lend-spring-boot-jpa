@@ -8,6 +8,7 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style>
+
 #column-1 {
 	color: #370466;
 	text-align: justify;
@@ -94,21 +95,26 @@
 		</div>
 	</header>
 
+
+ <form action="./InterestDeduction" method="post">
 	<div id="content">
 		<div id="column-1">
 			<p id="request-funding-text">Request funding for your business
 				now</p>
 			<div class="input-container">
 				<p>Enter business merchant ID:</p>
-				<input class="input" type="text" placeholder="Merchant ID">
+				<input class="input" type="text" placeholder="Merchant ID" name="merchantID" required>
 				<p>Enter business average monthly revenue (based on the last 6
 					months):</p>
-				<input class="input" type="text" placeholder="£10,000">
+				<input class="input" type="text" placeholder="£10,000" name="averageMonthlyIncome" required>
 			</div>
 			<p style="margin-top: 50px;">The current national interest rate
 				is 10.16%. The Prosper Lend interest rate for this request is 10%.
 				Please confirm if your company is part of the following initiatives
 				and we will check if you qualify for further interest deductions:</p>
+				
+				
+			
 
 			<table id="table-row">
 				<!-- row 1 -->
@@ -132,6 +138,7 @@
 					<td>-1%</td>
 					<td>-1%</td>
 				</tr>
+				
 				<!-- row 3 -->
 				<tr>
 					<td><img th:src="@{/images/carbon-neutral.png}"
@@ -147,46 +154,50 @@
 						alt="Ethically made logo" class="logo-policies" />
 				</tr>
 				<!-- row 4 -->
+				
 				<tr>
 					<td>
-						<div class="checkmark">
-							<input type="checkbox">
-						</div>
+						
+							<input type="checkbox" value="carbon">
+						
 					</td>
 					<td>
-						<div class="checkmark">
-							<input type="checkbox">
-						</div>
+						
+							<input type="checkbox" value="diversity">
 					</td>
 					<td>
-						<div class="checkmark">
-							<input type="checkbox">
-						</div>
+						
+							<input type="checkbox" value="equity" >
+						
 					</td>
 					<td>
-						<div class="checkmark">
-							<input type="checkbox">
-						</div>
+						
+							<input type="checkbox" value="community">
+						
 					</td>
 					<td>
-						<div class="checkmark">
-							<input type="checkbox">
-						</div>
+						
+							<input type="checkbox" value="ethically">
+					
+					
 					</td>
 				</tr>
+				
+				
+				
 				<!-- row 5 -->
 				<tr>
 					<td colspan="5">
-						<form>
-							</input> <input class="options-button"
-								type="submit" value="See funding options" formaction="/funding-options"></input>
+							 <input class="options-button"
+								type="submit" value="See funding options"></input>
 							<input class="contact-button" type="submit" value="Contact Us"
 								formaction="/contact-us">
-						</form>
 					</td>
 				</tr>
-				</div>
+				
 			</table>
+			
+			</form>
 			<footer>
 				<div id="line">
 					<hr>

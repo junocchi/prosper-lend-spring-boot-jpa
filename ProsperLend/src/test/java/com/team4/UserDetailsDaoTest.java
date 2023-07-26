@@ -16,10 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.dto.entity.UserDetails;
-import com.dto.entity.UserLogin;
 
-import com.dto.entity.UserLogin;
-import com.model.persistence.BusinessDao;
 import com.model.persistence.UserDetailsDao;
 import com.model.persistence.UserLoginDao;
 

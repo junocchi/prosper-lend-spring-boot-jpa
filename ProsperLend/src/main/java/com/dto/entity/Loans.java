@@ -1,6 +1,7 @@
 package com.dto.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
@@ -39,87 +40,106 @@ public class Loans implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int loanID;
 	private String loanStatus;
-	private Double amount;
-	private Double interest;
-	private int businessID;
+	private BigDecimal amount;
+	private BigDecimal currentDebt;
+	private BigDecimal interest;
 	private Date loanDate;
+	private int userLoginID;
 
+
+//	@OneToOne
+//	private UserDetails user;
 	
-   
 	
-	@OneToOne
-	private UserDetails user;
+	
 	
 	public Loans() {
 		super();
-	}
-	public Loans(int loanID, String loanStatus, Double amount, Double interest, UserDetails user, Date loanDate) {
-		super();
-		this.loanID = loanID;
-		this.loanStatus = loanStatus;
-		this.amount = amount;
-		this.interest = interest;
-		this.loanDate = loanDate;
-		this.user = user;
+	
 		
 	}
-	
-	
-	
-	
+
+
+	public Loans(int loanID, String loanStatus, BigDecimal amount, BigDecimal currentDebt, BigDecimal interest,
+		Date loanDate, int userLoginID) {
+	super();
+	this.loanID = loanID;
+	this.loanStatus = loanStatus;
+	this.amount = amount;
+	this.currentDebt = currentDebt;
+	this.interest = interest;
+	this.loanDate = loanDate;
+	this.userLoginID = userLoginID;
+}
+
+
 	public int getLoanID() {
 		return loanID;
 	}
+
+
 	public void setLoanID(int loanID) {
 		this.loanID = loanID;
 	}
-	
-	
-	public Double getAmount() {
-		return amount;
-	}
-	public void setAmount(Double amount) {
-		this.amount = amount;
-	}
-	public Double getInterest() {
-		return interest;
-	}
-	public void setInterest(Double interest) {
-		this.interest = interest;
-	}
-	
+
 
 	public String getLoanStatus() {
 		return loanStatus;
 	}
+
+
 	public void setLoanStatus(String loanStatus) {
 		this.loanStatus = loanStatus;
 	}
-	
-	public int getBusinessID() {
-		return businessID;
+
+
+	public BigDecimal getAmount() {
+		return amount;
 	}
-	public void setBusinessID(int businessID) {
-		this.businessID = businessID;
+
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
 	}
+
+
+	public BigDecimal getCurrentDebt() {
+		return currentDebt;
+	}
+
+
+	public void setCurrentDebt(BigDecimal currentDebt) {
+		this.currentDebt = currentDebt;
+	}
+
+
+	public BigDecimal getInterest() {
+		return interest;
+	}
+
+
+	public void setInterest(BigDecimal interest) {
+		this.interest = interest;
+	}
+
 
 	public Date getLoanDate() {
 		return loanDate;
 	}
+
+
 	public void setLoanDate(Date loanDate) {
 		this.loanDate = loanDate;
 	}
 
 
-	public UserDetails getUser() {
-		return user;
+	public int getUserLoginID() {
+		return userLoginID;
 	}
-	public void setUser(UserDetails user) {
-		this.user = user;
+
+
+	public void setUserLoginID(int userLoginID) {
+		this.userLoginID = userLoginID;
 	}
-	
-	
 	
 }
-
-

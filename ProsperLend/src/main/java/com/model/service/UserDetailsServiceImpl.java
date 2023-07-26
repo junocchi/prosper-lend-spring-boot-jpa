@@ -5,16 +5,18 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.web.client.RestTemplate;
 
 import com.dto.entity.UserDetails;
+import com.dto.entity.UserDetailsList;
 import com.model.persistence.UserDetailsDao;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	private UserDetailsDao dao;
-
+	
+	
 	@Override  
 	public boolean addUser(UserDetails user) {
 		try {
@@ -62,5 +64,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public boolean updatePassword(UserDetails user) {
 		return dao.updatePassword(user.getPasscode(), user.getUserLoginId()) > 0;
 	}
-
+	
 }

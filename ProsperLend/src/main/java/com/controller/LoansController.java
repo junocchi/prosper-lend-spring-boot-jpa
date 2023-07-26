@@ -1,6 +1,6 @@
-//package com.controller;
-//
-//import javax.servlet.http.HttpServletRequest;
+package com.controller;
+
+import javax.servlet.http.HttpServletRequest;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@
 //	@Autowired
 //	private FundingRequestCalc calc;
 //	
-//	@RequestMapping("/")
+//	@RequestMapping("/request")
 //	public ModelAndView greetController(HttpServletRequest request) {
 //		
 //		
@@ -22,7 +22,12 @@
 //		
 //		
 //		
-//		modelAndView.addObject("funding", calc.fundingRequest());
+//		if (calc.fundingRequest(1000, 342043) < 0) {
+//		
+//			
+//			
+//		}
+//		modelAndView.addObject("funding", calc.fundingRequest(1000, 342043));
 //		modelAndView.setViewName("fundingRequestTest");
 //		
 //		return modelAndView;		
@@ -30,5 +35,5 @@
 //	}
 //}
 //	
-	
+//	
 

@@ -76,15 +76,16 @@ loanID INT  AUTO_INCREMENT,
 loanStatus VARCHAR(10),
 amount DOUBLE(10, 2),
 interest DOUBLE(5, 2),
+currentDebt DOUBLE(10,2),
 userLoginId INT,
 loanDate DATE,
 FOREIGN KEY (userLoginId) REFERENCES UserDetails(userLoginId),
 PRIMARY KEY (loanID));
 
 -- Insert sample values into the "loans" table
-INSERT INTO loans (loanStatus, amount, interest, userLoginId, loanDate)
+INSERT INTO loans (loanStatus, amount, currentDebt, interest, userLoginId, loanDate)
 VALUES
-('approved', 5000.00, 0.05, 1, '2023-07-01');
+('approved', 5000.00, 25000.00, 0.05, 1, '2023-07-01');
 
 SELECT * FROM LOANS;
 

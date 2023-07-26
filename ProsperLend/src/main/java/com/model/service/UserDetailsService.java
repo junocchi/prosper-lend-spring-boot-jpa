@@ -13,4 +13,5 @@ public interface UserDetailsService {
 	public List<UserDetails> getAllUsers();
 	public boolean deleteUserById(int id);
 	public boolean updatePassword(UserDetails user);
+
 }
