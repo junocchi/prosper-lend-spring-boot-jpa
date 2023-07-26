@@ -19,13 +19,14 @@ public class UserDetails {
 	private String businessName;   
     private String businessAdminEmail; 
     private Long merchantId;
+    private String image;
     
 	public UserDetails() {
 		super();
 	}
-	
+
 	public UserDetails(int userLoginId, String userLoginName, String passcode, String salt, String businessName,
-			String businessAdminEmail, Long merchantId) {
+			String businessAdminEmail, Long merchantId, String image) {
 		super();
 		this.userLoginId = userLoginId;
 		this.userLoginName = userLoginName;
@@ -34,56 +35,80 @@ public class UserDetails {
 		this.businessName = businessName;
 		this.businessAdminEmail = businessAdminEmail;
 		this.merchantId = merchantId;
+		this.image = image;
 	}
+
 	public int getUserLoginId() {
 		return userLoginId;
 	}
+
 	public void setUserLoginId(int userLoginId) {
 		this.userLoginId = userLoginId;
 	}
+
 	public String getUserLoginName() {
 		return userLoginName;
 	}
+
 	public void setUserLoginName(String userLoginName) {
 		this.userLoginName = userLoginName;
 	}
+
 	public String getPasscode() {
 		return passcode;
 	}
+
 	public void setPasscode(String passcode) {
 		this.passcode = passcode;
 	}
+
 	public String getSalt() {
 		return salt;
 	}
+
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
+
 	public String getBusinessName() {
 		return businessName;
 	}
+
 	public void setBusinessName(String businessName) {
 		this.businessName = businessName;
 	}
-	
+
 	public String getBusinessAdminEmail() {
 		return businessAdminEmail;
 	}
+
 	public void setBusinessAdminEmail(String businessAdminEmail) {
 		this.businessAdminEmail = businessAdminEmail;
 	}
+
 	public Long getMerchantId() {
 		return merchantId;
 	}
+
 	public void setMerchantId(Long merchantId) {
 		this.merchantId = merchantId;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	@Override
 	public String toString() {
-		return "UserDetails [userLoginId = " + userLoginId + ", userLoginName = " + userLoginName + ", passcode = " + passcode
-				+ ", salt = " + salt + ", businessName = " + businessName + ", businessAdminEmail = " + businessAdminEmail
-				+ ", merchantId = " + merchantId + "]";
-	} 
+		return "UserDetails [userLoginId=" + userLoginId + ", userLoginName=" + userLoginName + ", passcode=" + passcode
+				+ ", salt=" + salt + ", businessName=" + businessName + ", businessAdminEmail=" + businessAdminEmail
+				+ ", merchantId=" + merchantId + ", image=" + image + "]";
+	}
+	
+	
 
 }
