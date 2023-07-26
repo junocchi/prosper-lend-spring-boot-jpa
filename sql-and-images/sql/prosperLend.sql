@@ -7,10 +7,6 @@ CREATE DATABASE ProjectProsperLend;
 USE ProjectProsperLend;
 
 
-
-
-
-
 create table InterestDeductions (
 interestDeductionId int auto_increment,
 items varchar(50) not null,
