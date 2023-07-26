@@ -17,4 +17,5 @@ public interface UserDetailsService {
 	boolean updateEmail(UserDetails user);
 	boolean updateLoginName(UserDetails user);
 	boolean updateMerchantId(UserDetails user);
+	boolean updateImage(UserDetails user);
 }

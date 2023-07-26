@@ -70,7 +70,7 @@ select * from userdetails;
 -- Create the "loans" table
 CREATE TABLE loans (
 loanID INT  AUTO_INCREMENT,
-loanStatus VARCHAR(10),
+loanStatus VARCHAR(15),
 amount DOUBLE(10, 2),
 interest DOUBLE(5, 2),
 userLoginId INT,
@@ -136,16 +136,6 @@ INSERT INTO loanDeductions VALUES
 (3, 1, 3); 
   
 SELECT * FROM LOANDEDUCTIONS;
-
-
-
-
-
-
-
-
-
-
 
 
 

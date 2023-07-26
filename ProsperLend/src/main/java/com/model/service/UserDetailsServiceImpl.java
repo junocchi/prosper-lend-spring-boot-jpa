@@ -109,6 +109,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 	
 	@Override
+	public boolean updateImage(UserDetails user) {
+	    UserDetails existingUser = dao.getUserByUsername(user.getUserLoginName());
+	    if (existingUser != null) {
+	        existingUser.setImage(user.getImage());
+	        return dao.save(existingUser) != null;
+	    } else {
+	        return false;
+	    }
+	}
+
+	
+	@Override
 	public boolean updateMerchantId(UserDetails user) {
 	    UserDetails existingUser = dao.getUserByUsername(user.getUserLoginName());
 	    if (existingUser != null) {
