@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Prosper Lend - Payment History</title>
+	<link th:href="@{/styles/main.css}" rel="stylesheet">
+</head> 
+<style>
+	#above-text {
+		text-align: center;
+		color: #3C1263;
+		font-size:100%;
+	}
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        label {
+            font-size: 1.2em;
+            color: #3C1263;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        input[type="email"] {
+            width: 300px;
+            height: 30px;
+            border: 2px solid #3C1263;
+            border-radius: 8px;
+            padding: 5px;
+            font-size: 1em;
+        }
+        
+        button[type="submit"] {
+            background-color: #3C1263;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #370466;
+        }
+
+</style>
+<body>
+<header>
+	<img src="../images/prosper-logo.png" alt="Logo" class="logo">
+	<h1>Prosper Lend</h1>
+	<div class="dropdown">
+		<img th:src="@{../images/menu1.svg}" class="dropbtn">
+
+		<div class="dropdown-content">
+				<a th:href="@{/my-profile}">My Profile</a>
+				<a th:href="@{/my-loans}">My Loans</a>
+				<a th:href="@{/request-funding}">Request Funding</a>
+				<a th:href="@{/about-us}">About Us</a>
+				<a th:href="@{/log-out}">Log Out</a>
+   		</div>
+   </div>
+</header>
+
+<div id="above-text">
+	<h2>Update Email</h2>
+</div>
+
+    <form th:action="@{/update-email-message}" method="post">
+        <label for="newEmail">New Email:</label>
+        <input type="email" id="newEmail" name="newEmail" required>
+        <button type="submit" value="Update"></button>
+    </form>
+</body>
+</html>

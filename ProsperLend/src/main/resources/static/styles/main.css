@@ -121,7 +121,7 @@ h1 {
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
-  height: 600px;
+  min-height: 600px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
