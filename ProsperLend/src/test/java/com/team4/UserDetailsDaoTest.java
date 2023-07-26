@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.dto.entity.UserDetails;
-import com.dto.entity.UserLogin;
+
 import com.model.persistence.UserDetailsDao;
 
 @ActiveProfiles("test")
@@ -35,6 +35,7 @@ class UserDetailsDaoTest {
 	@DisplayName("Test for getting UserLogin by ID")
 	public void ReturnUserLoginByIDTest() {
 		UserDetails Userlogin = dao.findById(1).orElse(null);
+		System.out.println(Userlogin);
 		assertNotNull(Userlogin);
 	}
 

@@ -16,10 +16,10 @@ public class Transaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int transactionId;
-	@ManyToOne
-	private Loans loan;
 	private Double amount;
 	private Date transactionDate;
+	@ManyToOne
+	private Loans loan;
 
 	public Transaction() {
 		super();
