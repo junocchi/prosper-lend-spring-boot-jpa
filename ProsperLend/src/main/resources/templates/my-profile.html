@@ -38,7 +38,7 @@
 				<!-- The container is empty -->
 				<p th:text="${userDetails.businessAdminEmail}" class="email-content"></p>
 			</div>
-			<a href="#" class="update-button">Update</a>
+			<a th:href="@{/update-email}" class="update-button">Update</a>
 		</div>
 		<div class="wrapper">
 			<p id="name-label">Login Name:</p>
@@ -46,7 +46,7 @@
 				<!-- The container is empty -->
 			<p th:text="${userDetails.userLoginName}" class="email-content"></p>
 			</div>
-			<a href="#" class="update-button">Update</a>
+			<a th:href="@{/update-name}" class="update-button">Update</a>
 		</div>
 		<div class="wrapper">
 			<p id="password-label">Password:</p>
@@ -54,7 +54,7 @@
 				<!-- The container is empty -->
 			<p class="email-content">**************</p>
 			</div>
-			<a href="#" class="update-button">Update</a>
+			
 		</div>
 		<div class="wrapper">
 			<p id="ID-label">Merchant ID:</p>
@@ -62,6 +62,7 @@
 				<!-- The container is empty -->
 				<p th:text="${userDetails.merchantId}" class="email-content"></p>
 			</div>
+			<a th:href="@{/update-merchant-id}" class="update-button">Update</a>
 		</div>
 	</div>
 	<div id="column-2">

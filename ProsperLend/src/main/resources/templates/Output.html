@@ -11,6 +11,26 @@
 		color: #3C1263;
 		margin-top:250px;
 	}
+	
+	    .back-button {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        background-color: purple;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 1.2em;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block; /* Add this to make it a block-level element */
+        margin-left:1200px;
+    }
+
+    .back-button:hover {
+        background-color:#716DC2;
+    }
 
 </style>
 <body>
@@ -18,7 +38,7 @@
 	<img src="../images/prosper-logo.png" alt="Logo" class="logo">
 	<h1>Prosper Lend</h1>
 	<div class="dropdown">
-		<img th:src="@{../images/menu1.svg}" class="dropbtn">
+		<img th:src="@{../images/user-photo.png}" class="dropbtn">
 
 		<div class="dropdown-content">
 				<a th:href="@{/my-profile}">My Profile</a>
@@ -33,7 +53,7 @@
 <div id="above-text">
 	 <h2 th:text="${message}"></h2>
 </div>
-
+<button class="back-button" onclick="location.href='/my-profile';">Back to Profile</button>
 
 </body>
 </html>

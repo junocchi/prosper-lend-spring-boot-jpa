@@ -40,14 +40,14 @@ public class MyProfileController {
 	}
 	
 	@RequestMapping("/update-email")
-	public ModelAndView InputEmpDetailsPageForUpdateController(){
+	public ModelAndView emailUpdateController(){
 		return new ModelAndView("update-email.html");
 	}
 	
 	
 	@PostMapping("/update-email-message")
-	public ModelAndView updateEmployeeSalaryController(HttpSession session, @RequestParam("newEmail") String businessAdminEmail) {
-		session.setAttribute("username", "test_user");
+	public ModelAndView updateEmailController(HttpSession session, @RequestParam("newEmail") String businessAdminEmail) {
+		session.setAttribute("username", "test_user2");
 		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
 		
 		userDetails.setBusinessAdminEmail(businessAdminEmail);
@@ -61,7 +61,54 @@ public class MyProfileController {
 		
 		return new ModelAndView("Output", "message", message);
 	}
-
+	
 	
 
+	@RequestMapping("/update-name")
+	public ModelAndView nameUpdateController(){
+		return new ModelAndView("update-login-name.html");
+	}
+
+	
+	@PostMapping("/update-name-message")
+	public ModelAndView updateNameController(HttpSession session, @RequestParam("newName") String userLoginName) {
+		session.setAttribute("username", "test_user2");
+		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
+		
+		userDetails.setUserLoginName(userLoginName);
+		
+		String message=null;
+		
+		if(service.updateLoginName(userDetails))
+			message="Login Name Updated";
+		else
+			message="Login Name Not Updated";
+		
+		return new ModelAndView("Output", "message", message);
+	}
+	
+	@RequestMapping("/update-merchant-id")
+	public ModelAndView merchantIdUpdateController(){
+		return new ModelAndView("update-merchant-id.html");
+	}
+	
+	
+	@PostMapping("/update-merchant-id-message")
+	public ModelAndView updateMerchantIdController(HttpSession session, @RequestParam("newId") long merchantId) {
+		session.setAttribute("username", "test_user2");
+		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
+		
+		userDetails.setMerchantId(merchantId);
+		
+		String message=null;
+		
+		if(service.updateMerchantId(userDetails))
+			message="Merchant ID Updated";
+		else
+			message="Merchant ID Not Updated";
+		
+		return new ModelAndView("Output", "message", message);
+	}
+	
+	
 }
