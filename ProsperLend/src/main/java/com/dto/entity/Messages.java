@@ -63,10 +63,7 @@ public class Messages {
 
 	@Override
 	public String toString() {
-		return "Message [messageId=" + messageId + ", userEmail=" + userEmail + ", userName=" + userName + ", message="
+		return "Message [messageId = " + messageId + ", userEmail = " + userEmail + ", userName = " + userName + ", message = "
 				+ message + "]";
 	}
-	
-	
-
 }
