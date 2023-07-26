@@ -14,4 +14,5 @@ public interface UserDetailsService {
 	public boolean deleteUserById(int id);
 	public boolean updatePassword(UserDetails user);
 	public boolean matchUsernamePassword(String username, String password);
+	boolean updateEmail(UserDetails user);
 }
