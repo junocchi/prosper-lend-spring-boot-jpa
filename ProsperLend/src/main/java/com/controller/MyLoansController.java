@@ -84,7 +84,7 @@ public class MyLoansController {
 	}
 
 	@RequestMapping("/payment-history/{path}")
-	public ModelAndView getAllTransactions(@PathVariable("path") String loanId) {
+	public ModelAndView getTransactionsForLoanId(@PathVariable("path") String loanId) {
 		ModelAndView modelAndView = new ModelAndView();
 		System.out.println("/payment-history/{loanId} : " + loanId);
 		int id;
@@ -97,6 +97,33 @@ public class MyLoansController {
 
 		List<Transaction> transactionList = transactionService.findAllTransactionsForLoan(id);
 
+		for (Transaction aTransaction : transactionList) {
+			aTransaction.setTransactionId(transactionList.indexOf(aTransaction) + 1);
+		}
+		
+		modelAndView.addObject("paymentList", transactionList);
+		modelAndView.setViewName("payment-history.html");
+		return modelAndView;
+	}
+	
+	@RequestMapping("/payment-history/all")
+	public ModelAndView getAllTransactions(HttpSession session) {
+		ModelAndView modelAndView = new ModelAndView();
+		List<Loans> allLoans = loansService.getAllLoans();
+		
+		UserDetails user = usersService.getUserByUsername((String)session.getAttribute("username"));
+		
+		List<Transaction> transactionList = new ArrayList<Transaction>();
+		for (Loans aLoan : allLoans) {
+			if (aLoan.getUserLoginId() == user.getUserLoginId()) {
+				transactionList.addAll(transactionService.findAllTransactionsForLoan(aLoan.getLoanID()));
+			}
+		}
+		
+		for (Transaction aTransaction : transactionList) {
+			aTransaction.setTransactionId(transactionList.indexOf(aTransaction) + 1);
+		}
+		
 		modelAndView.addObject("paymentList", transactionList);
 		modelAndView.setViewName("payment-history.html");
 		return modelAndView;
