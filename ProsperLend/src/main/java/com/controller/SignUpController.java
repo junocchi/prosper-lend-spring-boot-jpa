@@ -1,6 +1,7 @@
 package com.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class SignUpController {
 	}
 
 	@RequestMapping("/save-user")
-	public ModelAndView saveUserController(HttpServletRequest request) {
+	public ModelAndView saveUserController(HttpServletRequest request, HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
 
 		String userLoginName = request.getParameter("userLoginName");
@@ -39,13 +40,14 @@ public class SignUpController {
 
 		String message = null;
 
-		if (uService.addUser(user))
-			message = "Welcome to ProsperLend!";
-		else
+		if (uService.addUser(user)) {
+			modelAndView.setViewName("home.html");
+			session.setAttribute("username", userLoginName);
+		} else {
 			message = "There has been an error with your sign up";
-
-		modelAndView.addObject("message", message);
-		modelAndView.setViewName("sign-up-page.html");
+			modelAndView.addObject("message", message);
+			modelAndView.setViewName("sign-up-page.html");
+		}
 
 		return modelAndView;
 	}

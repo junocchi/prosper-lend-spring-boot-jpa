@@ -44,19 +44,21 @@ public class TestController {
 		return modelAndView;
 	}
   
-//	Loans for business with ID 101
+//	Loans for business with ID 101	
 	@RequestMapping("test/my-loans")
-	public ModelAndView myLoansPageController() {
+	public ModelAndView myLoansPageController(HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		List<MyLoansObj> loanList = new ArrayList<MyLoansObj>();
 		List<Transaction> transactionList = transactionService.getAllTransactions();
 		List<Loans> allLoans = loansService.getAllLoans();
 		
+		UserDetails user = usersService.getUserByUsername((String) session.getAttribute("username"));
+		
 		MyLoansObj loan = new MyLoansObj();
 		
 		for (Loans aLoan : allLoans) {
-			if(aLoan.getBusinessID() == 101) {
+			if(aLoan.getUserLoginId() == user.getUserLoginId()) {
 				loan.setLoanCount(loanList.size() + 1);
 				loan.setBorrowAmount(BigDecimal.valueOf(aLoan.getAmount()).setScale(2, RoundingMode.HALF_UP));
 				loan.setLoanDate(aLoan.getLoanDate());
@@ -124,10 +126,12 @@ public class TestController {
 //			//adding objects at request scope
 //			modelAndView.addObject("user", loginUser);
 //			session.setAttribute("user", loginUser);
-			modelAndView.addObject("message","It works");
 			modelAndView.addObject("username", new String());
 			modelAndView.addObject("password", new String());
 			modelAndView.setViewName("home.html");
+			
+			session.setAttribute("username", username);
+			System.out.println("Username: " + session.getAttribute("username"));
 		}
 		else {
 			modelAndView.addObject("message","Login Failed - username or password are incorect");
