@@ -43,7 +43,7 @@ public class MyProfileController {
 	@RequestMapping("/my-profile")
 	public ModelAndView displayUserDetailsController(HttpSession session) {
 	    ModelAndView modelAndView = new ModelAndView();
-	    session.setAttribute("username", "user2");
+	    
 	    String username = (String) session.getAttribute("username");
 	    UserDetails userDetails = service.getUserByUsername(username);
 
@@ -72,7 +72,7 @@ public class MyProfileController {
 	
 	@PostMapping("/update-email-message")
 	public ModelAndView updateEmailController(HttpSession session, @RequestParam("newEmail") String businessAdminEmail) {
-		session.setAttribute("username", "test_user2");
+		
 		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
 		
 		userDetails.setBusinessAdminEmail(businessAdminEmail);
@@ -97,7 +97,7 @@ public class MyProfileController {
 	
 	@PostMapping("/update-name-message")
 	public ModelAndView updateNameController(HttpSession session, @RequestParam("newName") String userLoginName) {
-		session.setAttribute("username", "test_user2");
+		
 		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
 		
 		userDetails.setUserLoginName(userLoginName);
@@ -120,7 +120,7 @@ public class MyProfileController {
 	
 	@PostMapping("/update-merchant-id-message")
 	public ModelAndView updateMerchantIdController(HttpSession session, @RequestParam("newId") long merchantId) {
-		session.setAttribute("username", "test_user2");
+		
 		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
 		
 		userDetails.setMerchantId(merchantId);

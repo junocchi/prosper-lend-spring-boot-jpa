@@ -104,9 +104,9 @@ public class UserDetails {
 
 	@Override
 	public String toString() {
-		return "UserDetails [userLoginId=" + userLoginId + ", userLoginName=" + userLoginName + ", passcode=" + passcode
-				+ ", salt=" + salt + ", businessName=" + businessName + ", businessAdminEmail=" + businessAdminEmail
-				+ ", merchantId=" + merchantId + ", image=" + image + "]";
+		return "UserDetails [userLoginId = " + userLoginId + ", userLoginName = " + userLoginName + ", passcode = " + passcode
+				+ ", salt = " + salt + ", businessName = " + businessName + ", businessAdminEmail = " + businessAdminEmail
+				+ ", merchantId = " + merchantId + ", image = " + image + "]";
 	}
 	
 	

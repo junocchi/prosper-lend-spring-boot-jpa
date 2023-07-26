@@ -34,9 +34,10 @@ public class SignUpController {
 		String businessName = request.getParameter("businessName");
 		String businessAdminEmail = request.getParameter("businessAdminEmail");
 		long merchantID = Long.parseLong(request.getParameter("merchantId"));
+		String image = "static/images/user-pictures/avatar-logo.jpg";
 
 		UserDetails user = new UserDetails(0, userLoginName, passcode, "", businessName, businessAdminEmail,
-				merchantID);
+				merchantID, image);
 
 		String message = null;
 

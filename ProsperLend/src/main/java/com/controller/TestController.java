@@ -105,6 +105,20 @@ public class TestController {
 		return modelAndView;
 	}
 	
+	@RequestMapping("/logout")
+	public ModelAndView logoutController(HttpSession session) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.addObject("message", "");
+		modelAndView.addObject("username", new String());
+		modelAndView.addObject("password", new String());
+		modelAndView.setViewName("login-page.html");
+		
+		session.setAttribute("username", null);
+		
+		return modelAndView;
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginCheckController(@RequestParam(value = "username", required=false) String username, @RequestParam(value = "password", required=false) String password, HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
