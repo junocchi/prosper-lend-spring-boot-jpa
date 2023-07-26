@@ -120,9 +120,8 @@
 	</header>
 
 	<div id="content">
-		<h2 th:text="'Welcome '+${session.username}+'!'"></h2>
 		<div id="column-1">
-			<p id="title">Welcome to Prosper Lend</p>
+			<p id="title" th:text="'Welcome to Prosper Lend, '+${session.username}+'!'"></p>
 			<div>
 
 				<form>
