@@ -57,8 +57,9 @@ class UserDetailsDaoTest {
 		String email = "Email@email.com";
 		long merchantId = 123442;
 		String salt = "123456";
+		String image = "test/path";
 
-		int result = dao.insertUserLoginData(userLoginName, salt, passcode, salt, businessName, email, merchantId);
+		int result = dao.insertUserLoginData(userLoginName, salt, passcode, salt, businessName, email, merchantId, image);
 		
 		assertEquals(1, result);
 		
@@ -75,8 +76,9 @@ class UserDetailsDaoTest {
 		String email = "Email@email.com";
 		long merchantId = 123442;
 		String salt = "123456";
+		String image = "test/path";
 		
-		dao.save(new UserDetails(99, userLoginName, passcode, salt, businessName, email, merchantId));
+		dao.save(new UserDetails(99, userLoginName, passcode, salt, businessName, email, merchantId, image));
 		
 		assertNotNull(dao.findById(99).orElse(null));
 		dao.deleteById(99);
