@@ -18,9 +18,11 @@
             <img src="../images/user-photo.png" class="dropbtn">
 
             <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+				<a th:href="@{/my-profile}">My Profile</a>
+				<a th:href="@{/my-loans}">My Loans</a>
+				<a th:href="@{/request-funding}">Request Funding</a>
+				<a th:href="@{/about-us}">About Us</a>
+				<a th:href="@{/log-out}">Log Out</a>
             </div>
         </div>
     </header>

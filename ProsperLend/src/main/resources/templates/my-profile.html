@@ -1,85 +1,332 @@
 <!DOCTYPE html>
-<html xmlns:th="https://thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:util="urn:thymeleaf-util"
+	xmlns:spring="http://www.thymeleaf.org/extras/spring"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <meta charset="ISO-8859-1">
-    <title>login-page</title>
+<meta charset="ISO-8859-1" />
+<title>Prosper Lend - My profile</title>
+<link th:href="@{/styles/main.css}" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+#content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
 
-    <link th:href="@{/styles/my-profile.css}" rel="stylesheet">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+#column-1 {
+	color: #370466;
+	justify-content: space-between;
+	text-align: center;
+	margin-top: 40px;
+	font-size: 1.2em;
+	height: auto;
+}
+
+#title {
+	font-size: 1.4em;
+	text-align: center;
+	font-weight: bold;
+}
+
+.three-buttons {
+	margin-top: 20px;
+	height: 50px;
+	width: 250px;
+	background-color: #6FC378;
+	color: white;
+	border-radius: 12px;
+	font-size: 1.2em;
+	border-style: none;
+	display: inline;
+}
+
+.three-buttons:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+#column-2 {
+	width: 100%;
+	height: auto;
+	text-align: center;
+}
+
+#table-row {
+	margin-top: 20px;
+	justify-content: space-between;
+	text-align: center;
+	font-size: 1.4em;
+	width: 100%;
+	color: #370466;
+}
+
+#news-images {
+	margin-top: 20px;
+	width: 200px;
+	height: auto;
+}
+
+#news-images:hover {
+	opacity: 0.7;
+}
+
+/* column 3 */
+#column-3 {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+#loan-image {
+	width: 350px;
+	height: auto;
+}
+
+#table-review {
+	margin-top: 20px;
+	justify-content: space-between;
+	text-align: center;
+	font-size: 1.4em;
+	width: 100%;
+	color: #370466;
+}
+
+/* column 4 */
+#column-4 {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.contact-button {
+	margin-right: 20px;
+}
+
+.update-button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px;
+	border-radius: 20px;
+	text-decoration: none;
+	font-size: 0.8em;
+}
+
+/* editable fields */
+#business-label {
+	align-items: center;
+	font-size: 1.2em;
+	margin-right: 10px;
+	flex-basis: 130px;
+	white-space: nowrap;
+	margin-top: 60px;
+	text-align: center;
+}
+
+.placeholder-container {
+	align-items: center;
+	text-align: center;
+	background-color: white;
+	border: none;
+	width: 300px;
+	height: 35px;
+	border-radius: 20px;
+	flex: 1;
+	white-space: nowrap;
+	/* Keep the text on one line */
+}
+
+#details-title {
+	font-size: 0.8em;
+	text-align: right;
+}
+
+.user-details-content {
+	font-size: 0.7em;
+	color: grey;
+	margin-top: 10px;
+}
+</style>
 </head>
 
 <body>
-    <img src="../images/givers-logo.png" alt="pic" class="pic">
-   <header>
+	<header>
 		<a th:href="@{/}"><img th:src="@{/images/prosper-logo.png}"
 			alt="Logo" class="logo" /></a>
 
 		<h1>Prosper Lend</h1>
 		<div class="dropdown-user-view">
 			<img th:src="@{/images/user-photo.png}" class="dropbtn-user-view" />
-
 			<div class="dropdown-content-user-view">
 				<a th:href="@{/my-profile}">My Profile</a> <a th:href="@{/my-loans}">My
 					Loans</a> <a th:href="@{/request-funding}">Request Funding</a> <a
-					th:href="@{/about-us}">About Us</a> <a th:href="@{/login-page}">Log
+					th:href="@{/about-us}">About Us</a> <a th:href="@{/logout}">Log
 					Out</a>
 			</div>
 		</div>
 	</header>
 
-    <div id="content">
-        <p id="my-profile">My Profile</p>
+	<div id="content">
+		<div id="column-1">
+			<p id="title"
+				th:text="'Welcome to your Profile, '+${session.username}+'!'"></p>
+			<div>
+				<!-- Add form to update the image -->
+				<div th:if="${userDetails.image}">
+					<img style="width: 250px; height: 250px;"
+						th:src="${'data:image/jpeg;base64,' + userDetails.image}"
+						alt="User Avatar">
+				</div>
+				<div th:unless="${userDetails.image}">
+					<img style="width: 250px; height: 250px;"
+						th:src="@{/images/user-pictures/avatar-logo.png}"
+						alt="Default Avatar">
+				</div>
 
-        <div class="wrapper">
-            <p id="business-label">Business Name:</p>
-            <div class="business-container">
-                <!-- The container is empty -->
-               <p th:text="${business.businessName}" class="email-content"></p>
-            </div>
-        </div>
-        <div class="wrapper">
-            <p id="email-label">Admin Email:</p>
-            <div class="email-container">
-                <!-- The container is empty -->
-                <p th:text="${business.businessAdminEmail}" class="email-content"></p>
-            </div>
-            <a href="#" class="update-button">Update</a>
-        </div>
-        <div class="wrapper">
-            <p id="name-label">Login Name:</p>
-            <div class="name-container">
-                <!-- The container is empty -->
-            
-            </div>
-            <a href="#" class="update-button">Update</a>
-        </div>
-        <div class="wrapper">
-            <p id="password-label">Password:</p>
-            <div class="password-container">
-                <!-- The container is empty -->
-            </div>
-            <a href="#" class="update-button">Update</a>
-        </div>
-        <div class="wrapper">
-            <p id="ID-label">Merchant ID:</p>
-            <div class="ID-container">
-                <!-- The container is empty -->
-                <p th:text="${business.merchantId}" class="email-content"></p>
-            </div>
-        </div>
-    </div>
-    <div id="column-2">
-        <div id="contact-us">
-            <button class="contact-button" type="button" href="./contact-us">Contact us
-            </button>
-        </div>
-    </div>
-    <div id="column-3">
-        <p>Business ID:</p>
-        <p>User Login ID:</p>
-        <p>Contact us to update your Business Name or Merchant ID.</p>
-    </div>
+				<!-- Add form to update the image -->
+				<form action="/update-image-message" method="post"
+					enctype="multipart/form-data">
+					<input type="file" name="newImage" accept="image/*">
+					<button type="submit">Update Image</button>
+				</form>
+
+				<br /> <br /> <br />
+
+			</div>
+
+		</div>
+
+		<div id="column-2">
+			<p
+				style="font-size: 1em; background-color: #b7b3f0; padding: 10px; color: #370466; text-align: center;">Business
+				Details:</p>
+			<table id="table-row">
+				<!-- row 1 -->
+				<tr>
+					<td><p id="details-title">Business Name:</p></td>
+					<td><div class="placeholder-container">
+							<!-- The container is empty -->
+							<p th:text="${userDetails.businessName}"
+								class="user-details-content"></p>
+
+						</div></td>
+
+				</tr>
+
+				<!-- row 2 -->
+				<tr>
+					<td><p id="details-title">Password:</p></td>
+					<td><div class="placeholder-container">
+							<!-- The container is empty -->
+							<p class="user-details-content">**************</p>
+						</div></td>
+
+				</tr>
+
+
+
+				<!-- row 3-->
+				<tr>
+					<td><p id="details-title">Merchant ID:</p></td>
+					<td><div class="placeholder-container">
+							<!-- The container is empty -->
+							<p th:text="${userDetails.merchantId}"
+								class="user-details-content"></p>
+						</div></td>
+				</tr>
+				
+				<!-- row 4 - empty to give space between elements-->
+				<tr>
+					<td><p
+							style="font-size: 0.9em; padding: 10px; color: #370466; text-align: center;">Editable
+							Fields:</p></td>
+				</tr>
+				<!-- row 5 -->
+				<tr>
+					<td><p id="details-title">Login Name:</p></td>
+					<td><div class="placeholder-container">
+							<!-- The container is empty -->
+							<p th:text="${userDetails.userLoginName}"
+								class="user-details-content"></p>
+						</div> <a th:href="@{/update-name}" class="update-button">Update</a></td>
+
+				</tr>
+				<!-- row 6 -->
+				<tr>
+					<td><p id="details-title">Admin Email:</p></td>
+
+					<td><div class="placeholder-container">
+							<!-- The container is empty -->
+							<p th:text="${userDetails.businessAdminEmail}"
+								class="user-details-content"></p>
+						</div> <a th:href="@{/update-email}" class="update-button">Update</a></td>
+
+				</tr>
+			</table>
+		</div>
+
+		<div id="column-3">
+			<table id="table-review">
+				<tr>
+
+					<td><p
+							style="font-size: 0.8em; padding: 10px; color: #370466; text-align: center;">Contact
+							us to update your Business Name, Password or Merchant ID.</p></td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="column-4">
+			<form>
+				<input class="contact-button" type="submit" value="Contact Us"
+					formaction="/contact-us"></input> <input class="previous-button"
+					type="submit" value="&laquo;Previous" formaction="/my-loans"></input>
+			</form>
+
+			<br /> <br />
+
+
+			<div id="line">
+				<br /> <br />
+				<hr>
+			</div>
+		</div>
+
+		<footer>
+			<table id="table-footer">
+				<tr>
+					<td></td>
+					<td>
+						<p>Follow Us:</p>
+					</td>
+				</tr>
+				<tr>
+					<td><a th:href="@{https://www.threads.net/}" target="_blank"><img
+							th:src="@{/images/threads.png}" class="footer-buttons"
+							alt="Threads Icon"></a></td>
+					<td><a th:href="@{https://www.linkedin.com/}" target="_blank"><img
+							th:src="@{/images/linkedin.png}" class="footer-buttons"
+							alt="LinkedIn Icon"></a></td>
+					<td><a th:href="@{https://www.instagram.com/}" target="_blank"><img
+							th:src="@{/images/insta.png}" class="footer-buttons"
+							alt="Instagram Icon"></a></td>
+				</tr>
+				<tr>
+					<td><br /> <br /></td>
+					<td><br /> <br /></td>
+					<td><br /> <br /></td>
+				</tr>
+			</table>
+		</footer>
+
+	</div>
 </body>
+</div>
 
 </html>

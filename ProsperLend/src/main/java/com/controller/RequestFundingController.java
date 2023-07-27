@@ -1,12 +1,14 @@
 package com.controller;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.dto.entity.Loans;
 import com.dto.entity.UserDetails;
+import com.dto.entity.MyLoansObj;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +34,10 @@ public class RequestFundingController {
 	@Autowired
 	private UserDetailsService udao;
 	
+	
+	private MyLoansObj myLoans;
+	
+	
 
 	@RequestMapping("/request-funding")
 	public ModelAndView getRequestFundingController() {
@@ -50,14 +56,23 @@ public class RequestFundingController {
  		
 		ModelAndView modelAndView=new ModelAndView();
 
-		int userID = Integer.parseInt(request.getParameter("userLoginId"));
+		
 		BigDecimal averageMonthlyIncome = new BigDecimal(request.getParameter("averageMonthlyIncome")); 
-		BigDecimal currentDebt = dao.getDebtByUserID(userID);
-		String t = currentDebt.toString();
+		BigDecimal currentDebt =new BigDecimal(request.getParameter("currentDebt"));
+		BigDecimal funding = calc.fundingRequest(averageMonthlyIncome, currentDebt);
+		String s = funding.toString();
+		BigDecimal repayment = funding.divide(BigDecimal.valueOf(12),2, RoundingMode.HALF_EVEN);
+		String f = repayment.toString();
+		
+		if (funding.compareTo(BigDecimal.valueOf(0)) < 0) {
+			
+			modelAndView.setViewName("funding-declined");
+		}
 	
 		
-		modelAndView.addObject("funding", t);
-		modelAndView.setViewName("fundingRequestTest");
+		modelAndView.addObject("funding",s);
+		modelAndView.addObject("repayment",f);
+		modelAndView.setViewName("funding-options");
 		
 		return modelAndView;		
 				

@@ -44,9 +44,7 @@ public class Loans implements Serializable{
 	private BigDecimal currentDebt;
 	private BigDecimal interest;
 	private Date loanDate;
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "userLoginID", referencedColumnName = "userLoginID")
-	private UserDetails user;
+    private int userLoginId;
 
 
 //	@OneToOne
@@ -63,7 +61,7 @@ public class Loans implements Serializable{
 
 
 	public Loans(int loanID, String loanStatus, BigDecimal amount, BigDecimal currentDebt, BigDecimal interest,
-		Date loanDate, UserDetails user) {
+		Date loanDate, int userLoginId) {
 	super();
 	this.loanID = loanID;
 	this.loanStatus = loanStatus;
@@ -71,7 +69,7 @@ public class Loans implements Serializable{
 	this.currentDebt = currentDebt;
 	this.interest = interest;
 	this.loanDate = loanDate;
-	this.user = user;
+	this.userLoginId = userLoginId;
 }
 
 
@@ -135,13 +133,18 @@ public class Loans implements Serializable{
 	}
 
 
-	public UserDetails getUser() {
-		return user;
+	
+
+
+	public int getUserLoginId() {
+		// TODO Auto-generated method stub
+		return userLoginId;
 	}
-
-
-	public void setUser(UserDetails user) {
-		this.user = user;
+	
+	
+	public void setUserLoginId(int userLoginId) {
+		// TODO Auto-generated method stub
+		this.userLoginId = userLoginId;
 	}
 
 

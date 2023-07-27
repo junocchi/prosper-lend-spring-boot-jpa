@@ -12,17 +12,17 @@
 	color: #3C1263;
 }
 
-table {
+#content-table {
 	border-collapse: separate;
 	border-spacing: 0 10px;
 }
 
-th {
+#content-table th {
 	color: white;
 	opacity: 0;
 }
 
-td {
+#content-table td {
 	border-radius: 10px 10px 10px 10px;
 	background-color: white;
 	width: 600px;
@@ -80,11 +80,12 @@ a:hover {
 		<div class="dropdown-user-view">
 			<img th:src="@{/images/user-photo.png}" class="dropbtn-user-view" />
 
-			<div class="dropdown-content-user-view">
-				<a th:href="@{/my-profile}">My Profile</a> <a th:href="@{/my-loans}">My
-					Loans</a> <a th:href="@{/request-funding}">Request Funding</a> <a
-					th:href="@{/about-us}">About Us</a> <a th:href="@{/login-page}">Log
-					Out</a>
+			<div class="dropdown-content-user-view" style="font-weight: normal;">
+				<a th:href="@{/my-profile}" style="font-weight: normal;">My Profile</a>
+				<a th:href="@{/my-loans}" style="font-weight: normal;">My Loans</a>
+				<a th:href="@{/request-funding}" style="font-weight: normal;">Request Funding</a>
+				<a th:href="@{/about-us}" style="font-weight: normal;">About Us</a>
+				<a th:href="@{/login-page}" style="font-weight: normal;">Log Out</a>
 			</div>
 		</div>
 	</header>
@@ -95,7 +96,7 @@ a:hover {
 
 	<div id="content">
 		<div id="column">
-			<table>
+			<table id="content-table">
 				<tr>
 					<th>Payment</th>
 				</tr>
@@ -113,19 +114,19 @@ a:hover {
 							th:text="${loan.status}" class="small-text"></p>
 						<br>
 					<br> Amount borrowed:
-						<p th:text="${loan.borrowAmount}"></p>
+						<p th:text="'£' + ${loan.borrowAmount}"></p>
 						<br> Amount to repay:
-						<p th:text="${loan.repayAmount}"></p>
+						<p th:text="'£' + ${loan.repayAmount}"></p>
 						<br> Start date:
 						<p th:text="${loan.loanDate}"></p>
 						<br> Interest deduction:
-						<p th:text="${loan.deduction}"></p>
+						<p th:text="${loan.deduction} + '%'"></p>
 						<br> Final interest rate:
-						<p th:text="${loan.interest}"></p>
-						<br> Balance:
-						<p th:text="${loan.balance}"></p>
+						<p th:text="${loan.interest} + '%'"></p>
+						<br> Current balance:
+						<p th:text="'£' + ${loan.balance}"></p>
 						<br>
-					<br> <a href="/">Payment History</a>
+					<br> <a th:href="@{/payment-history/{path}(path=${loan.loanId}) }">Payment History</a>
 					</td>
 				</tr>
 			</table>
@@ -146,7 +147,7 @@ a:hover {
 				<br /> <br />
 				<hr>
 			</div>
-		</div>
+	</div>
 
 		<footer>
 			<table id="table-footer">
@@ -175,8 +176,6 @@ a:hover {
 			</table>
 		</footer>
 
-	</div>
 </body>
-</div>
 
 </html>

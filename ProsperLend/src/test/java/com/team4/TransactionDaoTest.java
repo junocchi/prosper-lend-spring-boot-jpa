@@ -19,11 +19,14 @@ import org.springframework.test.context.ActiveProfiles;
 import com.dto.entity.Loans;
 import com.dto.entity.Transaction;
 
+<<<<<<< HEAD
 import com.dto.entity.UserLogin;
+=======
+>>>>>>> 96c44370fdcab96f604ddb2f9cd78442a4c155dc
 
 import com.model.persistence.LoanDao;
 import com.model.persistence.TransactionDao;
-import com.model.persistence.UserLoginDao;
+
 
 
 

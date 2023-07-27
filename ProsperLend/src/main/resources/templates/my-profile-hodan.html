@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:util="urn:thymeleaf-util"
+      xmlns:spring="http://www.thymeleaf.org/extras/spring"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="ISO-8859-1">
+<title>login-page</title>
+<link th:href="@{/styles/my-profile.css}" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+	<header>
+		<img src="../images/prosper-logo.png" alt="Logo" class="logo">
+		<h1>Prosper Lend</h1>
+		<div class="dropdown">
+			<img src="../images/user-photo.png" class="dropbtn">
+			<div class="dropdown-content">
+				<a th:href="@{/my-profile}">My Profile</a> <a th:href="@{/my-loans}">My
+					Loans</a> <a th:href="@{/request-funding}">Request Funding</a> <a
+					th:href="@{/about-us}">About Us</a> <a th:href="@{/log-out}">Log
+					Out</a>
+			</div>
+		</div>
+	</header>
+	<div id="content">
+		<p id="my-profile">My Profile</p>
+		<div class="wrapper">
+		<!-- Display the user's image -->
+		<div th:if="${userDetails.image}">
+            <img th:src="${'data:image/jpeg;base64,' + userDetails.image}" alt="User Avatar">
+        </div>
+        <div th:unless="${userDetails.image}">
+            <img th:src="@{/images/user-pictures/avatar-logo.png}" alt="Default Avatar">
+        </div>
+        <!-- Add form to update the image -->
+        <form action="/update-image-message" method="post" enctype="multipart/form-data">
+            <input type="file" name="newImage" accept="image/*">
+            <button type="submit">Update Image</button>
+        </form>
+    </div>
+			<!-- <img src="../images/givers-logo.png" alt="pic" class="pic"> -->
+		</div>
+		<div class="wrapper">
+			<p id="business-label">Business Name:</p>
+			<div class="business-container">
+				<!-- The container is empty -->
+				<p th:text="${userDetails.businessName}" class="email-content"></p>
+			</div>
+		</div>
+		<div class="wrapper">
+			<p id="email-label">Admin Email:</p>
+			<div class="email-container">
+				<!-- The container is empty -->
+				<p th:text="${userDetails.businessAdminEmail}" class="email-content"></p>
+			</div>
+			<a th:href="@{/update-email}" class="update-button">Update</a>
+		</div>
+		<div class="wrapper">
+			<p id="name-label">Login Name:</p>
+			<div class="name-container">
+				<!-- The container is empty -->
+				<p th:text="${userDetails.userLoginName}" class="email-content"></p>
+			</div>
+			<a th:href="@{/update-name}" class="update-button">Update</a>
+		</div>
+		<div class="wrapper">
+			<p id="password-label">Password:</p>
+			<div class="password-container">
+				<!-- The container is empty -->
+				<p class="email-content">**************</p>
+			</div>
+
+		</div>
+		<div class="wrapper">
+			<a th:href="@{/update-image}" class="update-button">Update Image</a>
+			<p id="ID-label">Merchant ID:</p>
+			<div class="ID-container">
+				<!-- The container is empty -->
+				<p th:text="${userDetails.merchantId}" class="email-content"></p>
+			</div>
+
+		</div>
+	</div>
+	<div id="column-2">
+		<form id="contact-us" th:action="@{./contact-us}">
+			<button class="contact-button" type="submit">Contact us</button>
+		</form>
+	</div>
+	<div id="column-3">
+		<p
+			style="font-size: 1.4em; padding: 10px; color: #370466; text-align: center;">Contact
+			us to update your Business Name or Merchant ID.</p>
+	</div>
+</body>
+</html>

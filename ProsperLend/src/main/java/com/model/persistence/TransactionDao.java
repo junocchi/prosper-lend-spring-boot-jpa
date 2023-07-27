@@ -2,6 +2,7 @@ package com.model.persistence;
 
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -29,6 +30,7 @@ public interface TransactionDao extends JpaRepository<Transaction, Integer> {
 	int updateAmount(@Param("id") int transactionId, @Param("a") double newAmount);
 	
 	
-
+	@Query(nativeQuery = true, value = "SELECT * FROM TRANSACTIONS WHERE loanId = :id")
+	List<Transaction> findAllTransactionsForLoan(@Param("id") int loanId);
 
 }

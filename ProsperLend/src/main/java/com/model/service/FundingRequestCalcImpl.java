@@ -1,6 +1,7 @@
 package com.model.service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class FundingRequestCalcImpl implements FundingRequestCalc{
 	@Override
 	public BigDecimal maxAmountCalc(BigDecimal averageMonthlyIncome) {
 		
-		BigDecimal maxAmount = averageMonthlyIncome.divide(BigDecimal.valueOf(10).multiply(BigDecimal.valueOf(24)));
+		BigDecimal maxAmount = averageMonthlyIncome.divide(BigDecimal.valueOf(10),2, RoundingMode.HALF_EVEN).multiply(BigDecimal.valueOf(24));
 		
 		return maxAmount;
 	}
@@ -44,51 +45,44 @@ public class FundingRequestCalcImpl implements FundingRequestCalc{
 		
 		return newMaxAmount;
 	}
-//	
-//	@Override
-//	public BigDecimal options(BigDecimal newMaxAmount, BigDecimal maxAmount) {
-//		
-//		BigDecimal optionOne = newMaxAmount;
-//		BigDecimal optionTwo = (optionOne).subtract(optionOne).multiply(BigDecimal.valueOf(25).divide(BigDecimal.valueOf(100)));
-//		BigDecimal optionThree = (optionOne).subtract(optionTwo).multiply(BigDecimal.valueOf(25).divide(BigDecimal.valueOf(100)));
-//   
-//	if ((newMaxAmount).compareTo(optionThree) > 0) {
-//		
-//		return optionOne;
-//	}
-//	
-//	else if ((optionTwo).compareTo(BigDecimal.valueOf(0)) > 0) {
-//		
-//		return optionTwo;
-//	}
-//		
-//	
-//	else if ((optionThree).compareTo(BigDecimal.valueOf(0)) > 0)  {
-//		
-//	
-//		return optionThree;
-//	}
-//		
-//		
-//	else	
-//		
-//		System.out.println("Your funding request has been declined");
-//		
-//		return (BigDecimal.valueOf(0));
-//		
-//		
-//		
-//	}
-//	
-
 	
-
 	@Override
-	public BigDecimal options(BigDecimal newmaxAmount, BigDecimal currentDebt) {
-		// TODO Auto-generated method stub
-		return null;
+	public BigDecimal options(BigDecimal newMaxAmount, BigDecimal maxAmount) {
+		
+		BigDecimal optionOne = newMaxAmount;
+		BigDecimal optionTwo = (optionOne).subtract(optionOne).multiply(BigDecimal.valueOf(25).divide(BigDecimal.valueOf(100),2, RoundingMode.HALF_EVEN));
+		BigDecimal optionThree = (optionOne).subtract(optionTwo).multiply(BigDecimal.valueOf(25).divide(BigDecimal.valueOf(100),2, RoundingMode.HALF_EVEN));
+   
+	if ((newMaxAmount).compareTo(optionThree) > 0) {
+		
+		return optionOne;
 	}
 	
+	else if ((optionTwo).compareTo(BigDecimal.valueOf(0)) > 0) {
+		
+		return optionTwo;
+	}
+		
+	
+	else if ((optionThree).compareTo(BigDecimal.valueOf(0)) > 0)  {
+		
+	
+		return optionThree;
+	}
+		
+		
+	else	
+		
+		System.out.println("Your funding request has been declined");
+		
+		return (BigDecimal.valueOf(0));
+		
+		
+		
+	}
+	
+
+
 	
 	
 	

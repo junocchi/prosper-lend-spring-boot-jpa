@@ -1,80 +1,162 @@
 @charset "ISO-8859-1";
 
 body {
-    background-color: #CDFFD8;
-    /* For browsers that do not support gradients */
-    background-image: linear-gradient(to right, #CDFFD8, #94B9FF);
-    font-family: arial;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  background-color: #cdffd8; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to right, #cdffd8, #94b9ff);
+  font-family: arial;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 header {
-    background-color: #B9ADE8;
-    height: 90px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
+  background-color: #b9ade8;
+  height: 90px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .logo {
-    height: 90px;
-    position: absolute;
-    top: 0;
-    left: 0;
+  padding: 5px;
+  height: 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 h1 {
-    color: #3C1263;
-    margin: auto;
-    width: 50%;
-    text-align: center;
-    padding: 5px;
-    font-size: 2.3em;
+  color: #3c1263;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  padding: 5px;
+  font-size: 2.3em;
+}
+/* drop-down menu user view */
+.dropbtn-user-view {
+  border: none;
+  cursor: pointer;
+  height: 60px;
+}
+.dropdown-user-view {
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  display: inline-block;
+}
+.dropdown-content-user-view {
+  display: none;
+  position: absolute;
+  background-color: #b9ade8;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(46, 21, 84, 0.2);
+  z-index: 1;
+  right: 0;
 }
 
+.dropdown-content-user-view a {
+  color: #3c1263;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content-user-view a:hover {
+  background-color: #3c1263;
+  color: white;
+}
+
+.dropdown-user-view:hover .dropdown-content-user-view {
+  display: block;
+}
+
+/* drop-down menu user view */
 .dropbtn {
-    border: none;
-    cursor: pointer;
-    height: 80px;
+  border: none;
+  cursor: pointer;
+  height: 80px;
 }
-
 .dropdown {
-    position: absolute;
-    right: 0;
-    display: inline-block;
+  position: absolute;
+  right: 0;
+  display: inline-block;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #B9ADE8;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    right: 0;
+  display: none;
+  position: absolute;
+  background-color: #b9ade8;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(46, 21, 84, 0.2);
+  z-index: 1;
+  right: 0;
 }
 
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: #3c1263;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #3C1263;
-    color: white;
+  background-color: #3c1263;
+  color: white;
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
+}
+
+#content {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.contact-button {
+  margin-top: 20px;
+  height: 40px;
+  background-color: #449850;
+  color: white;
+  border-radius: 12px;
+  font-size: 1em;
+  border-color: #449850;
+  border-style: none;
+  width: 120px;
+}
+.contact-button:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous-button {
+  margin-top: 20px;
+  height: 40px;
+  background-color: #804BA4;
+  color: white;
+  border-radius: 12px;
+  margin-left: 0;
+  text-decoration: none;
+  border-style: none;
+  font-size: 1em;
+  width: 120px;
+}
+.previous-button:hover {
+  background-color: #ddd;
+  color: black;
 }
 
 #content {
@@ -89,13 +171,14 @@ h1 {
     text-align: center;
     font-weight: bold;
     color: #370466;
-    margin-top: 50px;
+    margin-top: -30px;
 }
 
 .wrapper {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin-top: -130px;
+   
 }
 
 #business-label {
@@ -104,6 +187,7 @@ h1 {
     margin-right: 10px;
     flex-basis: 130px;
     white-space: nowrap;
+    margin-top: 60px;
     /* Keep the text on one line */
 }
 
@@ -189,7 +273,6 @@ h1 {
     /* Move the logo to the left */
 }
 
-
 #contact-us {
     width: 100%;
     display: flex;
@@ -208,6 +291,7 @@ h1 {
     margin-left: auto;
     margin-bottom: 50px;
     margin-top: 90px;
+    cursor:pointer;
 }
 
 .update-button:hover {
@@ -218,12 +302,13 @@ h1 {
     color: #370466;
     text-align: left;
     /* Change 'right' to 'left' */
-    width: 61%;
+    width: 100%;
     font-size: 1.2em;
     height: auto;
     font-family: arial;
     font-weight: bold;
-    margin-top: -150px;
+    margin-top: -200px;
+    margin-left: 30px;
 }
 
 #business-label,
@@ -248,5 +333,5 @@ h1 {
             margin-top: 10px;
         }
 
-}
+
 

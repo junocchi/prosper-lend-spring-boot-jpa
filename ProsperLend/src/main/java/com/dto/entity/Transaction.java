@@ -2,17 +2,12 @@ package com.dto.entity;
 
 import java.sql.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name = "Transactions")
@@ -21,16 +16,10 @@ public class Transaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int transactionId;
-	
-	 @ManyToOne
-	 private Loans loan;
-	 
-	 
-  
 	private Double amount;
-	
 	private Date transactionDate;
-	
+	@ManyToOne
+	private Loans loan;
 
 	public Transaction() {
 		super();
@@ -52,7 +41,6 @@ public class Transaction {
 		this.transactionId = transactionId;
 	}
 
-
 	public double getAmount() {
 		return amount;
 	}
@@ -68,7 +56,7 @@ public class Transaction {
 	public void setTransactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
 	}
-	
+
 	public Loans getLoan() {
 		return loan;
 	}
@@ -77,5 +65,10 @@ public class Transaction {
 		this.loan = loan;
 	}
 
+	@Override
+	public String toString() {
+		return "Transaction [transactionId=" + transactionId + ", loan=" + loan + ", amount=" + amount
+				+ ", transactionDate=" + transactionDate + "]";
+	}
 	
 }

@@ -7,10 +7,6 @@ CREATE DATABASE ProjectProsperLend;
 USE ProjectProsperLend;
 
 
-
-
-
-
 create table InterestDeductions (
 interestDeductionId int auto_increment,
 items varchar(50) not null,
@@ -47,9 +43,6 @@ SELECT * FROM MESSAGES;
 
 
 
-
-
-
 CREATE TABLE UserDetails (
 userLoginId INT auto_increment not null,
 userLoginName varchar(30) not null,
@@ -58,10 +51,14 @@ salt varchar(6) not null,
 businessName VARCHAR(100) not null ,
 businessAdminEmail VARCHAR(100) not null ,
 merchantId LONG,
+image VARCHAR(150),
 primary key (userLoginId));
  
-insert into userDetails (userLoginName, passcode, salt, businessName, businessAdminEmail, merchantId) values  
-('test_user',  SHA1(concat("123456", "password")) , "123456" , 'TestBusiness',  'Test@Business.com',  123456789);
+insert into userDetails (userLoginName, passcode, salt, businessName, businessAdminEmail, merchantId, image) values  
+('test_user', SHA1(concat("123456", "password")) , "123456" , 'TestBusiness',  'Test@Business.com',  123456789, 'static/images/user-pictures/avatar-logo.jpg'),
+('pizza_user', SHA1(concat("154823", "pizzapizza")) , "154823" , 'Pizza World',  'admin@PizzaWorld.com',  555556789, 'static/images/user-pictures/avatar-logo.jpg'),
+('barber_user', SHA1(concat("145862", "barberbarber")) , "145862" , 'Razor Edge Barber',  'admin@RazorEdge.com',  555556789, 'static/images/user-pictures/avatar-logo.jpg'),
+('pub_user', SHA1(concat("659823", "pubpub_pass")) , "659823" , 'Tipsy Tavern',  'admin@TipsyTavern.com',  777776789, 'static/images/user-pictures/avatar-logo.jpg');
 
 select * from userdetails;
 
@@ -73,10 +70,16 @@ select * from userdetails;
 -- Create the "loans" table
 CREATE TABLE loans (
 loanID INT  AUTO_INCREMENT,
+<<<<<<< HEAD
 loanStatus VARCHAR(10),
 amount DECIMAL(10, 2),
 interest DECIMAL(5, 2),
 currentDebt DECIMAL(10,2),
+=======
+loanStatus VARCHAR(15),
+amount DOUBLE(10, 2),
+interest DOUBLE(5, 2),
+>>>>>>> 96c44370fdcab96f604ddb2f9cd78442a4c155dc
 userLoginId INT,
 loanDate DATE,
 FOREIGN KEY (userLoginId) REFERENCES UserDetails(userLoginId),
@@ -85,7 +88,15 @@ PRIMARY KEY (loanID));
 -- Insert sample values into the "loans" table
 INSERT INTO loans (loanStatus, amount, currentDebt, interest, userLoginId, loanDate)
 VALUES
+<<<<<<< HEAD
 ('approved', 5000.00, 25000.00, 0.05, 1, '2023-07-01');
+=======
+('In progress', 5000.00, 0.05, 1, '2023-01-01'),
+('Completed', 7000.00, 0.03, 1, '2022-07-01'),
+('Completed', 10000.00, 0.01, 1, '2022-02-01'),
+('In progress', 5000.00, 0.05, 2, '2023-07-01'),
+('In progress', 5000.00, 0.05, 3, '2023-07-01');
+>>>>>>> 96c44370fdcab96f604ddb2f9cd78442a4c155dc
 
 SELECT * FROM LOANS;
 
@@ -104,7 +115,15 @@ PRIMARY KEY (transactionId),
 FOREIGN KEY (loanID) REFERENCES Loans(loanID));
   
 INSERT INTO Transactions (loanId, amount, transactionDate) VALUES
-(1, 10000, "2023-06-01");
+(3, 2525.00, "2022-03-05"),
+(3, 2525.00, "2022-04-05"),
+(3, 2525.00, "2022-05-05"),
+(3, 2525.00, "2022-06-05"),
+(2, 5100.00, "2022-09-20"),
+(2, 2110.00, "2022-10-10"),
+(1, 750.00, "2023-04-15"),
+(1, 750.00, "2023-05-15"),
+(1, 750.00, "2023-07-02");
 
 SELECT * FROM TRANSACTIONS;
 
@@ -128,16 +147,6 @@ INSERT INTO loanDeductions VALUES
 (3, 1, 3); 
   
 SELECT * FROM LOANDEDUCTIONS;
-
-
-
-
-
-
-
-
-
-
 
 
 

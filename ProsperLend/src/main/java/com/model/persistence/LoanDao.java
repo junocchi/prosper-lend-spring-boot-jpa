@@ -24,12 +24,9 @@ import com.dto.entity.Transaction;
 @Repository
 public interface LoanDao extends JpaRepository<Loans, Integer>{
 	
-	
-	
 	@Modifying
 	@Query("update Loans set amount=amount+:am, interest=interest+:in where loanID=:id")
 	int updateLoansAmountById(@Param("id") int loanId,@Param("am") BigDecimal newAmount, @Param("in") BigDecimal newInterest);
-	
 	
 	@Modifying
 	@Query(value = "insert into LOANS (loanStatus, amount, interest, userLoginId, loanDate) VALUES (?, ?,  ? , ?, ?, ?)",nativeQuery = true)
@@ -46,6 +43,10 @@ public interface LoanDao extends JpaRepository<Loans, Integer>{
 	@Query(value = "SELECT l.currentDebt FROM userdetails u INNER JOIN loans l ON u.userLoginId" ,nativeQuery = true)
 	BigDecimal getDebtByUserID(@Param("id") int loanId);
 	
+
+	@Query(value = "insert into LOANS (loanStatus, amount, interest, userLoginId, loanDate) VALUES (?, ?, ?, ?, ?)",nativeQuery = true)
+	int addLoan(String loanStatus, Double amount, Double interest, int userID, Date loanDate); 
+
 	
 }
 

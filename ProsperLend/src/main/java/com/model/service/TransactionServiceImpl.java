@@ -53,7 +53,10 @@ public class TransactionServiceImpl implements TransactionService {
 		else
 			return false;
 	}
-
+	
+	public List<Transaction> findAllTransactionsForLoan(int loanId) {
+		return transactionDao.findAllTransactionsForLoan(loanId);
+	}
 	
 }
 
