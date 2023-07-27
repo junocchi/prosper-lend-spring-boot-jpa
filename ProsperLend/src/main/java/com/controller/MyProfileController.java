@@ -47,7 +47,11 @@ public class MyProfileController {
 
 	    String username = (String) session.getAttribute("username");
 	    UserDetails userDetails = service.getUserByUsername(username);
-
+	    
+	    
+	    System.out.println("Image path: " + service.getImageByUsername(username));
+	    modelAndView.addObject("imagetest", service.getImageByUsername(username));
+	    
 	    if (userDetails != null) {
 	        UserDetails userDetailsToDisplay = new UserDetails();
 	        userDetailsToDisplay.setUserLoginName(userDetails.getUserLoginName());
@@ -117,28 +121,7 @@ public class MyProfileController {
 		return new ModelAndView("Output", "message", message);
 	}
 	
-//	@RequestMapping("/update-merchant-id")
-//	public ModelAndView merchantIdUpdateController(){
-//		return new ModelAndView("update-merchant-id.html");
-//	}
-//	
-//	
-//	@PostMapping("/update-merchant-id-message")
-//	public ModelAndView updateMerchantIdController(HttpSession session, @RequestParam("newId") long merchantId) {
-//		//session.setAttribute("username", "test_user2");
-//		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
-//		
-//		userDetails.setMerchantId(merchantId);
-//		
-//		String message=null;
-//		
-//		if(service.updateMerchantId(userDetails))
-//			message="Merchant ID Updated";
-//		else
-//			message="Merchant ID Not Updated";
-//		
-//		return new ModelAndView("Output", "message", message);
-//	}
+
 	
 	@RequestMapping("/update-image")
 	public ModelAndView imageUpdateController(){
@@ -148,26 +131,12 @@ public class MyProfileController {
 
 	@PostMapping("/update-image-message")
 	public ModelAndView updateImageController(HttpSession session, @RequestParam("newImage") String userLoginName) {
-		//session.setAttribute("username", "test_user");
+		ModelAndView model = new ModelAndView();
+		session.setAttribute("username", "test_user");
 		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("image") );
-
-	@PostMapping("/update-merchant-id-message")
-	public ModelAndView updateMerchantIdController(HttpSession session, @RequestParam("newId") long merchantId) {
-		
-		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
-
-		
-		userDetails.setUserLoginName(userLoginName);
-		
-		String message=null;
-		
-		if(service.updateLoginName(userDetails))
-			message="Login Name Updated";
-		else
-			message="Login Name Not Updated";
-		
-		return new ModelAndView("Output", "message", message);
+		return model;
 	}
+
 	
 	
 }

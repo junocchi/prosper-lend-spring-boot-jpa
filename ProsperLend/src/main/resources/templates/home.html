@@ -54,9 +54,14 @@
 	color: #370466;
 }
 
+#table-row td {
+	width:30%;
+}
+
 #news-images {
 	margin-top: 20px;
-	width: 200px;
+	max-width: 300px;
+	width: 100%;
 	height: auto;
 }
 
@@ -73,7 +78,8 @@
 }
 
 #loan-image {
-	width: 350px;
+	margin-left: 20px;
+	width: 300px;
 	height: auto;
 }
 
@@ -143,7 +149,7 @@
 			<p
 				style="background-color: #b7b3f0; padding: 10px; color: #370466; text-align: center;">Latest
 				News</p>
-			<table id="table-row">
+			<table style="table-layout: fixed" id="table-row">
 				<!-- row 1 -->
 				<tr>
 					<th>Green Tech</th>
@@ -173,25 +179,26 @@
 				</tr>
 				<!-- row 4 -->
 				<tr>
-					<td style="width: 50%;"><a
+					<td><a
 						th:href="@{https://www.reuters.com/markets/europe/europes-stoxx-600-boosted-by-kering-uk-stocks-shine-2023-07-19/}"
 						target="_blank"> <img th:src="@{/images/welcome-four.png}"
 							id="news-images"></a></td>
-					<td style="width: 50%;"><a th:href="@{https://markets.ft.com/data/bonds}"
+					<td><a th:href="@{https://markets.ft.com/data/bonds}"
 						target="_blank"> <img th:src="@{/images/welcome-five.png}"
 							id="news-images"></a></td>
-					<td style="width: 50%;"><a
+					<td><a
 						th:href="@{https://www.gov.uk/government/news/tech-ipos-raised-a-record-66-billion-in-2021-double-2020-figures}"
 						target="_blank"> <img th:src="@{/images/welcome-six.png}"
 							id="news-images"></a></td>
 				</tr>
+				
 			</table>
 		</div>
 
 		<div id="column-3">
 			<table id="table-review">
 				<tr>
-					<td style="width: 50%;"><img th:src="@{/images/loan.png}"
+					<td><img th:src="@{/images/loan.png}"
 						id="loan-image" /></td>
 
 					<td style="font-size: 1.4rem;">
@@ -214,8 +221,9 @@
 		<div id="column-4">
 			<form>
 				<input class="contact-button" type="submit" value="Contact Us"
-					formaction="/contact-us"></input> <input class="previous-button"
-					type="submit" value="&laquo;Previous" formaction="/my-loans"></input>
+					formaction="/contact-us"></input> 
+					<!-- <input class="previous-button"
+					type="submit" value="&laquo;Previous" formaction="/my-loans"></input> -->
 			</form>
 
 			<br /> <br />
