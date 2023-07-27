@@ -43,7 +43,7 @@ public interface LoanDao extends JpaRepository<Loans, Integer>{
 //	@Query(value = "SELECT merchantId FROM userDetails INNER JOIN userDetails ON userLoginId=:id" ,nativeQuery = true)
 //	long getMerchantByUserID(@Param("id") int loanId);
 	
-	@Query(value = "SELECT l.currentDebt FROM userdetails u INNER JOIN loans l ON u.userLoginId =:id" ,nativeQuery = true)
+	@Query(value = "SELECT l.currentDebt FROM userdetails u INNER JOIN loans l ON u.userLoginId" ,nativeQuery = true)
 	BigDecimal getDebtByUserID(@Param("id") int loanId);
 	
 	

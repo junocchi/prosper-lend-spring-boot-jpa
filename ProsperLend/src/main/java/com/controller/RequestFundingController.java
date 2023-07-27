@@ -44,24 +44,19 @@ public class RequestFundingController {
 	
 	
 	@RequestMapping("/InterestDeduction")
-	public ModelAndView fundingController(HttpServletRequest request, HttpSession session) {
+	public ModelAndView fundingController(HttpServletRequest request) {
 		
 		
-		int uid = (int) session.getAttribute("userID");
-		
+ 		
 		ModelAndView modelAndView=new ModelAndView();
-//		UserDetails user = session.getAttribute("username");
-//		long merchantID = Long.parseLong(request.getParameter("merchantId"));
-		BigDecimal averageMonthlyIncome = new BigDecimal(request.getParameter("averageMonthlyIncome"));
-		BigDecimal currentDebt = dao.getDebtByUserID(uid);
-		BigDecimal result = calc.fundingRequest(averageMonthlyIncome,currentDebt);
+
+		int userID = Integer.parseInt(request.getParameter("userLoginId"));
+		BigDecimal averageMonthlyIncome = new BigDecimal(request.getParameter("averageMonthlyIncome")); 
+		BigDecimal currentDebt = dao.getDebtByUserID(userID);
+		String t = currentDebt.toString();
+	
 		
-		if (result.compareTo(BigDecimal.valueOf(0)) > 0 ) {
-		
-			
-			
-		}
-		modelAndView.addObject("funding", result);
+		modelAndView.addObject("funding", t);
 		modelAndView.setViewName("fundingRequestTest");
 		
 		return modelAndView;		

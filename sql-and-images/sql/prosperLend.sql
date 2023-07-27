@@ -74,9 +74,9 @@ select * from userdetails;
 CREATE TABLE loans (
 loanID INT  AUTO_INCREMENT,
 loanStatus VARCHAR(10),
-amount DOUBLE(10, 2),
-interest DOUBLE(5, 2),
-currentDebt DOUBLE(10,2),
+amount DECIMAL(10, 2),
+interest DECIMAL(5, 2),
+currentDebt DECIMAL(10,2),
 userLoginId INT,
 loanDate DATE,
 FOREIGN KEY (userLoginId) REFERENCES UserDetails(userLoginId),

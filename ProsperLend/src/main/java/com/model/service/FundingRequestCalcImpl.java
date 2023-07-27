@@ -16,8 +16,7 @@ public class FundingRequestCalcImpl implements FundingRequestCalc{
 		
 		BigDecimal maxAmount = maxAmountCalc(averageMonthlyIncome);
 		BigDecimal newMaxAmount = NewmaxAmountCalc(maxAmount,currentDebt);
-		
-		BigDecimal funding = options(newMaxAmount, maxAmount );
+        BigDecimal funding = options(newMaxAmount, maxAmount );
 		
 		
 		return funding;
@@ -45,42 +44,50 @@ public class FundingRequestCalcImpl implements FundingRequestCalc{
 		
 		return newMaxAmount;
 	}
+//	
+//	@Override
+//	public BigDecimal options(BigDecimal newMaxAmount, BigDecimal maxAmount) {
+//		
+//		BigDecimal optionOne = newMaxAmount;
+//		BigDecimal optionTwo = (optionOne).subtract(optionOne).multiply(BigDecimal.valueOf(25).divide(BigDecimal.valueOf(100)));
+//		BigDecimal optionThree = (optionOne).subtract(optionTwo).multiply(BigDecimal.valueOf(25).divide(BigDecimal.valueOf(100)));
+//   
+//	if ((newMaxAmount).compareTo(optionThree) > 0) {
+//		
+//		return optionOne;
+//	}
+//	
+//	else if ((optionTwo).compareTo(BigDecimal.valueOf(0)) > 0) {
+//		
+//		return optionTwo;
+//	}
+//		
+//	
+//	else if ((optionThree).compareTo(BigDecimal.valueOf(0)) > 0)  {
+//		
+//	
+//		return optionThree;
+//	}
+//		
+//		
+//	else	
+//		
+//		System.out.println("Your funding request has been declined");
+//		
+//		return (BigDecimal.valueOf(0));
+//		
+//		
+//		
+//	}
+//	
+
 	
+
 	@Override
-	public BigDecimal options(BigDecimal newMaxAmount, BigDecimal maxAmount) {
-		
-		BigDecimal optionOne = newMaxAmount;
-		BigDecimal optionTwo = (optionOne).subtract(optionOne).multiply(BigDecimal.valueOf(25).divide(BigDecimal.valueOf(100)));
-		BigDecimal optionThree = (optionOne).subtract(optionTwo).multiply(BigDecimal.valueOf(25).divide(BigDecimal.valueOf(100)));
-   
-	if ((newMaxAmount).compareTo(optionThree) > 0) {
-		
-		return optionOne;
+	public BigDecimal options(BigDecimal newmaxAmount, BigDecimal currentDebt) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	else if ((optionTwo).compareTo(BigDecimal.valueOf(0)) > 0) {
-		
-		return optionTwo;
-	}
-		
-	
-	else if ((optionThree).compareTo(BigDecimal.valueOf(0)) > 0)  {
-		
-	
-		return optionThree;
-	}
-		
-		
-	else	
-		
-		System.out.println("Your funding request has been declined");
-		
-		return (BigDecimal.valueOf(0));
-		
-		
-		
-	}
-	
 	
 	
 	

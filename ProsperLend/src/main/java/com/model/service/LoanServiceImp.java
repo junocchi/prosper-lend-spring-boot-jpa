@@ -46,7 +46,7 @@ public class LoanServiceImp implements LoanService{
 		try {
 		if(loanDao.addLoan( 
 				 loan.getLoanStatus(), loan.getAmount(),
-				loan.getInterest(), loan.getUserLoginID(), loan.getLoanDate())>0)
+				loan.getInterest(), loan.getUser().getUserLoginId(), loan.getLoanDate())>0)
 			return true;
 		}
 		catch(Exception ex) {
@@ -78,11 +78,14 @@ public class LoanServiceImp implements LoanService{
 	}
 	
 	@Override
-	public BigDecimal getDebtByUserID(int userId) {
+	public BigDecimal getDebtByUserID(int loanId) {
 		
-		BigDecimal merchantId = loanDao.getDebtByUserID(userId);
 		
-		return merchantId;
+		Loans loan=getLoanById(loanId);
+		
+		BigDecimal userDebt = loan;
+		
+		return userDebt;
 		
 		
 	}
