@@ -55,14 +55,12 @@ image VARCHAR(150),
 primary key (userLoginId));
  
 insert into userDetails (userLoginName, passcode, salt, businessName, businessAdminEmail, merchantId, image) values  
-('test_user', SHA1(concat("123456", "password")) , "123456" , 'TestBusiness',  'Test@Business.com',  123456789, 'static/images/user-pictures/avatar-logo.jpg'),
+('test_user', SHA1(concat("123456", "password")) , "123456" , 'TestBusiness',  'Test@Business.com',  123456789, '/images/user-pictures/avatar-logo.png'),
 ('pizza_user', SHA1(concat("154823", "pizzapizza")) , "154823" , 'Pizza World',  'admin@PizzaWorld.com',  555556789, 'static/images/user-pictures/avatar-logo.jpg'),
 ('barber_user', SHA1(concat("145862", "barberbarber")) , "145862" , 'Razor Edge Barber',  'admin@RazorEdge.com',  555556789, 'static/images/user-pictures/avatar-logo.jpg'),
 ('pub_user', SHA1(concat("659823", "pubpub_pass")) , "659823" , 'Tipsy Tavern',  'admin@TipsyTavern.com',  777776789, 'static/images/user-pictures/avatar-logo.jpg');
 
 select * from userdetails;
-
-
 
 
 

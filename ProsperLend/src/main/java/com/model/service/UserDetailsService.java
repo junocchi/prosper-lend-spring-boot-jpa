@@ -20,4 +20,8 @@ public interface UserDetailsService {
 	boolean updateMerchantId(UserDetails user);
 	boolean updateImage(UserDetails user);
 
+
+
+	public String getImageByUsername(String username);
+
 }

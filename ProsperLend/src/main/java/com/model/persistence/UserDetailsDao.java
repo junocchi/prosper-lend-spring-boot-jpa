@@ -27,4 +27,7 @@ public interface UserDetailsDao extends JpaRepository<UserDetails, Integer>{
 	
 	@Query(nativeQuery = true,value = "SELECT * FROM UserDetails WHERE userLoginName = ? AND passcode = SHA1(concat(salt, ?)) ")
 	public UserDetails matchUsernamePassword(String username, String password);
+	
+	@Query(nativeQuery = true,value = "SELECT * FROM UserDetails WHERE userLoginName = ? ")
+	public UserDetails getImageByUsername(String username);
 }

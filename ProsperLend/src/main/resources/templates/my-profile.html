@@ -177,27 +177,18 @@
 			<p id="title"
 				th:text="'Welcome to your Profile, '+${session.username}+'!'"></p>
 			<div>
-				<!-- Add form to update the image -->
-				<div th:if="${userDetails.image}">
-					<img style="width: 250px; height: 250px;"
-						th:src="${'data:image/jpeg;base64,' + userDetails.image}"
-						alt="User Avatar">
-				</div>
-				<div th:unless="${userDetails.image}">
-					<img style="width: 250px; height: 250px;"
-						th:src="@{/images/user-pictures/avatar-logo.png}"
+				<img style="width: 250px; height: 250px;"
+						th:src="@{${imagetest}}"
 						alt="Default Avatar">
-				</div>
-
-				<!-- Add form to update the image -->
+						
 				<form action="/update-image-message" method="post"
 					enctype="multipart/form-data">
 					<input type="file" name="newImage" accept="image/*">
 					<button type="submit">Update Image</button>
 				</form>
-
+		
 				<br /> <br /> <br />
-
+ -->
 			</div>
 
 		</div>

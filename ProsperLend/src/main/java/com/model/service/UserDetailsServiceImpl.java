@@ -137,5 +137,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	    }
 	}
 
+	
+	@Override
+	public String getImageByUsername(String username) {
+		return dao.getImageByUsername(username).getImage();
+	}
+
 }
 
