@@ -43,8 +43,6 @@ public class MyProfileController {
 	public ModelAndView displayUserDetailsController(HttpSession session) {
 	    ModelAndView modelAndView = new ModelAndView();
 
-	    //session.setAttribute("username", "user");
-
 	    String username = (String) session.getAttribute("username");
 	    UserDetails userDetails = service.getUserByUsername(username);
 	    
@@ -110,6 +108,7 @@ public class MyProfileController {
 		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("username") );
 		
 		userDetails.setUserLoginName(userLoginName);
+		session.setAttribute("username", userLoginName);
 		
 		String message=null;
 		
@@ -132,8 +131,9 @@ public class MyProfileController {
 	@PostMapping("/update-image-message")
 	public ModelAndView updateImageController(HttpSession session, @RequestParam("newImage") String userLoginName) {
 		ModelAndView model = new ModelAndView();
-		session.setAttribute("username", "test_user");
+		
 		UserDetails userDetails = service.getUserByUsername( (String) session.getAttribute("image") );
+		
 		return model;
 	}
 

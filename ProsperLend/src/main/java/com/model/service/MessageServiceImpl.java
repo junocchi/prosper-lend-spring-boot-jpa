@@ -27,7 +27,6 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-
 	public boolean insertNewMessage(Messages message) {
 		try {
 			if(messageDao.addMessage( 

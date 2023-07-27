@@ -28,7 +28,7 @@ public interface MessageDao extends JpaRepository<Messages, Integer>{
 	
 	
 	@Modifying
-	@Query(value = "insert into Messages (userEmail, userName, message) VALUES(userEmail, userName, message)",nativeQuery = true)
+	@Query(value = "insert into Messages (userEmail, userName, message) VALUES(?, ?, ?)",nativeQuery = true)
 	int addMessage( String userEmail, String userName, String message);
 
 
