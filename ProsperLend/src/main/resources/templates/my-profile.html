@@ -116,6 +116,7 @@
 	border-radius: 20px;
 	text-decoration: none;
 	font-size: 0.8em;
+	float: left;
 }
 
 /* editable fields */
@@ -139,6 +140,7 @@
 	border-radius: 20px;
 	flex: 1;
 	white-space: nowrap;
+	vertical-align: middle;
 	/* Keep the text on one line */
 }
 
@@ -152,10 +154,23 @@
 	color: grey;
 	margin-top: 10px;
 }
+
+td:nth-child(1) {
+   width: 50%;
+}
+
+td:nth-child(2) {
+   width: 300px;
+}
+
+td:nth-child(3) {
+   width: 50%;
+   
+}
 </style>
 </head>
 
-<body>
+<body style="min-width: 600px;">
 	<header>
 		<a th:href="@{/}"><img th:src="@{/images/prosper-logo.png}"
 			alt="Logo" class="logo" /></a>
@@ -188,7 +203,7 @@
 				</form>
 		
 				<br /> <br /> <br />
- -->
+
 			</div>
 
 		</div>
@@ -207,6 +222,7 @@
 								class="user-details-content"></p>
 
 						</div></td>
+					<td></td>
 
 				</tr>
 
@@ -217,7 +233,7 @@
 							<!-- The container is empty -->
 							<p class="user-details-content">**************</p>
 						</div></td>
-
+					<td></td>
 				</tr>
 
 
@@ -230,13 +246,15 @@
 							<p th:text="${userDetails.merchantId}"
 								class="user-details-content"></p>
 						</div></td>
+					<td></td>
 				</tr>
 				
 				<!-- row 4 - empty to give space between elements-->
 				<tr>
 					<td><p
-							style="font-size: 0.9em; padding: 10px; color: #370466; text-align: center;">Editable
+							style="font-size: 0.9em; padding: 10px; color: #370466; text-align: center; font-weight: bold;">Editable
 							Fields:</p></td>
+				
 				</tr>
 				<!-- row 5 -->
 				<tr>
@@ -245,8 +263,8 @@
 							<!-- The container is empty -->
 							<p th:text="${userDetails.userLoginName}"
 								class="user-details-content"></p>
-						</div> <a th:href="@{/update-name}" class="update-button">Update</a></td>
-
+						</div> </td>
+					<td><a th:href="@{/update-name}" class="update-button">Update</a></td>
 				</tr>
 				<!-- row 6 -->
 				<tr>
@@ -256,8 +274,8 @@
 							<!-- The container is empty -->
 							<p th:text="${userDetails.businessAdminEmail}"
 								class="user-details-content"></p>
-						</div> <a th:href="@{/update-email}" class="update-button">Update</a></td>
-
+						</div> </td>
+					<td><a th:href="@{/update-email}" class="update-button">Update</a></td>
 				</tr>
 			</table>
 		</div>
