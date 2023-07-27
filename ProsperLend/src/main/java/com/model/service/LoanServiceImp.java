@@ -24,6 +24,13 @@ public class LoanServiceImp implements LoanService{
 		return loanDao.findById(loanId).orElse(null);
 	}
 	
+	public int getUserIdByLoanId (int userId) {
+		
+	userId = getUserIdByLoanId(userId);
+		
+		return userId;
+	}
+	
 	
 	
 	@Override
@@ -49,7 +56,7 @@ public class LoanServiceImp implements LoanService{
 }
 
 	@Override
-	public boolean changeAmountInterest(int loanId, Double newAmount, Double newInterest) {
+	public boolean changeAmountInterest(int loanId, BigDecimal newAmount, BigDecimal newInterest) {
 		
 		if(loanDao.updateLoansAmountById(loanId, newAmount, newInterest)>0)
 			return true;
@@ -69,6 +76,13 @@ public class LoanServiceImp implements LoanService{
 		}
 		return false;
 	}
+
+	@Override
+	public BigDecimal getDebtByUserID(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 	
 	

@@ -1,5 +1,8 @@
 package com.model.service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,15 +11,13 @@ public class FundingRequestCalcImpl implements FundingRequestCalc{
 
 	
 	@Override
-	public double fundingRequest() {
+	public BigDecimal fundingRequest(BigDecimal averageMonthlyIncome, BigDecimal currentDebt) {
 		
-		double averageMonthlyIncome = 100000;
-		double currentDebt = 1000;
 		
-		double maxAmount = maxAmountCalc(averageMonthlyIncome);
-		double newMaxAmount = NewmaxAmountCalc(maxAmount,currentDebt);
 		
-		double funding = options(newMaxAmount, maxAmount );
+		BigDecimal maxAmount = maxAmountCalc(averageMonthlyIncome);
+		BigDecimal newMaxAmount = NewmaxAmountCalc(maxAmount,currentDebt);
+        BigDecimal funding = options(newMaxAmount, maxAmount );
 		
 		
 		return funding;
@@ -26,9 +27,9 @@ public class FundingRequestCalcImpl implements FundingRequestCalc{
 	}
 
 	@Override
-	public double maxAmountCalc(double averageMonthlyIncome) {
+	public BigDecimal maxAmountCalc(BigDecimal averageMonthlyIncome) {
 		
-	double maxAmount = averageMonthlyIncome / 10 * 24;
+		BigDecimal maxAmount = averageMonthlyIncome.divide(BigDecimal.valueOf(10),2, RoundingMode.HALF_EVEN).multiply(BigDecimal.valueOf(24));
 		
 		return maxAmount;
 	}
@@ -38,32 +39,32 @@ public class FundingRequestCalcImpl implements FundingRequestCalc{
 	
 	
 	@Override
-	public double NewmaxAmountCalc(double maxAmount, double currentDebt ) {
+	public BigDecimal NewmaxAmountCalc(BigDecimal maxAmount, BigDecimal currentDebt ) {
 		
-	double newMaxAmount = maxAmount - currentDebt;
+		BigDecimal newMaxAmount = (maxAmount).subtract(currentDebt);
 		
 		return newMaxAmount;
 	}
 	
 	@Override
-	public double options(double newMaxAmount, double maxAmount) {
+	public BigDecimal options(BigDecimal newMaxAmount, BigDecimal maxAmount) {
 		
-	double optionOne = newMaxAmount;
-	double optionTwo = optionOne - (optionOne*25/100);
-	double optionThree = optionTwo - (optionTwo*25/100);
+		BigDecimal optionOne = newMaxAmount;
+		BigDecimal optionTwo = (optionOne).subtract(optionOne).multiply(BigDecimal.valueOf(25).divide(BigDecimal.valueOf(100),2, RoundingMode.HALF_EVEN));
+		BigDecimal optionThree = (optionOne).subtract(optionTwo).multiply(BigDecimal.valueOf(25).divide(BigDecimal.valueOf(100),2, RoundingMode.HALF_EVEN));
    
-	if (newMaxAmount < maxAmount) {
+	if ((newMaxAmount).compareTo(optionThree) > 0) {
 		
 		return optionOne;
 	}
 	
-	else if (optionTwo > 0) {
+	else if ((optionTwo).compareTo(BigDecimal.valueOf(0)) > 0) {
 		
 		return optionTwo;
 	}
 		
 	
-	else if (optionThree > 0) {
+	else if ((optionThree).compareTo(BigDecimal.valueOf(0)) > 0)  {
 		
 	
 		return optionThree;
@@ -74,13 +75,36 @@ public class FundingRequestCalcImpl implements FundingRequestCalc{
 		
 		System.out.println("Your funding request has been declined");
 		
-		return 0;
+		return (BigDecimal.valueOf(0));
 		
 		
 		
 	}
 	
 	
+	@Override
+	public
+	BigDecimal repaymentMonthly(BigDecimal interest, BigDecimal funding) {
+		
+		
+		BigDecimal principal = interest.divide(BigDecimal.valueOf(12),2, RoundingMode.HALF_EVEN);
+		
+		BigDecimal payment = principal.multiply(funding);
+		
+		
+		
+		
+		
+		return payment;
+		
+		
+		
+		
+		
+	}
+	
+
+
 	
 	
 	

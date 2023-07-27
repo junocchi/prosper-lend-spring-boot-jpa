@@ -24,6 +24,7 @@ import com.model.persistence.LoanDao;
 
 import com.model.persistence.UserDetailsDao;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -58,8 +59,82 @@ class LoanDaoTest {
 	@DisplayName("Test for getting Loan by ID that doesn't exist")
 	public void ReturnLoanByIDTest02() {
 		Loans loan = dao.findById(14).orElse(null);
-		assertNull(loan);
-	}
+
+        assertNull(loan);
+        
+    }
+//	
+//	
+//	   @Test
+//	   @DisplayName("Test if Loan is added sucessfully")
+//	   public void AddLoanTest() {
+//	   UserDetails user = dao2.findById(1).orElse(null);
+//	   System.out.println(user);
+//	   long millis=System.currentTimeMillis();  
+//       Double amount = 256742.4;
+//       String loanStatus = "Pending";
+//       Double interest = 0.6;
+//       int userID = user.getUserLoginId();
+//       Date loanDate=new java.sql.Date(millis); 
+//       
+//        
+//       
+//       
+//		    
+//	   int result = dao.addLoan(loanStatus, amount, interest, userID, loanDate);
+//
+//			  
+//		    assertEquals(1, result);
+//		  }
+//	   
+//	   
+//	  
+	   
+	   
+	   @Test
+	   @DisplayName("Test if Loan by ID sucessfully")
+	   public void GetLoanDebtTest() {   
+	  int id = dao.getUserIdByLoanId(1);
+	  System.out.println("id");
+	  assertEquals(id,1);
+	   
+	   }
+	   
+	   
+
+	   @Test
+	   @DisplayName("Test to get User Debt sucessfully")
+	   public void GetDebtTest() {   
+	  BigDecimal debt = dao.getDebtByUserID(1);
+	  System.out.println(debt);
+	  assertNotNull(debt);
+	   
+	   }
+	   
+	   
+	   
+	   
+	   
+	   
+//	   @Test
+//	   @DisplayName("Test if Loan is updated sucessfully")
+//	   public void UpdateLoanTest() { 
+//		   
+//	   int loanId = 2;
+//	   BigDecimal amount;
+//	   BigDecimal interest;
+//	   
+//	   int result = dao.updateLoansAmountById(loanId, amount, interest);
+//	    
+//	    
+//		   assertEquals(1, result);
+//		   
+//		   
+//		   
+//	   }
+//			
+	   
+
 
 	@Test
 	@DisplayName("Test if Loan is added sucessfully")
@@ -92,21 +167,5 @@ class LoanDaoTest {
 		dao.deleteById(99);
 		assertNull(dao.findById(99).orElse(null));
 	}
-
-	@Test
-	@DisplayName("Test if Loan is updated sucessfully")
-	public void UpdateLoanTest() {
-		Loans oldEntry = dao.findById(1).orElse(null);
-
-		oldEntry.setAmount(999.0);;
-
-		Loans newEntry = dao.save(oldEntry);
-
-		assertNotNull(newEntry);
-		assertEquals(newEntry.getAmount(), 999.0);
-		
-		oldEntry.setAmount(5000.0);
-		dao.save(oldEntry);
-	}
-
 }
+	

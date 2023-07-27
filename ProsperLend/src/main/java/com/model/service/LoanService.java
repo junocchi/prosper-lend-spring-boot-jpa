@@ -1,5 +1,6 @@
 package com.model.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.dto.entity.Loans;
@@ -12,9 +13,12 @@ public interface LoanService {
 
 	boolean addLoan(Loans loan);
 
-	boolean changeAmountInterest(int loanId, Double newAmount, Double newInterest);
 
 	boolean deleteLoanById(int loanId);
+
+	boolean changeAmountInterest(int loanId, BigDecimal newAmount, BigDecimal newInterest);
+
+	BigDecimal getDebtByUserID(int userId);
 
 	
 	

@@ -171,25 +171,10 @@
 	<div id="content">
 
 		<div id="above-text">
-			<p>Choose your funding option:</p>
+			<p>Your funding option:</p>
 		</div>
 
-		<div class="option">
-			<label class="container">
-				<div id="checkmark-space">
-					<input type="radio" checked="checked" name="radio"> <span
-						class="checkmark"></span>
-				</div>
-
-				<div id="amount">£10,000</div>
-
-				<div id="under-text">
-					<p>
-						Repayment of<br>£10,600
-					</p>
-				</div>
-			</label>
-		</div>
+		
 
 		<div class="option">
 			<label class="container">
@@ -197,27 +182,12 @@
 					<input type="radio" name="radio"> <span class="checkmark"></span>
 				</div>
 
-				<div id="amount">£7,500</div>
+				<div id="amount">
+				<span th:text="${funding}" th:remove="tag"></span></div>
 
 				<div id="under-text">
 					<p>
-						Repayment of<br>£7,950
-					</p>
-				</div>
-			</label>
-		</div>
-
-		<div class="option">
-			<label class="container">
-				<div id="checkmark-space">
-					<input type="radio" name="radio"> <span class="checkmark"></span>
-				</div>
-
-				<div id="amount">£5,000</div>
-
-				<div id="under-text">
-					<p>
-						Repayment of<br>£5,300
+						Repayment of <span th:text="${repayment}" th:remove="tag"></span> a month
 					</p>
 				</div>
 			</label>
@@ -227,10 +197,10 @@
 			<div id="funding-information">
 				<p>Funding information:</p>
 				<ul>
-					<li>The fixed interest rate was deducted from 10% to 6%</li>
-					<li>10% of your monthly earning will automatically be
+					<li>The fixed interest rate was deducted from 10% to <span th:text="${interest}" th:remove="tag"></span>%</li>
+					<li><span th:text="${interest}" th:remove="tag"></span>% of your monthly earning will automatically be
 						collected from your card merchant</li>
-					<li>Expected average repayment of £375 (over 28 months).</li>
+					<li>Expected average repayment of <span th:text="${repayment}" th:remove="tag"></span> (over  <span th:text="${months}" th:remove="tag"></span>  months).</li>
 				</ul>
 			</div>
 			<div id="get-funding">

@@ -12,8 +12,8 @@ public class MyLoansObj {
 	private BigDecimal borrowAmount;
 	private BigDecimal repayAmount;
 	private BigDecimal balance;
-	private double deduction;
-	private double interest;
+	private BigDecimal deduction;
+	private BigDecimal interest;
 	
 	public int getLoanId() {
 		return loanId;
@@ -63,16 +63,16 @@ public class MyLoansObj {
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
-	public double getDeduction() {
+	public BigDecimal getDeduction() {
 		return deduction;
 	}
-	public void setDeduction(double deduction) {
+	public void setDeduction(BigDecimal deduction) {
 		this.deduction = deduction;
 	}
-	public double getInterest() {
+	public BigDecimal getInterest() {
 		return interest;
 	}
-	public void setInterest(double interest) {
+	public void setInterest(BigDecimal interest) {
 		this.interest = interest;
 	}
 	@Override

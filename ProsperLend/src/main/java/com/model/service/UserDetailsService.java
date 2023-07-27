@@ -13,10 +13,15 @@ public interface UserDetailsService {
 	public List<UserDetails> getAllUsers();
 	public boolean deleteUserById(int id);
 	public boolean updatePassword(UserDetails user);
+
 	public boolean matchUsernamePassword(String username, String password);
 	boolean updateEmail(UserDetails user);
 	boolean updateLoginName(UserDetails user);
 	boolean updateMerchantId(UserDetails user);
 	boolean updateImage(UserDetails user);
+
+
+
 	public String getImageByUsername(String username);
+
 }
