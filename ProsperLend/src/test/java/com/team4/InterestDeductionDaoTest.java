@@ -17,6 +17,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.dto.entity.InterestDeduction;
+<<<<<<< HEAD
+import com.dto.entity.UserLogin;
+
+=======
+>>>>>>> 96c44370fdcab96f604ddb2f9cd78442a4c155dc
 import com.model.persistence.InterestDeductionDao;
 
 @ActiveProfiles("test")
