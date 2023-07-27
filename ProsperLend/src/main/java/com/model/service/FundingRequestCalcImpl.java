@@ -81,6 +81,28 @@ public class FundingRequestCalcImpl implements FundingRequestCalc{
 		
 	}
 	
+	
+	@Override
+	public
+	BigDecimal repaymentMonthly(BigDecimal interest, BigDecimal funding) {
+		
+		
+		BigDecimal principal = interest.divide(BigDecimal.valueOf(12),2, RoundingMode.HALF_EVEN);
+		
+		BigDecimal payment = principal.multiply(funding);
+		
+		
+		
+		
+		
+		return payment;
+		
+		
+		
+		
+		
+	}
+	
 
 
 	

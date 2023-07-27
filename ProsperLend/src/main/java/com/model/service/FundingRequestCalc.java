@@ -10,6 +10,7 @@ public interface FundingRequestCalc {
 	BigDecimal NewmaxAmountCalc(BigDecimal maxAmount ,BigDecimal currentDebt);
 	BigDecimal options(BigDecimal newmaxAmount, BigDecimal currentDebt);
 	BigDecimal fundingRequest(BigDecimal averageMonthlyIncome, BigDecimal currentDebt);
+	BigDecimal repaymentMonthly(BigDecimal interest, BigDecimal funding);
 	
 	
 }

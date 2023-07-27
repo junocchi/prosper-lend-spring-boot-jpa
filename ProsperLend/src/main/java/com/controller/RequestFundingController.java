@@ -61,15 +61,33 @@ public class RequestFundingController {
 		BigDecimal currentDebt =new BigDecimal(request.getParameter("currentDebt"));
 		BigDecimal funding = calc.fundingRequest(averageMonthlyIncome, currentDebt);
 		String s = funding.toString();
-		BigDecimal repayment = funding.divide(BigDecimal.valueOf(12),2, RoundingMode.HALF_EVEN);
-		String f = repayment.toString();
 		
 		if (funding.compareTo(BigDecimal.valueOf(0)) < 0) {
 			
 			modelAndView.setViewName("funding-declined");
 		}
-	
 		
+		BigDecimal interest = BigDecimal.valueOf(10);
+		
+		String[] deductions = request.getParameterValues("checkboxList");
+		
+		for(int i = 0; i < deductions.length; i++) {
+			
+		interest =	interest.subtract(BigDecimal.valueOf(1));
+			
+		}
+		
+		BigDecimal repayment = calc.repaymentMonthly(interest, funding);
+		
+		repayment = repayment.setScale(2, RoundingMode.CEILING);
+		
+		String f = repayment.toString();
+		
+		BigDecimal months = repayment.divide(BigDecimal.valueOf(12),0, RoundingMode.UP);
+		
+		
+		modelAndView.addObject("months", months);
+		modelAndView.addObject("interest", interest);
 		modelAndView.addObject("funding",s);
 		modelAndView.addObject("repayment",f);
 		modelAndView.setViewName("funding-options");
