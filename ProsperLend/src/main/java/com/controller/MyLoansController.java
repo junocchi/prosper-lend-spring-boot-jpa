@@ -51,11 +51,12 @@ public class MyLoansController {
 					loan.setLoanDate(aLoan.getLoanDate());
 					loan.setInterest(aLoan.getInterest().multiply(BigDecimal.valueOf(100)));
 					loan.setStatus(aLoan.getLoanStatus());
-					loan.setDeduction(BigDecimal.valueOf(100).subtract(loan.getInterest()));
+					loan.setDeduction(BigDecimal.valueOf(10).subtract(loan.getInterest()));
 					loan.setRepayAmount(loan
 							.getBorrowAmount().add(loan.getBorrowAmount()
-									.multiply(loan.getInterest())).divide(new BigDecimal(100)));
-
+									.multiply(loan.getInterest().divide(BigDecimal.valueOf(100)))));
+					System.out.println("Current Balance: " + loan.getBorrowAmount() + " + (" + loan.getBorrowAmount() + "*" + loan.getInterest());
+					
 					java.time.LocalDate currentDate = java.time.LocalDate.now();
 					java.time.LocalDate sqlDate = loan.getLoanDate().toLocalDate();
 
