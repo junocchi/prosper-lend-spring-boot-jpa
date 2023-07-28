@@ -20,12 +20,14 @@ public interface MessageDao extends JpaRepository<Messages, Integer>{
 	
 	
 	
+//	@Modifying
+//	@Query("update Messages set message=message+:me where messageId=:id")
+//	int updateMessage(@Param("id") int messageId, @Param("me") String newMessage);
+	
+	
 	@Modifying
-	@Query("update Messages set message=message+:me where messageId=:id")
+	@Query("update Messages m set m.message = :me where m.messageId = :id")
 	int updateMessage(@Param("id") int messageId, @Param("me") String newMessage);
-	
-	
-	
 	
 	@Modifying
 	@Query(value = "insert into Messages (userEmail, userName, message) VALUES(?, ?, ?)",nativeQuery = true)
@@ -33,3 +35,5 @@ public interface MessageDao extends JpaRepository<Messages, Integer>{
 
 
 }
+
+

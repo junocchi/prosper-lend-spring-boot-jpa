@@ -1,6 +1,7 @@
 package com.team4;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -18,11 +19,6 @@ import org.springframework.test.context.ActiveProfiles;
 
 import com.dto.entity.Loans;
 import com.dto.entity.Transaction;
-
-<<<<<<< HEAD
-import com.dto.entity.UserLogin;
-=======
->>>>>>> 96c44370fdcab96f604ddb2f9cd78442a4c155dc
 
 import com.model.persistence.LoanDao;
 import com.model.persistence.TransactionDao;

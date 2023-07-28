@@ -153,6 +153,7 @@ class LoanDaoTest {
 
 		assertEquals(1, result);
 	}
+	
 
 	@Test
 	@DisplayName("Test if Loan is deleted sucessfully")

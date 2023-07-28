@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.test.context.ActiveProfiles;
 
+import com.dto.entity.Messages;
 import com.dto.entity.UserDetails;
 
 import com.model.persistence.UserDetailsDao;
@@ -34,7 +35,7 @@ class UserDetailsDaoTest {
 	@Test
 	@DisplayName("Test for getting UserLogin by ID")
 	public void ReturnUserLoginByIDTest() {
-		UserDetails Userlogin = dao.findById(1).orElse(null);
+		UserDetails Userlogin = dao.findById(4).orElse(null);
 		System.out.println(Userlogin);
 		assertNotNull(Userlogin);
 	}
@@ -67,9 +68,12 @@ class UserDetailsDaoTest {
 		dao.deleteById(id);
 	}
 
+
+	
 	@Test
-	@DisplayName("Test if UserLogin is deleted sucessfully")
+	@DisplayName("Test if UserLogin is deleted successfully")
 	public void DeleteUserLoginTest() {
+		
 		String userLoginName = "test";
 		String passcode = "passcode";
 		String businessName = "BName";
@@ -77,14 +81,17 @@ class UserDetailsDaoTest {
 		long merchantId = 123442;
 		String salt = "123456";
 		String image = "test/path";
+
+		dao.insertUserLoginData(userLoginName, salt, passcode, salt, businessName, email, merchantId, image);
 		
-		dao.save(new UserDetails(99, userLoginName, passcode, salt, businessName, email, merchantId, image));
-		
-		assertNotNull(dao.findById(99).orElse(null));
-		dao.deleteById(99);
-		assertNull(dao.findById(99).orElse(null));
+		assertNotNull(dao.findById(10).orElse(null));
+		dao.deleteById(10);
+		assertNull(dao.findById(10).orElse(null));
 
 	}
+	
+
+
 
 	@Test
 	@DisplayName("Test if Password is updated sucessfully")

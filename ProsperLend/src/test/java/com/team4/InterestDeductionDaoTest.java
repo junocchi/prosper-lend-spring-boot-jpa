@@ -1,5 +1,6 @@
 package com.team4;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -17,11 +18,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.dto.entity.InterestDeduction;
-<<<<<<< HEAD
-import com.dto.entity.UserLogin;
-
-=======
->>>>>>> 96c44370fdcab96f604ddb2f9cd78442a4c155dc
 import com.model.persistence.InterestDeductionDao;
 
 @ActiveProfiles("test")
@@ -70,19 +66,20 @@ class InterestDeductionDaoTest {
 		dao.deleteById(dao.getLatestDeduction());
 	}
 
+	
 	@Test
-	@DisplayName("Test if Deduction is deleted sucessfully")
+	@DisplayName("Test if Deduction is deleted successfully")
 	public void DeleteDeductionTest() {
-		String item = "Empowering Women Reward";
-		double amount = 1;
-		dao.addDeduction(item, amount);
-		int id = dao.getLatestDeduction();
-		
-		assertEquals(dao.findById(id).orElse(null).getItems(), item);
-		
-		dao.deleteById(id);
+	    String item = "Empowering Women Reward";
+	    double amount = 1;
+	    dao.addDeduction(item, amount);
+	    int id = dao.getLatestDeduction();
 
-		assertTrue(dao.findById(id).isEmpty());
+	    assertEquals(dao.findById(id).orElse(null).getItems(), item);
+
+	    dao.deleteById(id);
+
+	    assertTrue(dao.findById(id).isEmpty());
 	}
 
 	@Test
