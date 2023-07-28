@@ -186,9 +186,7 @@
 				<span th:text="${funding}" th:remove="tag"></span></div>
 
 				<div id="under-text">
-					<p>
-						Repayment of <span th:text="${repayment}" th:remove="tag"></span> a month
-					</p>
+					
 				</div>
 			</label>
 		</div>
@@ -200,11 +198,12 @@
 					<li>The fixed interest rate was deducted from 10% to <span th:text="${interest}" th:remove="tag"></span>%</li>
 					<li><span th:text="${interest}" th:remove="tag"></span>% of your monthly earning will automatically be
 						collected from your card merchant</li>
-					<li>Expected average repayment of <span th:text="${repayment}" th:remove="tag"></span> (over  <span th:text="${months}" th:remove="tag"></span>  months).</li>
+					
 				</ul>
 			</div>
 			<div id="get-funding">
-				<button class="get-funding-button">Get Funding</button>
+				<button class="get-funding-button" onclick="alert('Your request has been sent!')" >Get Funding</button>
+				<p th:text="${message}" th:remove="tag"></p>
 			</div>
 		</div>
 

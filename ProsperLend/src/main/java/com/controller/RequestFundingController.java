@@ -32,10 +32,8 @@ public class RequestFundingController {
 	
 	
 	@Autowired
-	private UserDetailsService udao;
+	private UserDetailsService dao2;
 	
-	
-	private MyLoansObj myLoans;
 	
 	
 
@@ -61,7 +59,11 @@ public class RequestFundingController {
 		BigDecimal currentDebt =new BigDecimal(request.getParameter("currentDebt"));
 		BigDecimal funding = calc.fundingRequest(averageMonthlyIncome, currentDebt);
 		String s = funding.toString();
-		
+		long merchantID = Long.parseLong(request.getParameter("merchantId"));
+		int userID = dao2.getUserByMerchant(merchantID);
+		long millis=System.currentTimeMillis();  
+        java.sql.Date date=new java.sql.Date(millis); 
+				
 		if (funding.compareTo(BigDecimal.valueOf(0)) < 0) {
 			
 			modelAndView.setViewName("funding-declined");
@@ -86,19 +88,48 @@ public class RequestFundingController {
 		BigDecimal months = repayment.divide(BigDecimal.valueOf(12),0, RoundingMode.UP);
 		
 		
+		
+		
 		modelAndView.addObject("months", months);
 		modelAndView.addObject("interest", interest);
 		modelAndView.addObject("funding",s);
 		modelAndView.addObject("repayment",f);
 		modelAndView.setViewName("funding-options");
 		
+		
+		
+		
+		
+		Loans loan =  new Loans("Pending",funding,currentDebt,interest,date,userID);
+		
+		
+		
+
+		if (dao.addLoan(loan)) {
+			
+			String message = "Your loan has been submitted!";
+			modelAndView.addObject("message", message);
+		
+			
+		}
+
+		
+		
+		
 		return modelAndView;		
-				
+		
+		
 	
 	
 	}
-}
 	
+}
+
+	
+	
+	
+	
+
 	
 
 

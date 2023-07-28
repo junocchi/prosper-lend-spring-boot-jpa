@@ -60,10 +60,9 @@ public class Loans implements Serializable{
 	}
 
 
-	public Loans(int loanID, String loanStatus, BigDecimal amount, BigDecimal currentDebt, BigDecimal interest,
+	public Loans(String loanStatus, BigDecimal amount, BigDecimal currentDebt, BigDecimal interest,
 		Date loanDate, int userLoginId) {
 	super();
-	this.loanID = loanID;
 	this.loanStatus = loanStatus;
 	this.amount = amount;
 	this.currentDebt = currentDebt;
