@@ -47,15 +47,14 @@ public class MyLoansController {
 				if (aLoan.getUserLoginId() == user.getUserLoginId()) {
 					loan.setLoanId(aLoan.getLoanID());
 					loan.setLoanCount(loanList.size() + 1);
-					loan.setBorrowAmount(BigDecimal.valueOf(aLoan.getAmount()).setScale(2, RoundingMode.HALF_UP));
+					loan.setBorrowAmount(aLoan.getAmount());
 					loan.setLoanDate(aLoan.getLoanDate());
-					loan.setInterest(aLoan.getInterest() * 100);
+					loan.setInterest(aLoan.getInterest().multiply(BigDecimal.valueOf(100)));
 					loan.setStatus(aLoan.getLoanStatus());
-					loan.setDeduction(10 - loan.getInterest());
+					loan.setDeduction(BigDecimal.valueOf(100).subtract(loan.getInterest()));
 					loan.setRepayAmount(loan
 							.getBorrowAmount().add(loan.getBorrowAmount()
-									.multiply(BigDecimal.valueOf(loan.getInterest())).divide(new BigDecimal(100)))
-							.setScale(2, RoundingMode.HALF_UP));
+									.multiply(loan.getInterest())).divide(new BigDecimal(100)));
 
 					java.time.LocalDate currentDate = java.time.LocalDate.now();
 					java.time.LocalDate sqlDate = loan.getLoanDate().toLocalDate();
