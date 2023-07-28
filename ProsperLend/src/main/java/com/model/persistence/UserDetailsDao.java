@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.dto.entity.UserDetails;
@@ -30,4 +31,10 @@ public interface UserDetailsDao extends JpaRepository<UserDetails, Integer>{
 	
 	@Query(nativeQuery = true,value = "SELECT * FROM UserDetails WHERE userLoginName = ? ")
 	public UserDetails getImageByUsername(String username);
+	
+	
+
+	@Query(value = "Select userLoginId from UserDetails where merchantId=:id" ,nativeQuery = true)
+	int getMerchantID(@Param("id") long merchantId);
+	
 }

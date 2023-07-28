@@ -68,16 +68,11 @@ select * from userdetails;
 -- Create the "loans" table
 CREATE TABLE loans (
 loanID INT  AUTO_INCREMENT,
-<<<<<<< HEAD
+
 loanStatus VARCHAR(10),
 amount DECIMAL(10, 2),
 interest DECIMAL(5, 2),
 currentDebt DECIMAL(10,2),
-=======
-loanStatus VARCHAR(15),
-amount DOUBLE(10, 2),
-interest DOUBLE(5, 2),
->>>>>>> 96c44370fdcab96f604ddb2f9cd78442a4c155dc
 userLoginId INT,
 loanDate DATE,
 FOREIGN KEY (userLoginId) REFERENCES UserDetails(userLoginId),

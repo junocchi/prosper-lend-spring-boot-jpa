@@ -45,6 +45,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return user;
 	}
 
+	@Override
+	public int getUserByMerchant(long id) {
+		int userID = dao.getMerchantID(id);
+		
+		return userID;
+	}
+	
 	
 	
 	@Override

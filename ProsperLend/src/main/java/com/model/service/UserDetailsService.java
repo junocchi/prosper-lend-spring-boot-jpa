@@ -23,5 +23,6 @@ public interface UserDetailsService {
 
 
 	public String getImageByUsername(String username);
+	public int getUserByMerchant(long id);
 
 }
