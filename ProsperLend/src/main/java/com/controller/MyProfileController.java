@@ -42,6 +42,8 @@ public class MyProfileController {
 	@RequestMapping("/my-profile")
 	public ModelAndView displayUserDetailsController(HttpSession session) {
 	    ModelAndView modelAndView = new ModelAndView();
+	    
+	    session.setAttribute("username", "test_user");
 
 	    String username = (String) session.getAttribute("username");
 	    UserDetails userDetails = service.getUserByUsername(username);
