@@ -21,8 +21,8 @@ The user can:
 At the end of the two weeks, the team presented to the rest of our cohort and instructors detailing our approach, planning, achievements and goals, before giving a live demo of the site. Click the image to access the slides.
 
 <p align="center">
-<a href="https://drive.google.com/file/d/15TOZVcwI31lBQp5FsmJnBV7MlGT0epre/view?usp=sharing">
-<img width="200" alt="image" src="ProsperLend/src/main/resources/static/images/prosper-logo.png" target="_blank">
+<a href="https://drive.google.com/file/d/15TOZVcwI31lBQp5FsmJnBV7MlGT0epre/view?usp=sharing" target="_blank">
+<img width="200" alt="image" src="ProsperLend/src/main/resources/static/images/prosper-logo.png" >
 </a>
 </p>
 
