@@ -27,7 +27,24 @@ At the end of the two weeks, the team presented to the rest of our cohort and in
 </p>
 
 ## Entity relationship diagrams
-<img height="600" src="sql-and-images/images/ERD diagrams.png"> 
+<p align="center"><img align="center" height="600" src="sql-and-images/images/ERD diagrams.png"></p>
+
+## Main pages
+
+<p align="center">Login</p>
+<p align="center"><img align="center" height="200" src="sql-and-images/images/login-page.png"></p>
+
+<p align="center">Home</p>
+<p align="center"><img height="400" src="sql-and-images/images/home.png"></p>
+
+<p align="center">My Profile</p>
+<p align="center"><img height="250" src="sql-and-images/images/my-profile.png"></p>
+
+<p align="center">Request Funding</p>
+<p align="center"><img height="250" src="sql-and-images/images/request-funding.png"></p>
+
+<p align="center">About Us</p>
+<p align="center"><img height="250" src="sql-and-images/images/about-us.png"></p>
 
 ## How to try the project
 
