@@ -1,6 +1,9 @@
 # Prosper Lend (with Spring Boot JPA)
 Final project at Wiley Edge trainee program using Spring Boot JPA. Prosper Lend is a Business Loan Provider that offers exclusive interest rates discounts for companies committed to making a positive impact in the world.
 
+## Group
+@catalina-kalman @DominiqueAMWalker @hodanhassan2408 and @junocchi
+
 ## Features achieved
 The user can:
 - [x] Sign up and create an account (we use hashing passwords)
@@ -23,6 +26,8 @@ At the end of the two weeks, the team presented to the rest of our cohort and in
 </a>
 </p>
 
+## Entity relationship diagrams
+<img height="600" src="sql-and-images/images/ERD diagrams.png"> 
 
 ## How to try the project
 
