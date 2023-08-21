@@ -12,7 +12,7 @@ The user can:
 - [x] See their profile page with an avatar photo
 - [x] Update their username and email
 - [x] Request funding
-- [x] See payments history
+- [x] See payment history
 - [x] See loans and their current status (in progress or complete)
 - [x] Message Prosper Lend if they need help
 - [x] Log out
